@@ -1,8 +1,7 @@
 package com.eun.control;
-
 import java.util.Scanner;
 
-public class Control1 {
+public class Control_ex2 {
 
 	public static void main(String[] args) {
 		
@@ -23,4 +22,3 @@ public class Control1 {
 
 		} 
 	}
-
