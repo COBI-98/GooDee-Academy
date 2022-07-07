@@ -6,7 +6,7 @@ public class Control_ex4 {
 		Scanner sc = new Scanner (System.in);
 		System.out.println("1-5 사이의 숫자 입력");
 		int num = sc.nextInt();
-		System.out.println("알파벳을 입력");
+		System.out.println("알파벳을 입력해보보보봅까");
 		char ch = sc.next().charAt(0);
 		if(num>=1 && num<=5) {
 			ch = (char)(ch+num);
