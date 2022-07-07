@@ -8,13 +8,16 @@ public class Control_ex4 {
 		int num = sc.nextInt();
 		System.out.println("알파벳을 입력해보보보봅까");
 		char ch = sc.next().charAt(0);
+		
+		int result = ch + num;
+		
 		if(num>=1 && num<=5) {
-			ch = (char)(ch+num);
-			if(ch > 'z'){
-				 ch = (char) (ch-26);
+			if(result > 'z'){
+				 result = result - 26;
+
+				System.out.println((char)result +"임");
 			}
-			System.out.println(ch +"임");
-			//토ㅡㄹ노잼ㅇㅇ
+			//토ㅡㄹ노잼
 		}
 	}
 	
