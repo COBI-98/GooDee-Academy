@@ -14,7 +14,7 @@ public class Control_ex4 {
 				 ch = (char) (ch-26);
 			}
 			System.out.println(ch +"임");
-			//토ㅡㄹ노잼
+			//토ㅡㄹ노잼ㅇㅇ
 		}
 	}
 	
