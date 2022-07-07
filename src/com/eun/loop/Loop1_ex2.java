@@ -9,7 +9,7 @@ public class Loop1_ex2 {
 		
 		
 		// 1. 1번 대문자, 2번 소문자
-		//1번이면 A-Z 출력
+		//1번이면 A-Z 출력dSDASD
 		//2번이면 a-z 출력d
 		
 		int num = 0;
