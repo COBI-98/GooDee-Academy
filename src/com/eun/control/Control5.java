@@ -22,7 +22,7 @@ public class Control5 {
 			
 			
 			break;
-
+//ㅇㅇㅇㅇ
 		default:
 			break;
 		}
