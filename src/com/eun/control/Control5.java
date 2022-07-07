@@ -22,7 +22,7 @@ public class Control5 {
 				System.out.println("평균은" + avg + "이며 A학점입니다");
 			}
 			break;
-
+//ㅇㅇㅇㅇ
 		default:
 			break;
 		}
