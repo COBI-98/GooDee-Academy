@@ -11,10 +11,10 @@ public class Control_ex4 {
 		if(num>=1 && num<=5) {
 			ch = (char)(ch+num);
 			if(ch >= 123){
-				// ch = (char) (ch-26);
+				 ch = (char) (ch-26);
 			}
 			System.out.println(ch +"임");
-			//ㅁㄴㅇㄻㄴㅇㄹ
+			
 		}
 	}
 	
