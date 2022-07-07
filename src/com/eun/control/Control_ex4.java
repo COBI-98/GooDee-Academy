@@ -14,7 +14,7 @@ public class Control_ex4 {
 				 ch = (char) (ch-26);
 			}
 			System.out.println(ch +"임");
-			
+			// 토르 유잼 
 		}
 	}
 	
