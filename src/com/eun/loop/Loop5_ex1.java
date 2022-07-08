@@ -7,48 +7,41 @@ public class Loop5_ex1 {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		
+
 		int yId = 1234;
 		int yPw = 5678;
-		
-		int inputID;
-		int inputPW;
+		boolean check = true;
 		
 		
-		
-		while(true){
-			
-			System.out.print(" 1. Try to login   2. Exit");
-			inputID = sc.nextInt();
-			if(inputID == 2) {
-				System.out.print(" Good Bye "); 
-			break;
-			}
-			
-			
-			
-			System.out.print(" what ur ID : ");
-			inputID = sc.nextInt();
-			
-			System.out.print(" what ur PW : ");
-			inputPW = sc.nextInt();
-			
-			
-			
-			if(inputID == yId && inputPW == yPw) {
+			while(true) {
+				System.out.println("1. 로그인 2. 프로그램 종료");
+				int num = sc.nextInt();
 				
-				System.out.println(" Login ");
+				if(num == 1) {
+				}else {
+					System.out.println("종료");
+					check =! check;
+					break;
+				}
 				
-				break;
-			}
-			
-			System.out.println(" No Login ");
-			
+				System.out.println("아이디입력");
+				int checkId = sc.nextInt();
+				System.out.println("비밀번호입력");
+				int checkPw = sc.nextInt();
+				
+				if(yId!=checkId) {
+					System.out.println("로그인실패");
+					}else if (yPw != checkPw) {
+					System.out.println("로그인실패");
+					}else {
+						System.out.println("로그인성공");
+						check =! check;
+						break;
+					}
+				}
+			} 
 			
 		}
 		
 		
 		
-	}
-
-}
