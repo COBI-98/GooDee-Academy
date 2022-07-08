@@ -1,4 +1,4 @@
-<img src="./구디.png"  weight = 0.1 >< img src="./구디.png"  weight = 0.1>
+<img src="./구디.png"  height = 78px>
  
 
 </h1> 구승완두콩 </h1>
