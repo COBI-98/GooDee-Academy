@@ -51,8 +51,6 @@ public class Loop1_ex2 {
 		int checkPW = 0;
 		
 		
-		
-		
 		for(int i = 0 ; i < 5 ; i ++) {
 			System.out.println("아이디를 입력하세요");
 			checkID = sc.nextInt();
