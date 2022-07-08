@@ -1,4 +1,5 @@
 package com.eun.loop;
+
 import java.util.Scanner;
 
 public class Loop5_ex1 {
@@ -48,5 +49,6 @@ public class Loop5_ex1 {
 			}
 	}
 }
+		
 		
 		
