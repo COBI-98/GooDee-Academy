@@ -77,20 +77,9 @@ public class Loop5_ex1 {
 				break;
 				
 			}
-			
-			
 		}
-		
-		
-		
-		
-		
-		
-			
-			
-			} 
-			
-		}
+	} 
+}
 		
 		
 		
