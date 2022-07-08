@@ -10,7 +10,7 @@ public class Loop5_ex1 {
 		int yId = 1234;
 		int yPw = 5678;
 		boolean check = true;
-		
+		boolean login = false;
 		
 			while(true) {
 				System.out.println("1. 로그인 2. 프로그램 종료");
@@ -35,11 +35,18 @@ public class Loop5_ex1 {
 					}else {
 						System.out.println("로그인성공");
 						check =! check;
+						login =! login;
 						break;
 					}
 				}
-			} 
 			
-		}
+			if (login == true ) {
+				for(int i=1; i<16 ; i++){
+					System.out.println(i+"레벨입니다");
+				}
+				
+			}
+	}
+}
 		
 		
