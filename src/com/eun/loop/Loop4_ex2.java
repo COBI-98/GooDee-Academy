@@ -22,7 +22,7 @@ public class Loop4_ex2 {
 				}
 				System.out.println("총알 다 썼어요");
 				break;
-			
+				
 			}
 		}
 		System.out.println("탄창 없어요");
