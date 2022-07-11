@@ -42,11 +42,10 @@ public class Array_ex3 {
 		while(check) {
 			System.out.println("1.학생정보입력 2.학생정보조회 3.학생정보검색 4.학생정보삭제 5.학생정보추가 6.프로그램 종료");
 			num = sc.nextInt();
-			
-			System.out.println(num + "을 선택하셨습니다.");
+	
 			if(num == 1) {
 				
-				System.out.println("학생 수를 입력 해 주십시오. ");
+				System.out.print("학생 수를 입력 해 주십시오. ");
 				number = sc.nextInt();
 				
 				student_name = new String[number];
@@ -61,15 +60,15 @@ public class Array_ex3 {
 				
 				
 				for ( int i = 0 ; i < number ; i ++ ) {
-					System.out.println(i+1 +"번째 학생 이름 :  ");
+					System.out.print(i+1 +"번째 학생 이름 :  ");
 					student_name[i] = sc.next();
-					System.out.println("학생 번호 :  ");
+					System.out.print("학생 번호 :  ");
 					student_num[i] = sc. nextInt();
-					System.out.println("국어 점수 :   ");
+					System.out.print("국어 점수 :   ");
 					student_kor[i] = sc. nextInt();
-					System.out.println("영어 점수 :   ");
+					System.out.print("영어 점수 :   ");
 					student_eng[i] = sc. nextInt();
-					System.out.println("수학 점수 :   ");
+					System.out.print("수학 점수 :   ");
 					student_math[i] = sc. nextInt();
 					student_total[i] = student_kor[i] + student_eng[i] + student_math[i];
 					student_avg[i] = student_total[i]/3;
@@ -77,10 +76,10 @@ public class Array_ex3 {
 				
 				
 			}else if (num == 2) {
-				
+				System.out.println("학생이름\t 학생번호\t 국어점수\t 영어점수\t 수학점수\t 총점\t 평균");
 				for (int i = 0 ; i < number ; i ++) {
 					
-					System.out.println(student_name[i] +" "+ student_num[i]+" "+student_kor[i]+" "+ student_eng[i]+" "+student_math[i]+" "+ student_total[i] +" "+student_avg[i]);
+					System.out.println(student_name[i] +"\t "+ student_num[i]+"\t "+student_kor[i]+"\t "+ student_eng[i]+"\t "+student_math[i]+"\t "+ student_total[i] +"\t "+student_avg[i]);
 					
 					
 					
@@ -99,19 +98,21 @@ public class Array_ex3 {
 				System.out.println("검색 가능한 학생 번호");
 				for (int i = 0 ; i < number ; i ++) {
 					
-					System.out.print(student_num[i]+" ");
+					System.out.print(student_num[i]+"번 ");
 					
 				}
 				
-				System.out.println("검색할 번호 : ");
+				System.out.println("\n검색할 번호 : ");
 				int j = sc.nextInt();
 				boolean checkst = false;
+				
 				for (int i = 0 ; i < number ; i ++) {
 					
 					if(student_num[i] == j) {
-						System.out.println(student_name[i] +" "+ student_num[i]+" "+student_kor[i]+" "+ student_eng[i]+" "+student_math[i]+" "+ student_total[i] +" "+student_avg[i]);
+						System.out.println("학생이름\t 학생번호\t 국어점수\t 영어점수\t 수학점수\t 총점\t 평균");
+						System.out.println(student_name[i] +"\t "+ student_num[i]+"\t "+student_kor[i]+"\t "+ student_eng[i]+"\t "+student_math[i]+"\t "+ student_total[i] +"\t "+student_avg[i]);
 						checkst = true;
-						
+						break;
 					}
 				}
 				
@@ -127,11 +128,11 @@ public class Array_ex3 {
 				System.out.println("삭제 가능한 학생 번호");
 				for (int i = 0 ; i < number ; i ++) {
 					
-					System.out.print(student_num[i]+" ");
+					System.out.print(student_num[i]+"번 ");
 					
 				}
 				
-				System.out.println("삭제할 번호 : ");
+				System.out.print("\n삭제할 번호 : ");
 				int j = sc.nextInt();
 				boolean checkst = false;
 				int number1 = number;
@@ -202,6 +203,22 @@ public class Array_ex3 {
 				int student_total1[] = new int[number];
 				double student_avg1[] = new double[number];
 				
+				
+				int k = 0 ;
+				
+				for (int i = 0 ; i < number-1 ; i ++) {
+					student_name1[k] = student_name[i];
+					student_num1[k] =student_num[i];
+					student_kor1[k] =student_kor[i];
+					student_eng1[k] =student_eng[i];
+					student_math1[k] =student_math[i];
+					student_total1[k] =student_total[i];
+					student_avg1[k] =student_avg[i];
+					
+					k++;
+				}
+				
+				
 				System.out.println("추가할 학생 이름 :  ");
 				student_name1[number-1] = sc.next();
 				System.out.println("학생 번호 :  ");
@@ -217,7 +234,6 @@ public class Array_ex3 {
 				
 				
 				
-				
 				student_name = student_name1;
 				student_num =student_num1;
 				student_kor =student_kor1;
@@ -230,8 +246,7 @@ public class Array_ex3 {
 				
 				
 				
-			}else {
-				break;
+				
 			}
 		}
 	
