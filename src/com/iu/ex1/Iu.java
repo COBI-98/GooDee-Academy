@@ -2,18 +2,29 @@ package com.iu.ex1;
 
 public class Iu {
 
+	private String name;
+	private int age;
+	//fix-study
+	private String test;
    
-   
+	private static Iu iu;
+	
    private  Iu() {
 	   
    }
    
+   // 개체 name,age 쓸수없음
+   // 개체 선언보다 더 빨리 만들어져서
+   // static으로 선언한 것만 사용가능
    public static Iu getInstance() {
-	   return new Iu();
+	   if(Iu.iu == null) {
+		   Iu.iu = new Iu();
+		   
+	   }
+	   return Iu.iu;
    }
    
-   private String name;
-   private int age;
+  
    
    
    public String getName() {
