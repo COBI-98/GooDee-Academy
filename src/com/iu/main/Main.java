@@ -19,7 +19,7 @@ public class Main {
 		Zoo.info();
 		
 		Zoo zoo = new Zoo();
-		zoo.price=10000;
+//		zoo.price=10000;
 		
 		
 		

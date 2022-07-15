@@ -21,7 +21,7 @@ public class Zoo {
 	
 	//인스턴스메서드
 	public void getPrice() {
-		System.out.println(price);
+//		System.out.println(price);
 		System.out.println(Zoo.title);
 		Zoo.info();
 	}
