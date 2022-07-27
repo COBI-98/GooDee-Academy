@@ -14,7 +14,7 @@ public class CountriesDAO {
 		CountriesDTO countriesDTO= null;
 		
 		//1. DB 연결
-		Connection con = DBConnector.getConnection();
+		Connection con = DBConnector.getConnetion();
 		
 		
 		//2. SQL 작성
@@ -47,7 +47,7 @@ public class CountriesDAO {
 		ArrayList<CountriesDTO> ar = new ArrayList();
 		
 		//1. DB 연결
-		Connection con = DBConnector.getConnection();
+		Connection con = DBConnector.getConnetion();
 		
 		//2. SQL 작성
 		String sql = "SELECT * FROM COUNTRIES";
