@@ -43,17 +43,21 @@ public class CountriesDAO {
 	}
 	
 	
-	public ArrayList<CountriesDTO> getList() throws Exception {
+	public ArrayList<CountriesDTO> getList(String search) throws Exception {
 		ArrayList<CountriesDTO> ar = new ArrayList();
 		
 		//1. DB 연결
 		Connection con = DBConnector.getConnetion();
 		
 		//2. SQL 작성
-		String sql = "SELECT * FROM COUNTRIES";
+		String sql = "SELECT * FROM COUNTRIES WHERE COUNTRY_NAME LIKE ?";
+//		String sql = "SELECT * FROM COUNTRIES WHERE COUNTRY_NAME LIKE '%'|| ?||'% '"; '%a%' 찾기
 		
 		//3. 미리보내기
 		PreparedStatement st = con.prepareStatement(sql);
+		
+		//3-1 ? 있으면 값 세팅
+		st.setString(1, "%"+search+"%");
 		
 		//4. 최종전송 후 결과 처리
 		ResultSet rs = st.executeQuery();
