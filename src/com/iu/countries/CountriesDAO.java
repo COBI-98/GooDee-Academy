@@ -9,6 +9,12 @@ import com.iu.util.DBConnector;
 
 public class CountriesDAO {
 	//getDetail : countries_id
+	
+	
+	public void setCountry() throws Exception{
+		
+	}
+	
 	public CountriesDTO getDetail(String country_id)throws Exception{
 		
 		CountriesDTO countriesDTO= null;

@@ -19,19 +19,19 @@ public class TestMain {
 		ArrayList<RegionsDTO> ar = new ArrayList<>();
 		EmployeesDAO employeesDAO = new EmployeesDAO();
 		try {
-			RegionsDTO regionsDTO = new RegionsDTO();
-			regionsDTO.setRegion_id(7);
-			regionsDTO.setRegion_name("Mars");
-			int result = dao.setRegion(regionsDTO);
-			
-			if(result > 0) {
-				System.out.println("성공");
-			}else {
-				System.out.println("실패");
-			}
+//			RegionsDTO regionsDTO = new RegionsDTO();
+//			regionsDTO.setRegion_id(7);
+//			regionsDTO.setRegion_name("Mars");
+//			int result = dao.setRegion(regionsDTO);
+//			
+//			if(result > 0) {
+//				System.out.println("성공");
+//			}else {
+//				System.out.println("실패");
+//			}
 //			employeesDAO.getSalaryInfo();
-//			dao.getList(ar);
-//			regionsView.view(ar);
+			dao.getList(ar);
+			regionsView.view(ar);
 //			dao.getList();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
