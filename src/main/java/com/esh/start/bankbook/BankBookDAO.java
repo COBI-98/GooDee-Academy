@@ -37,10 +37,10 @@ public class BankBookDAO implements BookDAO{
 
 	@Override
 	public ArrayList<BankBookDTO> getList() throws Exception {
-		ArrayList<BankBookDTO> ar1 = new ArrayList<BankBookDTO>();
+		ArrayList<BankBookDTO> ar = new ArrayList<BankBookDTO>();
 		Connection con = DBConnector.getConnetion();
 		
-		String sql = "SELECT * FROM BANKBOOK";
+		String sql = "SELECT * FROM BANKBOOK ORDER BY BOOKNUM DESC";
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		
@@ -54,14 +54,14 @@ public class BankBookDAO implements BookDAO{
 			bankBookDTO.setBOOKNAME(rs.getString("BOOKNAME"));
 			bankBookDTO.setBOOKRATE(rs.getDouble("BOOKRATE"));
 			bankBookDTO.setBOOKSALE(rs.getInt("BOOKSALE"));
-			ar1.add(bankBookDTO);
+			ar.add(bankBookDTO);
 		}
 		
 		
 		
 		DBConnector.disConnect(rs, st, con);
 		
-		return ar1;
+		return ar;
 	}
 
 	@Override
