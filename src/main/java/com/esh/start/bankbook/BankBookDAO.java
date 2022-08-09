@@ -29,7 +29,6 @@ public class BankBookDAO implements BookDAO{
 		
 		int result = st.executeUpdate();
 		
-		
 		DBConnector.disConnect(st, con);
 		
 		return result;
