@@ -28,7 +28,7 @@
 				
 			<%for(BankBookDTO bankBookDTO:ar){ %>
 				<tr>
-					<td><a href="./detail?bookNum=<%=bankBookDTO.getBOOKNUM()%>"> <%=bankBookDTO.getBOOKNAME() %></a></td>
+					<td><a href="./detail?BOOKNUM=<%=bankBookDTO.getBOOKNUM()%>"> <%=bankBookDTO.getBOOKNAME() %></a></td>
 					<td><%=bankBookDTO.getBOOKNAME() %></td>
 					<td><%=bankBookDTO.getBOOKRATE() %></td>
 					<td><%=bankBookDTO.getBOOKSALE() %></td>
@@ -43,7 +43,7 @@
 	
 	<!-- /bankook/detail jsp:detail.jsp-->
 	<!--  link 주소는 상대경로 작성 -->
-	<a href="./detail">detail 상대경로</a> 
+	<a href="./add">상품등록</a>
 	
 </body>
 </html>

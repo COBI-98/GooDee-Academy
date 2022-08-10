@@ -47,6 +47,7 @@
 	
 	<a href="../member/login">LOGIN 상대경로</a>
 	<a href="/member/join">JOIN 절대경로</a>
+	<a href="./list">리스트 보기</a> 
 	
 </body>
 </html>

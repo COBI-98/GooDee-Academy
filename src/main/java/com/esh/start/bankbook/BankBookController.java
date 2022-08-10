@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/bankbook/*")
@@ -17,24 +19,49 @@ public class BankBookController {
 	// /bankbook/detail GET Detail
 	
 	@RequestMapping(value = "list", method =RequestMethod.GET)
-	public String list(HttpServletRequest request) {
-		try {
+	public String list(Model model) throws Exception {
+//			ModelAndView mv = new ModelAndView()
+			System.out.println("list GET");
 			BankBookDAO bankBookDAO = new BankBookDAO();
 			ArrayList<BankBookDTO> ar = bankBookDAO.getList();
-			request.setAttribute("list", ar);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			model.addAttribute("list", ar);
 		return "bankbook/list";
 	}
+	
+	// 요청을 받아서 웹페이지로 출력 
+	
+//	@RequestMapping(value = "detail", method =RequestMethod.GET)
+//	public void detail(Long bookNum) {
+//		ModelAndView mv = new ModelAndView();
+//		System.out.println("datail 실행");
+//		System.out.println(bookNum);
+//		
+//		mv.setViewName("bankbook/detail");
+//		// return "bankbook/detail";"
+//		// modelAndView 활용 리턴값 Spring에서 전달
+//	}
+	
+	// ModelAndView 리턴 활용
 	@RequestMapping(value = "detail", method =RequestMethod.GET)
-	public String detail(Long bookNum) {
+	public ModelAndView detail(BankBookDTO bankBookDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		System.out.println(bankBookDTO.getBOOKNUM());
 		System.out.println("datail 실행");
-		System.out.println(bookNum);
-		BankBookDTO bankBookDTO = new BankBookDTO();
-		return "bankbook/detail";
+		BankBookDAO bankBookDAO = new BankBookDAO();
+		bankBookDTO = bankBookDAO.getDetail(bankBookDTO);
+		mv.setViewName("bankbook/detail");
+		mv.addObject("test", bankBookDTO);
+		
+		
+		
+		// return "bankbook/detail";"
+		// modelAndView 활용 리턴값 Spring에서 전달
+		
+		return mv;
 	}
+	
+	
+	
 //	@RequestMapping(value = "detail", method =RequestMethod.GET)
 //	public String detail(HttpServletRequest request, Long bookNum) {
 //		
@@ -65,8 +92,10 @@ public class BankBookController {
 	}
 	
 	@RequestMapping(value = "add", method =RequestMethod.POST)
-	public String add(String BOOKNAME, String BOOKRATE) throws Exception {
+	public ModelAndView add(String BOOKNAME, String BOOKRATE) throws Exception {
 		System.out.println("ADD POST");
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:./list");
 		BankBookDAO bankBookDAO = new BankBookDAO();
 		BankBookDTO bankBookDTO = new BankBookDTO();
 		ArrayList<BankBookDTO> ar = new ArrayList<BankBookDTO>();
@@ -82,7 +111,7 @@ public class BankBookController {
 		}else {
 			System.out.println("실패");
 		}
-		return "bankbook/add";
+		return mv;
 	}
 	
 	
