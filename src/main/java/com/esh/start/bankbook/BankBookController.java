@@ -114,5 +114,59 @@ public class BankBookController {
 		return mv;
 	}
 	
+	@RequestMapping(value ="update", method =RequestMethod.GET)
+	public void update(BankBookDTO bankBookDTO,Model model) throws Exception{
+		System.out.println("UPDATE GET");
+		System.out.println(bankBookDTO.getBOOKNUM());
+		
+		BankBookDAO bankBookDAO = new BankBookDAO();
+		bankBookDTO = bankBookDAO.getDetail(bankBookDTO);
+		
+		model.addAttribute("update", bankBookDTO);
+		
+	}
+	
+	@RequestMapping(value ="update", method =RequestMethod.POST)
+	public ModelAndView update(BankBookDTO bankBookDTO) throws Exception{
+		System.out.println("UPDATE POST");
+		ModelAndView mv = new ModelAndView();
+		BankBookDAO bankBookDAO = new BankBookDAO();
+		System.out.println(bankBookDTO.getBOOKNUM());
+		int result = bankBookDAO.setUpdate(bankBookDTO);
+		
+		
+		
+		System.out.println(bankBookDTO.getBOOKNUM());
+		if(result > 0) {
+			System.out.println("성공");
+		}else {
+			System.out.println("실패");
+		}
+		
+		
+		
+		mv.setViewName("redirect:./detail?BOOKNUM="+bankBookDTO.getBOOKNUM());
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping(value ="delete", method = RequestMethod.GET)
+	public ModelAndView delete(BankBookDTO bankBookDTO) throws Exception{
+		BankBookDAO bankBookDAO = new BankBookDAO();
+		ModelAndView mv = new ModelAndView();
+		int result = bankBookDAO.setDelete(bankBookDTO);
+		if(result > 0) {
+			System.out.println("성공");
+		}else {
+			System.out.println("실패");
+		}
+		System.out.println("DELETE GET");
+		
+		mv.setViewName("redirect:./list");
+		
+		return mv;
+	}
+	
 	
 }

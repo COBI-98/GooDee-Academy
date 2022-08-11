@@ -17,9 +17,9 @@
         <a href="/study_index.html">Index Page</a><br>
         
         ID를 입력하세요<br>
-        <input type="text" name="id" placeholder="id를 입력하세요"><br>
+        <input type="text" name="USERNAME" placeholder="id를 입력하세요"><br>
         PW를 입력하세요<br>
-        <input type="text" name="pw" placeholder="pw를 입력하세요"><br>
+        <input type="text" name="PASSWORD" placeholder="pw를 입력하세요"><br>
 
         <input type="submit" name="login" value="로그인">
         <input type="button" name="join" value="회원가입" onclick="location.href='join'">

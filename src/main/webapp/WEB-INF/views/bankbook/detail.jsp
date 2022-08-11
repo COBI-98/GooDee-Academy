@@ -1,9 +1,9 @@
 <%@page import="com.esh.start.bankbook.BankBookDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%
+   <%--  <%
     	BankBookDTO bankBookDTO = (BankBookDTO)request.getAttribute("test");
-    %>
+    %> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +13,7 @@
 <body>
 	<h1>BANKBOOK DETAIL</h1>
 	
-	<% if (bankBookDTO != null) { %>
+	
 	<table border="1">
 		<thead>
 			<tr>
@@ -24,14 +24,10 @@
 				
 			
 				<tr>
-					<td><%=bankBookDTO.getBOOKNUM() %></td>
-					<td><%=bankBookDTO.getBOOKNAME() %></td>
-					<td><%=bankBookDTO.getBOOKRATE() %></td>
-					<td><% if(bankBookDTO.getBOOKSALE()==1){%>
-							판매중
-						<%}else{ %>
-							판매금지
-						<%} %>	
+					<td>${requestScope.test.getBOOKNUM()}</td>
+					<td>${requestScope.test.getBOOKNAME()}</td>
+					<td>${test.BOOKRATE}</td>
+					<td>
 					</td>
 					
 				</tr>
@@ -40,14 +36,15 @@
 		</tbody>
 		
 	</table>
-	<% } else {%>
-      <h3> no data</h3>
-      <%} %>
+	
 
 	
 	<a href="../member/login">LOGIN 상대경로</a>
 	<a href="/member/join">JOIN 절대경로</a>
 	<a href="./list">리스트 보기</a> 
+	
+	<a href="./update?BOOKNUM=${requestScope.test.getBOOKNUM()}">수정하기</a>
+	<a href="./delete?BOOKNUM=${requestScope.test.getBOOKNUM()}">삭제하기</a> 
 	
 </body>
 </html>

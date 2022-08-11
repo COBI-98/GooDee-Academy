@@ -67,6 +67,34 @@ public class BankMembersDAO implements MembersDAO {
 		
 		return ar;
 	}
+
+	@Override
+	public BankMembersDTO getLogin(BankMembersDTO bankMembersDTO) throws Exception {
+		// TODO Auto-generated method stub
+		Connection con = DBConnector.getConnetion();
+		
+		String sql = "SELECT USERNAME, PASSWORD FROM BANKMEMBERS WHERE USERNAME =? AND PASSWORD =?";
+		
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, bankMembersDTO.getUSERNAME());
+		st.setString(2, bankMembersDTO.getPASSWORD());
+		
+		ResultSet rs = st.executeQuery();
+		
+		if(rs.next()) {
+			bankMembersDTO = new BankMembersDTO();
+			bankMembersDTO.setUSERNAME(rs.getString("USERNAME"));
+			bankMembersDTO.setPASSWORD(rs.getString("PASSWORD"));
+		}else {
+			bankMembersDTO = null;
+			
+		}
+		
+		DBConnector.disConnect(rs, st, con);
+		return bankMembersDTO;
+	}
 	
 		
 

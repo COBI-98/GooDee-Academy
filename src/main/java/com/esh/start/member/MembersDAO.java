@@ -12,7 +12,8 @@ public interface MembersDAO {
 	   //검색어를 입력해서 ID를 찾기 
 	   public ArrayList<BankMembersDTO> getSearchByID(String search) throws Exception;
 	   
-	   
+	   public BankMembersDTO getLogin(BankMembersDTO bankMembersDTO) throws Exception;
+
 	   
 	   
 }

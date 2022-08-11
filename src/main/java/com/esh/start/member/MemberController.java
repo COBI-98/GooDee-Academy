@@ -4,6 +4,7 @@ import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.PageContext;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,11 +33,16 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public String login(BankMembersDTO bankMembersDTO) {
+	public String login(BankMembersDTO bankMembersDTO,Model model) throws Exception {
 		System.out.println("DB에 로그인 실행");
 		// "Redirect: 다시 접속할 URL 주소(절대경로,상대경로)"
+		BankMembersDAO bankMembersDAO = new BankMembersDAO();
 		
-		return "redirect:../";
+		bankMembersDTO = bankMembersDAO.getLogin(bankMembersDTO);
+		model.addAttribute("check", bankMembersDTO);
+		
+		System.out.println(bankMembersDTO);
+		return "";
 	}
 	
 	//get

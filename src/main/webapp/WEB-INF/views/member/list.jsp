@@ -2,9 +2,9 @@
 <%@page import="com.esh.start.member.BankMembersDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<%
-    ArrayList<BankMembersDTO> ar = (ArrayList<BankMembersDTO>)request.getAttribute("list");
-    %>
+	
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<h1>list post</h1>
 	
 	<table border="1">
@@ -21,8 +22,25 @@
 			</tr>
 		</thead>
 		<tbody>
-				
-			<%for(BankMembersDTO bankMembersDTO:ar){ %>
+		<!-- core tag for문 -->
+			<c:forEach begin="0" end="10" var="i" step="2">
+				<h3>${i}</h3>
+			</c:forEach>
+			
+			<c:forEach items="${list}" var="dto">
+				<tr>
+					<td>${pageScope.dto.USERNAME}</td>
+					<td>${pageScope.dto.PASSWORD}</td>
+					<td>${pageScope.dto.NAME}</td>
+					<td>${pageScope.dto.EMAIL}</td>
+					<td>${pageScope.dto.PHONE}</td>
+				</tr>
+			</c:forEach>
+			
+			
+	
+			
+			<%-- <%for(BankMembersDTO bankMembersDTO:ar){ %>
 				<tr>
 					<td><%=bankMembersDTO.getUSERNAME()%></td>
 					<td><%=bankMembersDTO.getPASSWORD()%></td>
@@ -30,7 +48,7 @@
 					<td><%=bankMembersDTO.getEMAIL()%></td>
 					<td><%=bankMembersDTO.getPHONE()%></td>
 				</tr>
-			<%} %>
+			<%} %> --%>
 			
 		</tbody>
 		
