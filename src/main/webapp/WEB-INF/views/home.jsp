@@ -16,6 +16,7 @@
 <a href="./bankbook/list">list</a><br>
 <a href="./bankbook/detail?booknum=1">detail</a><br>
 <a href="./bankbook/add">add book</a><br>
-<a href="./member/search">search ID</a>
+<a href="./member/search">search ID</a><br>
+<p> <img src="resources/img/GOOD.png" height="200"></p>
 </body>
 </html>
