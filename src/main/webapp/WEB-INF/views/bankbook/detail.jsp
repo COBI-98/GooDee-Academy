@@ -4,6 +4,7 @@
    <%--  <%
     	BankBookDTO bankBookDTO = (BankBookDTO)request.getAttribute("test");
     %> --%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,12 +40,18 @@
 	
 
 	
-	<a href="../member/login">LOGIN 상대경로</a>
-	<a href="/member/join">JOIN 절대경로</a>
-	<a href="./list">리스트 보기</a> 
+	<a href="../member/login.esh">LOGIN 상대경로</a>
+	<a href="/member/join.esh">JOIN 절대경로</a>
+	<a href="./list.esh">리스트 보기</a> 
 	
-	<a href="./update?BOOKNUM=${requestScope.test.getBOOKNUM()}">수정하기</a>
-	<a href="./delete?BOOKNUM=${requestScope.test.getBOOKNUM()}">삭제하기</a> 
+	<a href="./update.esh?BOOKNUM=${requestScope.test.getBOOKNUM()}">수정하기</a>
+	<a href="./delete.esh?BOOKNUM=${requestScope.test.getBOOKNUM()}">삭제하기</a> <br>
+	
+	
+
+	<c:if test="${not empty sessionScope.check}">
+	<a href="../bankAccount/add.esh?BOOKNUM=${requestScope.test.getBOOKNUM()}">상품 가입하기</a>
+	</c:if>
 	
 </body>
 </html>

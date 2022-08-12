@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>search GET</h1>
-	<form class="align-center" action="./search" method = "post">   
+	<form class="align-center" action="./search.esh" method = "post">   
         
         검색할 ID를 입력하세요<br>
         <input type="text" name="search" placeholder="id를 입력하세요"><br>

@@ -10,7 +10,7 @@
     .align-center {text-align: center;}
 </style>
 <body>
- <form class="align-center" action="join" method="post">
+ <form class="align-center" action="join.esh" method="post">
         ID<br>
         <input type="text" name="USERNAME" placeholder="id를 입력하세요"><br>
         PW<br>

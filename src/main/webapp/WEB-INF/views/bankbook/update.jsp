@@ -10,7 +10,7 @@
     .align-center {text-align: center;}
 </style>
 <body>
- <form class="align-center" action="./update" method="post">
+ <form class="align-center" action="./update.esh" method="post">
  		<h1>BOOK UPDATE</h1> <br>
  		<div>
         책번호<br>
@@ -26,7 +26,7 @@
         </div>
       
         <input type="submit" name="update" value="책 업데이트" >
-        <a href="./detail?BOOKNUM=${requestScope.update.getBOOKNUM()}">리스트 보기</a> 
+        <a href="./detail.esh?BOOKNUM=${requestScope.update.getBOOKNUM()}">리스트 보기</a> 
 </form>
 <body>
 </html>

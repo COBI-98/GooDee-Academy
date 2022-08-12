@@ -18,7 +18,7 @@ public class BankBookController {
 	// /bankbook/list Get list
 	// /bankbook/detail GET Detail
 	
-	@RequestMapping(value = "list", method =RequestMethod.GET)
+	@RequestMapping(value = "list.esh", method =RequestMethod.GET)
 	public String list(Model model) throws Exception {
 //			ModelAndView mv = new ModelAndView()
 			System.out.println("list GET");
@@ -42,7 +42,7 @@ public class BankBookController {
 //	}
 	
 	// ModelAndView 리턴 활용
-	@RequestMapping(value = "detail", method =RequestMethod.GET)
+	@RequestMapping(value = "detail.esh", method =RequestMethod.GET)
 	public ModelAndView detail(BankBookDTO bankBookDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(bankBookDTO.getBOOKNUM());
@@ -84,18 +84,18 @@ public class BankBookController {
 //		
 //		return "bankbook/detail";
 //	}
-	@RequestMapping(value = "add", method =RequestMethod.GET)
+	@RequestMapping(value = "add.esh", method =RequestMethod.GET)
 	public String add() {
 		System.out.println("ADD GET");
 		
 		return "bankbook/add";
 	}
 	
-	@RequestMapping(value = "add", method =RequestMethod.POST)
+	@RequestMapping(value = "add.esh", method =RequestMethod.POST)
 	public ModelAndView add(String BOOKNAME, String BOOKRATE) throws Exception {
 		System.out.println("ADD POST");
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:./list");
+		mv.setViewName("redirect:./list.esh");
 		BankBookDAO bankBookDAO = new BankBookDAO();
 		BankBookDTO bankBookDTO = new BankBookDTO();
 		ArrayList<BankBookDTO> ar = new ArrayList<BankBookDTO>();
@@ -114,7 +114,7 @@ public class BankBookController {
 		return mv;
 	}
 	
-	@RequestMapping(value ="update", method =RequestMethod.GET)
+	@RequestMapping(value ="update.esh", method =RequestMethod.GET)
 	public void update(BankBookDTO bankBookDTO,Model model) throws Exception{
 		System.out.println("UPDATE GET");
 		System.out.println(bankBookDTO.getBOOKNUM());
@@ -126,7 +126,7 @@ public class BankBookController {
 		
 	}
 	
-	@RequestMapping(value ="update", method =RequestMethod.POST)
+	@RequestMapping(value ="update.esh", method =RequestMethod.POST)
 	public ModelAndView update(BankBookDTO bankBookDTO) throws Exception{
 		System.out.println("UPDATE POST");
 		ModelAndView mv = new ModelAndView();
@@ -145,13 +145,13 @@ public class BankBookController {
 		
 		
 		
-		mv.setViewName("redirect:./detail?BOOKNUM="+bankBookDTO.getBOOKNUM());
+		mv.setViewName("redirect:./detail.esh?BOOKNUM="+bankBookDTO.getBOOKNUM());
 		
 		return mv;
 	}
 	
 	
-	@RequestMapping(value ="delete", method = RequestMethod.GET)
+	@RequestMapping(value ="delete.esh", method = RequestMethod.GET)
 	public ModelAndView delete(BankBookDTO bankBookDTO) throws Exception{
 		BankBookDAO bankBookDAO = new BankBookDAO();
 		ModelAndView mv = new ModelAndView();
@@ -163,7 +163,7 @@ public class BankBookController {
 		}
 		System.out.println("DELETE GET");
 		
-		mv.setViewName("redirect:./list");
+		mv.setViewName("redirect:./list.esh");
 		
 		return mv;
 	}

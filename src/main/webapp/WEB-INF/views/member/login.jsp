@@ -11,9 +11,9 @@
 </style>
 <body> 
 	
-		<form class="align-center" action="./login" method = "post">
+		<form class="align-center" action="./login.esh" method = "post">
         <h1>Login Page</h1>
-        <img src="/images/chunsik.png" width="200dp"><br>
+        <img src="/resources/GOOD.png" width="200dp"><br>
         <a href="/study_index.html">Index Page</a><br>
         
         ID를 입력하세요<br>
@@ -22,7 +22,7 @@
         <input type="text" name="PASSWORD" placeholder="pw를 입력하세요"><br>
 
         <input type="submit" name="login" value="로그인">
-        <input type="button" name="join" value="회원가입" onclick="location.href='join'">
+        <input type="button" name="join" value="회원가입" onclick="location.href='join.esh'">
    		</form>
     
 </body>

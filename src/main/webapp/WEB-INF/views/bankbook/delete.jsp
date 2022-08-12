@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form class="align-center" action="./delete" method="post">
+<form class="align-center" action="./delete.esh" method="post">
  		<h1>BOOK DELETE</h1> <br>
  		<div>
         책번호<br>

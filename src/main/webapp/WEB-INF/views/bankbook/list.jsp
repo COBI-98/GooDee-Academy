@@ -31,7 +31,7 @@
 			
 			<c:forEach items="${list}" var ="dto">
 					<tr>
-						<td><a href="./detail?BOOKNUM=${pageScope.dto.BOOKNUM}">${pageScope.dto.BOOKNUM}</a></td>
+						<td><a href="./detail.esh?BOOKNUM=${pageScope.dto.BOOKNUM}">${pageScope.dto.BOOKNUM}</a></td>
 						<td>${pageScope.dto.BOOKNAME}</td>
 						<td>${pageScope.dto.BOOKRATE}</td>
 						<td>${pageScope.dto.BOOKSALE}</td>					
@@ -55,7 +55,7 @@
 	
 	<!-- /bankook/detail jsp:detail.jsp-->
 	<!--  link 주소는 상대경로 작성 -->
-	<a href="./add">상품등록</a>
+	<a href="./add.esh">상품등록</a>
 	
 </body>
 </html>

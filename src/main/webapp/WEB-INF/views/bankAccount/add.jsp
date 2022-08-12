@@ -13,15 +13,14 @@
  <form class="align-center" action="./add.esh" method="post">
  		<h1>Add Page</h1> <br>
  		<div>
-        책 이름<br>
-        <input type="text" name="BOOKNAME" placeholder="책 이름을 입력하세요"><br>
+        사용자 이름<br>
+        <input type="text" name="USERNAME" readonly="readonly" value="${sessionScope.check.USERNAME}"><br>
         </div>
         <div>
-        할인율<br>
-        <input type="text" name="BOOKRATE" placeholder="할인율을 입력하세요"><br>
+        책 번호<br>
+        <input type="text" name="BOOKNUM" readonly="readonly" value="${requestScope.update.BOOKNUM}"><br>
         </div>
-        <input type="submit" name="add" value="책 추가" >
+        <input type="submit" name="add" value="상품 추가" >
 </form>
 <body>
-
 </html>
