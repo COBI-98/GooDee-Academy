@@ -20,12 +20,17 @@
 <h3>${sessionScope.check.USERNAME} 님 환영합니다.</h3>
 <a href="./member/logout.esh">Logout</a><br>
 <a href="#">MyPage</a><br>
+
 </c:if>
 
-<a href="./bankbook/list.esh">list</a><br>
+<a href="./board/list.esh">글 목록 보기</a>
+
+<!--  <a href="./bankbook/list.esh">list</a><br>
 <a href="./bankbook/detail.esh?booknum=1">detail</a><br>
 <a href="./bankbook/add.esh">add book</a><br>
-<a href="./member/search.esh">search ID</a><br>
+<a href="./member/search.esh">search ID</a><br> 
+ -->
+
 <p> <img src="resources/img/GOOD.png" height="200"></p>
 </body>
 </html>

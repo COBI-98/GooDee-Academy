@@ -24,6 +24,7 @@ public class BankBookController {
 			System.out.println("list GET");
 			BankBookDAO bankBookDAO = new BankBookDAO();
 			ArrayList<BankBookDTO> ar = bankBookDAO.getList();
+			System.out.println(ar);
 			model.addAttribute("list", ar);
 		return "bankbook/list";
 	}
