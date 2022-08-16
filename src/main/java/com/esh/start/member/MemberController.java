@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.PageContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.HttpRequestHandler;
@@ -21,6 +23,13 @@ import org.springframework.web.servlet.ModelAndView;
 // Container에게 이 클래스의 객체를 생성하는것을 위임
 public class MemberController {
 
+	@Autowired //세터 게터 필요 x
+	private BankMembersService bankMembersService;
+	
+//	@Autowired
+//	public MemberController(BankMembersDAO bankMembersDAO) {
+//		this.bankMembersDAO = bankMembersDAO;
+//	}
 	
 	// annotation
 	// @ : 설명 + 실행
@@ -45,9 +54,9 @@ public class MemberController {
 	public String login(HttpServletRequest request,BankMembersDTO bankMembersDTO,Model model) throws Exception {
 		System.out.println("DB에 로그인 실행");
 		// "Redirect: 다시 접속할 URL 주소(절대경로,상대경로)"
-		BankMembersDAO bankMembersDAO = new BankMembersDAO();
 		
-		bankMembersDTO = bankMembersDAO.getLogin(bankMembersDTO);
+		
+		bankMembersDTO = bankMembersService.getLogin(bankMembersDTO);
 //		model.addAttribute("check", bankMembersDTO);
 		
 		HttpSession session =request.getSession();
@@ -86,10 +95,9 @@ public class MemberController {
 	public ModelAndView search(HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("SEARCH POST");
-		BankMembersDAO bankMembersDAO = new BankMembersDAO();
 		String search = request.getParameter("search");
 		System.out.println(search);
-		ArrayList<BankMembersDTO> ar = bankMembersDAO.getSearchByID(search);
+		ArrayList<BankMembersDTO> ar = bankMembersService.getSearchByID(search);
 		request.setAttribute("list", ar);
 		mv.setViewName("/member/list");
 		
@@ -101,7 +109,6 @@ public class MemberController {
 	@RequestMapping(value = "join.esh", method = RequestMethod.POST)
 	public String join(BankMembersDTO bankMembersDTO) throws Exception {
 //		BankMembersDTO bankMembersDTO = new BankMembersDTO();
-		BankMembersDAO bankMembersDAO = new BankMembersDAO();
 		System.out.println("조인 POST");
 //		String id = request.getParameter("id");
 //		String pw = request.getParameter("pw");
@@ -116,7 +123,7 @@ public class MemberController {
 //		bankMembersDTO.setPHONE(phone);				bankMembersDTO
 //		ar.add(bankMembersDTO);
 		
-		int result= bankMembersDAO.setJoin(bankMembersDTO);
+		int result= bankMembersService.setJoin(bankMembersDTO);
 		if(result > 0) {
 				System.out.println("성공");
 		}else {
