@@ -6,11 +6,11 @@ public class BankMembersView {
 
 	public void view(BankMembersDTO bankMembersDTO) {
 		System.out.println("-----------------------");
-		System.out.println(bankMembersDTO.getUSERNAME());
-		System.out.println(bankMembersDTO.getPASSWORD());
-		System.out.println(bankMembersDTO.getNAME());
-		System.out.println(bankMembersDTO.getEMAIL());
-		System.out.println(bankMembersDTO.getPHONE());
+		System.out.println(bankMembersDTO.getUserName());
+		System.out.println(bankMembersDTO.getPassWord());
+		System.out.println(bankMembersDTO.getName());
+		System.out.println(bankMembersDTO.getEmail());
+		System.out.println(bankMembersDTO.getPhone());
 		System.out.println("-----------------------");
 		
 	}

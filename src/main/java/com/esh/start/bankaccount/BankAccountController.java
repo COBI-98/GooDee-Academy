@@ -27,7 +27,7 @@ public class BankAccountController {
 		System.out.println("ADD GET");
 		System.out.println(bankAccountDTO.getBOOKNUM());
 		BankMembersDTO bankMembersDTO = (BankMembersDTO)session.getAttribute("check");
-		bankAccountDTO.setUSERNAME(bankMembersDTO.getUSERNAME());
+		bankAccountDTO.setUSERNAME(bankMembersDTO.getUserName());
 		
 		//DTO : userName, bankNum
 		int result = this.bankAccountDAO.add(bankAccountDTO);

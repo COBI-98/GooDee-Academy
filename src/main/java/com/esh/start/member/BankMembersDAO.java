@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.esh.start.util.DBConnector;
@@ -12,6 +14,12 @@ import com.esh.start.util.DBConnector;
 @Repository
 public class BankMembersDAO implements MembersDAO {
 
+	@Autowired
+	private SqlSession sqlsession;
+	// 상수 대문자 선언 연결하려는 mapper의 namespace값
+	private final String NAMESPACE ="com.esh.start.member.BankMembersDAO.";
+	
+	
 	@Override
 	public int setJoin(BankMembersDTO bankMembersDTO) throws Exception {
 		// TODO Auto-generated method stub
@@ -23,11 +31,11 @@ public class BankMembersDAO implements MembersDAO {
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		
-		st.setString(1, bankMembersDTO.getUSERNAME());
-		st.setString(2, bankMembersDTO.getPASSWORD());
-		st.setString(3, bankMembersDTO.getNAME());
-		st.setString(4, bankMembersDTO.getEMAIL());
-		st.setString(5, bankMembersDTO.getPHONE());
+		st.setString(1, bankMembersDTO.getUserName());
+		st.setString(2, bankMembersDTO.getPassWord());
+		st.setString(3, bankMembersDTO.getName());
+		st.setString(4, bankMembersDTO.getEmail());
+		st.setString(5, bankMembersDTO.getPhone());
 		
 //		ResultSet rs = st.executeQuery();
 		
@@ -56,11 +64,11 @@ public class BankMembersDAO implements MembersDAO {
 		while(rs.next()) {
 			BankMembersDTO bankMembersDTO = new BankMembersDTO();
 			
-			bankMembersDTO.setUSERNAME(rs.getString("USERNAME"));		
-			bankMembersDTO.setPASSWORD(rs.getString("PASSWORD"));
-			bankMembersDTO.setNAME(rs.getString("NAME"));
-			bankMembersDTO.setEMAIL(rs.getString("EMAIL"));
-			bankMembersDTO.setPHONE(rs.getString("PHONE"));
+			bankMembersDTO.setUserName(rs.getString("USERNAME"));		
+			bankMembersDTO.setPassWord(rs.getString("PASSWORD"));
+			bankMembersDTO.setName(rs.getString("NAME"));
+			bankMembersDTO.setEmail(rs.getString("EMAIL"));
+			bankMembersDTO.setPhone(rs.getString("PHONE"));
 			ar.add(bankMembersDTO);
 		}
 		
@@ -74,34 +82,12 @@ public class BankMembersDAO implements MembersDAO {
 	@Override
 	public BankMembersDTO getLogin(BankMembersDTO bankMembersDTO) throws Exception {
 		// TODO Auto-generated method stub
-		Connection con = DBConnector.getConnetion();
 		
-		String sql = "SELECT USERNAME, PASSWORD FROM BANKMEMBERS WHERE USERNAME =? AND PASSWORD =?";
-		
-		
-		PreparedStatement st = con.prepareStatement(sql);
-		
-		st.setString(1, bankMembersDTO.getUSERNAME());
-		st.setString(2, bankMembersDTO.getPASSWORD());
-		
-		ResultSet rs = st.executeQuery();
-		
-		if(rs.next()) {
-			bankMembersDTO = new BankMembersDTO();
-			bankMembersDTO.setUSERNAME(rs.getString("USERNAME"));
-			bankMembersDTO.setPASSWORD(rs.getString("PASSWORD"));
-		}else {
-			bankMembersDTO = null;
-			
-		}
-		
-		DBConnector.disConnect(rs, st, con);
-		return bankMembersDTO;
+		// namespace + "메소드(id명)", 보내줘야할 값
+		return sqlsession.selectOne(NAMESPACE+"getLogin",bankMembersDTO);
 	}
 	
-		
-
-
+	
 	
 	
 	

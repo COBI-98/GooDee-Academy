@@ -2,43 +2,44 @@ package com.esh.start.member;
 
 public class BankMembersDTO {
 
-	private String USERNAME;
-	public String getUSERNAME() {
-		return USERNAME;
-	}
-	public void setUSERNAME(String uSERNAME) {
-		USERNAME = uSERNAME;
-	}
-	private String PASSWORD;
-	private String NAME;
+	private String userName;
+	
+	private String passWord;
+	private String name;
 	
 	
-	private String EMAIL;
-	private String PHONE;
+	private String email;
+	private String phone;
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getPassWord() {
+		return passWord;
+	}
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 	
-	public String getPASSWORD() {
-		return PASSWORD;
-	}
-	public void setPASSWORD(String pASSWORD) {
-		PASSWORD = pASSWORD;
-	}
-	public String getNAME() {
-		return NAME;
-	}
-	public void setNAME(String nAME) {
-		NAME = nAME;
-	}
-	public String getEMAIL() {
-		return EMAIL;
-	}
-	public void setEMAIL(String eMAIL) {
-		EMAIL = eMAIL;
-	}
-	public String getPHONE() {
-		return PHONE;
-	}
-	public void setPHONE(String pHONE) {
-		PHONE = pHONE;
-	}
 	
 }
