@@ -6,9 +6,13 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.esh.start.member.BankMembersDTO;
 import com.esh.start.util.DBConnector;
 
+@Repository
 public class BankBookDAO implements BookDAO{
 
 	@Override
