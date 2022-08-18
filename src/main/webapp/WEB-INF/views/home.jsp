@@ -17,7 +17,7 @@
 </c:if>
 
 <c:if test="${not empty sessionScope.check}">
-<h3>${sessionScope.check.USERNAME} 님 환영합니다.</h3>
+<h3>${sessionScope.check.userName} 님 환영합니다.</h3>
 <a href="./member/logout.esh">Logout</a><br>
 <a href="#">MyPage</a><br>
 </c:if>

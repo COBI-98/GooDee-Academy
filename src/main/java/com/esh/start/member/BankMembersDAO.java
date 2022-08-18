@@ -32,7 +32,7 @@ public class BankMembersDAO implements MembersDAO {
 		PreparedStatement st = con.prepareStatement(sql);
 		
 		st.setString(1, bankMembersDTO.getUserName());
-		st.setString(2, bankMembersDTO.getPassWord());
+		st.setString(2, bankMembersDTO.getPassword());
 		st.setString(3, bankMembersDTO.getName());
 		st.setString(4, bankMembersDTO.getEmail());
 		st.setString(5, bankMembersDTO.getPhone());
@@ -65,7 +65,7 @@ public class BankMembersDAO implements MembersDAO {
 			BankMembersDTO bankMembersDTO = new BankMembersDTO();
 			
 			bankMembersDTO.setUserName(rs.getString("USERNAME"));		
-			bankMembersDTO.setPassWord(rs.getString("PASSWORD"));
+			bankMembersDTO.setPassword(rs.getString("PASSWORD"));
 			bankMembersDTO.setName(rs.getString("NAME"));
 			bankMembersDTO.setEmail(rs.getString("EMAIL"));
 			bankMembersDTO.setPhone(rs.getString("PHONE"));

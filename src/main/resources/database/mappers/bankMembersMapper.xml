@@ -7,6 +7,6 @@
          <!-- id는 DAO의 메서드명과 동일하게 -->
     <select id="getLogin" parameterType="com.esh.start.member.BankMembersDTO" 
          resultType="com.esh.start.member.BankMembersDTO">
-               SELECT USERNAME, PASSWORD FROM BANKMEMBERS WHERE USERNAME = #{userName} AND PASSWORD = #{passWord}
+               SELECT USERNAME, PASSWORD FROM BANKMEMBERS WHERE USERNAME=#{userName} AND PASSWORD=#{password}
       </select>
       </mapper>

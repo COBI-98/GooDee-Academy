@@ -4,7 +4,13 @@ public class BankMembersDTO {
 
 	private String userName;
 	
-	private String passWord;
+	private String password;
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	private String name;
 	
 	
@@ -16,12 +22,7 @@ public class BankMembersDTO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getPassWord() {
-		return passWord;
-	}
-	public void setPassWord(String passWord) {
-		this.passWord = passWord;
-	}
+	
 	public String getName() {
 		return name;
 	}
