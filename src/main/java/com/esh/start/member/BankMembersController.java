@@ -2,6 +2,7 @@ package com.esh.start.member;
 
 import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -85,13 +86,12 @@ public class BankMembersController {
 //		return "member/list";
 //	}
 	@RequestMapping(value = "search.esh", method = RequestMethod.POST)
-	public ModelAndView search(HttpServletRequest request) throws Exception {
+	public ModelAndView search(String search,Model model) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("SEARCH POST");
-		String search = request.getParameter("search");
-		System.out.println(search);
-		ArrayList<BankMembersDTO> ar = bankMembersService.getSearchByID(search);
-		request.setAttribute("list", ar);
+		
+		List<BankMembersDTO> ar = bankMembersService.getSearchById(search);
+		model.addAttribute("list", ar);
 		mv.setViewName("/member/list");
 		
 		return mv;

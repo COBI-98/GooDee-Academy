@@ -22,7 +22,7 @@
         </div>
          <div>
         작성자<br>
-        <input type="text" name="writer" readonly="readonly" value="${sessionScope.check.USERNAME}"><br>
+        <input type="text" name="writer" readonly="readonly" value="${sessionScope.check.userName}"><br>
         </div>
         
         

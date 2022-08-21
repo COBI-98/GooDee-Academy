@@ -1,22 +1,28 @@
 package com.esh.start.board;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.esh.start.member.BankMembersService;
+
 @Controller
 @RequestMapping(value = "/board/*")
 public class BoardController {
 
+	@Autowired
+	private BoardService boardService;
+	
 	@RequestMapping(value = "list.esh", method = RequestMethod.GET)
 	public void list(Model model) throws Exception{
 		System.out.println("list GET");
-		BoardDAO boardDAO = new BoardDAO();
-		ArrayList<BoardDTO> ar = boardDAO.getList();
+		List<BoardDTO> ar = boardService.getList();
 		
 		model.addAttribute("list", ar);
 
@@ -28,8 +34,7 @@ public class BoardController {
 		
 		System.out.println(boardDTO.getBoardNum());
 		ModelAndView mv = new ModelAndView();
-		BoardDAO boardDAO = new BoardDAO();
-		boardDTO = boardDAO.getDetail(boardDTO);
+		boardDTO = boardService.getDetail(boardDTO);
 		
 		mv.setViewName("board/detail");
 		mv.addObject("detail", boardDTO);
@@ -47,10 +52,9 @@ public class BoardController {
 	@RequestMapping(value = "add.esh", method = RequestMethod.POST)
 	public ModelAndView add(BoardDTO boardDTO) throws Exception{
 		System.out.println("detail POST");
-		BoardDAO boardDAO = new BoardDAO();
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect:./list.esh");
-		int result =boardDAO.add(boardDTO);
+		int result =boardService.add(boardDTO);
 		
 		if(result>0) {
 			System.out.println("성공");
@@ -64,9 +68,8 @@ public class BoardController {
 	@RequestMapping(value = "delete.esh", method = RequestMethod.GET)
 	public ModelAndView delete(BoardDTO boardDTO) throws Exception{
 		System.out.println("delete GET");
-		BoardDAO boardDAO = new BoardDAO();
 		ModelAndView mv = new ModelAndView();
-		int result = boardDAO.setDelete(boardDTO);
+		int result = boardService.setDelete(boardDTO);
 		mv.setViewName("redirect:./list.esh");
 		
 		
@@ -87,9 +90,7 @@ public class BoardController {
 		
 		System.out.println(boardDTO.getBoardNum());
 		
-		BoardDAO boardDAO = new BoardDAO();
-		
-		boardDTO = boardDAO.getDetail(boardDTO);
+		boardDTO = boardService.getDetail(boardDTO);
 		model.addAttribute("update", boardDTO);
 		
 		
@@ -99,9 +100,8 @@ public class BoardController {
 	@RequestMapping(value = "update.esh", method = RequestMethod.POST)
 	public ModelAndView update(BoardDTO boardDTO) throws Exception{
 		System.out.println("UPDATE GET");
-		BoardDAO boardDAO = new BoardDAO();
 		ModelAndView mv = new ModelAndView();
-		int result = boardDAO.setUpdate(boardDTO);
+		int result = boardService.setUpdate(boardDTO);
 		
 		
 		mv.setViewName("redirect:./list.esh");
@@ -112,7 +112,6 @@ public class BoardController {
 		}else {
 			System.out.println("실패");
 		}
-		
 		
 		
 		return mv;

@@ -33,7 +33,7 @@
 		</tbody>
 		
 	</table>
-	<c:if test="${sessionScope.check.USERNAME == detail.writer}">
+	<c:if test="${sessionScope.check.userName == detail.writer}">
 	<a href = "./update.esh?boardNum=${detail.boardNum}">글 수정하기</a><br>
 	<a href = "./delete.esh?boardNum=${detail.boardNum}">글 삭제하기</a>
 	</c:if>

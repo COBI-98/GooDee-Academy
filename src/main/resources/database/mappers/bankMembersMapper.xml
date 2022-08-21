@@ -10,12 +10,13 @@
                SELECT USERNAME, PASSWORD FROM BANKMEMBERS WHERE USERNAME=#{userName} AND PASSWORD=#{password}
     </select>
     
+    <select id="getSearchById" parameterType="java.lang.String" resultType="com.esh.start.member.BankMembersDTO">
+		SELECT * FROM BANKMEMBERS WHERE USERNAME LIKE '%'||#{search}||'%' ORDER BY USERNAME ASC	
+	</select>
+	
+	<insert id="setJoin" parameterType="com.esh.start.member.BankMembersDTO">
+		INSERT INTO BANKMEMBERS VALUES(#{userName},#{password},#{name},#{email},#{phone})
+	</insert>
     
-    
-    
-    
-    
-    
-    
-    
+
 </mapper>

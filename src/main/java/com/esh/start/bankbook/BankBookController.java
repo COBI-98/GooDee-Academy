@@ -1,6 +1,7 @@
 package com.esh.start.bankbook;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -27,7 +28,7 @@ public class BankBookController {
 	public String list(Model model) throws Exception {
 //			ModelAndView mv = new ModelAndView()
 			System.out.println("list GET");
-			ArrayList<BankBookDTO> ar = bankBookService.getList();
+			List<BankBookDTO> ar = bankBookService.getList();
 			model.addAttribute("list", ar);
 		return "bankbook/list";
 	}
@@ -144,7 +145,7 @@ public class BankBookController {
 		
 		
 		
-		mv.setViewName("redirect:./detail.esh?BOOKNUM="+bankBookDTO.getBookNum());
+		mv.setViewName("redirect:./detail.esh?bookNum="+bankBookDTO.getBookNum());
 		
 		return mv;
 	}

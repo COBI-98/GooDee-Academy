@@ -26,6 +26,8 @@
 <a href="./bankbook/detail.esh?booknum=1">detail</a><br>
 <a href="./bankbook/add.esh">add book</a><br>
 <a href="./member/search.esh">search ID</a><br>
+
+<a href="./board/list.esh">BOARD</a>
 <p> <img src="resources/img/GOOD.png" height="200"></p>
 </body>
 </html>
