@@ -11,7 +11,7 @@
  		<h1>BOOK DELETE</h1> <br>
  		<div>
         책번호<br>
-        <input type="text" name="BOOKNUM"><br>
+        <input type="text" name="bookNum"><br>
         </div>
  		
       

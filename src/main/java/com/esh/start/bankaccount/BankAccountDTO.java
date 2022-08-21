@@ -6,33 +6,34 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class BankAccountDTO {
 	
-	private Long ACCOUNTNUM;
-	private String USERNAME;
-	private Long BOOKNUM;
-	private Date DATE;
-	public Long getACCOUNTNUM() {
-		return ACCOUNTNUM;
+	private Long bankAccount;
+	private String userName;
+	private Long bookNum;
+	private Date accountDate;
+	
+	public Long getBankAccount() {
+		return bankAccount;
 	}
-	public void setACCOUNTNUM(Long aCCOUNTNUM) {
-		ACCOUNTNUM = aCCOUNTNUM;
+	public void setBankAccount(Long bankAccount) {
+		this.bankAccount = bankAccount;
 	}
-	public String getUSERNAME() {
-		return USERNAME;
+	public String getUserName() {
+		return userName;
 	}
-	public void setUSERNAME(String uSERNAME) {
-		USERNAME = uSERNAME;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-	public Long getBOOKNUM() {
-		return BOOKNUM;
+	public Long getBookNum() {
+		return bookNum;
 	}
-	public void setBOOKNUM(Long bOOKNUM) {
-		BOOKNUM = bOOKNUM;
+	public void setBookNum(Long bookNum) {
+		this.bookNum = bookNum;
 	}
-	public Date getDATE() {
-		return DATE;
+	public Date getAccountDate() {
+		return accountDate;
 	}
-	public void setDATE(Date dATE) {
-		DATE = dATE;
+	public void setAccountDate(Date accountDate) {
+		this.accountDate = accountDate;
 	}
 	
 	

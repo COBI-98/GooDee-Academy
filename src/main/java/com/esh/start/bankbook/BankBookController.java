@@ -49,7 +49,6 @@ public class BankBookController {
 	@RequestMapping(value = "detail.esh", method =RequestMethod.GET)
 	public ModelAndView detail(BankBookDTO bankBookDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		System.out.println(bankBookDTO.getBOOKNUM());
 		System.out.println("datail 실행");
 		bankBookDTO = bankBookService.getDetail(bankBookDTO);
 		mv.setViewName("bankbook/detail");
@@ -102,10 +101,10 @@ public class BankBookController {
 		BankBookDTO bankBookDTO = new BankBookDTO();
 		ArrayList<BankBookDTO> ar = new ArrayList<BankBookDTO>();
 		long millis = System.currentTimeMillis();
-		bankBookDTO.setBOOKNUM(millis);
-		bankBookDTO.setBOOKNAME(BOOKNAME);
-		bankBookDTO.setBOOKRATE(Double.valueOf(BOOKRATE));
-		bankBookDTO.setBOOKSALE(1);
+		bankBookDTO.setBookNum(millis);
+		bankBookDTO.setBookName(BOOKNAME);
+		bankBookDTO.setBookRate(Double.valueOf(BOOKRATE));
+		bankBookDTO.setBookSale(1);
 		ar.add(bankBookDTO);
 		int result = bankBookService.setBankBook(bankBookDTO);
 		if(result > 0) {
@@ -119,7 +118,7 @@ public class BankBookController {
 	@RequestMapping(value ="update.esh", method =RequestMethod.GET)
 	public void update(BankBookDTO bankBookDTO,Model model) throws Exception{
 		System.out.println("UPDATE GET");
-		System.out.println(bankBookDTO.getBOOKNUM());
+		System.out.println(bankBookDTO.getBookNum());
 		
 		bankBookDTO = bankBookService.getDetail(bankBookDTO);
 		
@@ -131,12 +130,12 @@ public class BankBookController {
 	public ModelAndView update(BankBookDTO bankBookDTO) throws Exception{
 		System.out.println("UPDATE POST");
 		ModelAndView mv = new ModelAndView();
-		System.out.println(bankBookDTO.getBOOKNUM());
+		System.out.println(bankBookDTO.getBookNum());
 		int result = bankBookService.setUpdate(bankBookDTO);
 		
 		
 		
-		System.out.println(bankBookDTO.getBOOKNUM());
+		System.out.println(bankBookDTO.getBookNum());
 		if(result > 0) {
 			System.out.println("성공");
 		}else {
@@ -145,7 +144,7 @@ public class BankBookController {
 		
 		
 		
-		mv.setViewName("redirect:./detail.esh?BOOKNUM="+bankBookDTO.getBOOKNUM());
+		mv.setViewName("redirect:./detail.esh?BOOKNUM="+bankBookDTO.getBookNum());
 		
 		return mv;
 	}

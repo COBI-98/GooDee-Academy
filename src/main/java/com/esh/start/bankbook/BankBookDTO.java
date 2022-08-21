@@ -2,36 +2,35 @@ package com.esh.start.bankbook;
 
 public class BankBookDTO {
 
-	private Long BOOKNUM;
+	private Long bookNum;
+	private String bookName;
+	private Double bookRate;
+	private Integer bookSale;
 	
+	public Long getBookNum() {
+		return bookNum;
+	}
+	public void setBookNum(Long bookNum) {
+		this.bookNum = bookNum;
+	}
+	public String getBookName() {
+		return bookName;
+	}
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+	public Double getBookRate() {
+		return bookRate;
+	}
+	public void setBookRate(Double bookRate) {
+		this.bookRate = bookRate;
+	}
+	public Integer getBookSale() {
+		return bookSale;
+	}
 	
-	private String BOOKNAME;
-	private Double BOOKRATE;
-	private Integer BOOKSALE;
-	
-	public Long getBOOKNUM() {
-		return BOOKNUM;
-	}
-	public void setBOOKNUM(Long bOOKNUM) {
-		BOOKNUM = bOOKNUM;
-	}
-	public String getBOOKNAME() {
-		return BOOKNAME;
-	}
-	public void setBOOKNAME(String bOOKNAME) {
-		BOOKNAME = bOOKNAME;
-	}
-	public Double getBOOKRATE() {
-		return BOOKRATE;
-	}
-	public void setBOOKRATE(Double bOOKRATE) {
-		BOOKRATE = bOOKRATE;
-	}
-	public Integer getBOOKSALE() {
-		return BOOKSALE;
-	}
-	public void setBOOKSALE(Integer bOOKSALE) {
-		BOOKSALE = bOOKSALE;
+	public void setBookSale(Integer bookSale) {
+		this.bookSale = bookSale;
 	}
 	public boolean isBooksale() {
 		// TODO Auto-generated method stub

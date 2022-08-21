@@ -15,6 +15,13 @@ import com.esh.start.util.DBConnector;
 @Repository
 public class BankBookDAO implements BookDAO{
 
+	//수정
+	//등록
+	//판매여부 변경
+	//리스트조회
+	//항목조회
+	//삭제
+	
 	@Override
 	public int setBankBook(BankBookDTO bankBookDTO) throws Exception {
 		Connection con = DBConnector.getConnetion();
@@ -24,10 +31,10 @@ public class BankBookDAO implements BookDAO{
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		
-		st.setLong(1, bankBookDTO.getBOOKNUM());
-		st.setString(2, bankBookDTO.getBOOKNAME());
-		st.setDouble(3, bankBookDTO.getBOOKRATE());
-		st.setInt(4, bankBookDTO.getBOOKSALE());
+		st.setLong(1, bankBookDTO.getBookNum());
+		st.setString(2, bankBookDTO.getBookName());
+		st.setDouble(3, bankBookDTO.getBookRate());
+		st.setInt(4, bankBookDTO.getBookSale());
 		
 //		ResultSet rs = st.executeQuery();
 		
@@ -53,10 +60,10 @@ public class BankBookDAO implements BookDAO{
 		while(rs.next()) {
 			BankBookDTO bankBookDTO = new BankBookDTO();
 			
-			bankBookDTO.setBOOKNUM(rs.getLong("BOOKNUM"));
-			bankBookDTO.setBOOKNAME(rs.getString("BOOKNAME"));
-			bankBookDTO.setBOOKRATE(rs.getDouble("BOOKRATE"));
-			bankBookDTO.setBOOKSALE(rs.getInt("BOOKSALE"));
+			bankBookDTO.setBookNum(rs.getLong("BOOKNUM"));
+			bankBookDTO.setBookName(rs.getString("BOOKNAME"));
+			bankBookDTO.setBookRate(rs.getDouble("BOOKRATE"));
+			bankBookDTO.setBookSale(rs.getInt("BOOKSALE"));
 			ar.add(bankBookDTO);
 		}
 		
@@ -93,8 +100,9 @@ public class BankBookDAO implements BookDAO{
 //	         check = 1;
 //	      }
 //		
+		
 		st.setBoolean(1, true);
-		st.setLong(2, bankBookDTO.getBOOKNUM());
+		st.setLong(2, bankBookDTO.getBookNum());
 		
 		
 		int result = st.executeUpdate();
@@ -117,16 +125,16 @@ public class BankBookDAO implements BookDAO{
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		
-		st.setLong(1, bankBookDTO.getBOOKNUM());
+		st.setLong(1, bankBookDTO.getBookNum());
 		
 		ResultSet rs = st.executeQuery();
 		
 		if(rs.next()) {
 			bankBookDTO = new BankBookDTO();
-			bankBookDTO.setBOOKNUM(rs.getLong("BOOKNUM"));
-			bankBookDTO.setBOOKNAME(rs.getString("BOOKNAME"));
-			bankBookDTO.setBOOKRATE(rs.getDouble("BOOKRATE"));
-			bankBookDTO.setBOOKSALE(rs.getInt("BOOKSALE"));
+			bankBookDTO.setBookNum(rs.getLong("BOOKNUM"));
+			bankBookDTO.setBookName(rs.getString("BOOKNAME"));
+			bankBookDTO.setBookRate(rs.getDouble("BOOKRATE"));
+			bankBookDTO.setBookSale(rs.getInt("BOOKSALE"));
 		}
 		
 		
@@ -147,9 +155,9 @@ public class BankBookDAO implements BookDAO{
 		String sql = "UPDATE BANKBOOK SET BOOKNAME=?, BOOKRATE = ? WHERE BOOKNUM = ?";
 		
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, bankBookDTO.getBOOKNAME());
-		st.setDouble(2, bankBookDTO.getBOOKRATE());
-		st.setLong(3, bankBookDTO.getBOOKNUM());
+		st.setString(1, bankBookDTO.getBookName());
+		st.setDouble(2, bankBookDTO.getBookSale());
+		st.setLong(3, bankBookDTO.getBookNum());
 		
 		int result = st.executeUpdate();
 		
@@ -169,7 +177,7 @@ public class BankBookDAO implements BookDAO{
 		String sql = "DELETE BANKBOOK WHERE BOOKNUM =?";
 		
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setLong(1, bankBookDTO.getBOOKNUM());
+		st.setLong(1, bankBookDTO.getBookNum());
 		
 		
 		int result = st.executeUpdate();

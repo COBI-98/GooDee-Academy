@@ -31,10 +31,10 @@
 			
 			<c:forEach items="${list}" var ="dto">
 					<tr>
-						<td><a href="./detail.esh?BOOKNUM=${pageScope.dto.BOOKNUM}">${pageScope.dto.BOOKNUM}</a></td>
-						<td>${pageScope.dto.BOOKNAME}</td>
-						<td>${pageScope.dto.BOOKRATE}</td>
-						<td>${pageScope.dto.BOOKSALE}</td>					
+						<td><a href="./detail.esh?bookNum=${pageScope.dto.bookNum}">${pageScope.dto.bookNum}</a></td>
+						<td>${pageScope.dto.bookName}</td>
+						<td>${pageScope.dto.bookRate}</td>
+						<td>${pageScope.dto.bookSale}</td>					
 					</tr>
 			</c:forEach>
 				

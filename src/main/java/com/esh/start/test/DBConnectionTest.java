@@ -49,7 +49,7 @@ public class DBConnectionTest {
 //			int result1 = bankBookDAO.setChangeSale(bankBookDTO);
 //			
 			
-			bankBookDTO.setBOOKNUM(10L);
+			bankBookDTO.setBookNum(10L);
 			bankBookDTO = bankBookDAO.getDetail(bankBookDTO);
 			bankBookview.view(bankBookDTO);
 //			if(result1 >0) {

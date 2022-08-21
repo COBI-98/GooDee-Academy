@@ -7,10 +7,10 @@ import com.esh.start.member.BankMembersDTO;
 public class BankBookView {
 	public void view(BankBookDTO bankBookDTO) {
 		System.out.println("-----------------------");
-		System.out.println(bankBookDTO.getBOOKNUM());
-		System.out.println(bankBookDTO.getBOOKNAME());
-		System.out.println(bankBookDTO.getBOOKRATE());
-		System.out.println(bankBookDTO.getBOOKSALE());
+		System.out.println(bankBookDTO.getBookNum());
+		System.out.println(bankBookDTO.getBookName());
+		System.out.println(bankBookDTO.getBookRate());
+		System.out.println(bankBookDTO.getBookSale());
 		System.out.println("-----------------------");
 		
 	}

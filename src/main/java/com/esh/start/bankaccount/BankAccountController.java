@@ -25,9 +25,9 @@ public class BankAccountController {
 	@RequestMapping (value = "add.esh", method= RequestMethod.GET)
 	public String add(BankAccountDTO bankAccountDTO, HttpSession session) throws Exception{
 		System.out.println("ADD GET");
-		System.out.println(bankAccountDTO.getBOOKNUM());
+		System.out.println(bankAccountDTO.getBookNum());
 		BankMembersDTO bankMembersDTO = (BankMembersDTO)session.getAttribute("check");
-		bankAccountDTO.setUSERNAME(bankMembersDTO.getUserName());
+		bankAccountDTO.setUserName(bankMembersDTO.getUserName());
 		
 		//DTO : userName, bankNum
 		int result = this.bankAccountDAO.add(bankAccountDTO);

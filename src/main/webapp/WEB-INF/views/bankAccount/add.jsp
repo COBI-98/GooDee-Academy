@@ -14,11 +14,11 @@
  		<h1>Add Page</h1> <br>
  		<div>
         사용자 이름<br>
-        <input type="text" name="USERNAME" readonly="readonly" value="${sessionScope.check.USERNAME}"><br>
+        <input type="text" name="userName" readonly="readonly" value="${sessionScope.check.USERNAME}"><br>
         </div>
         <div>
         책 번호<br>
-        <input type="text" name="BOOKNUM" readonly="readonly" value="${requestScope.update.BOOKNUM}"><br>
+        <input type="text" name="bookNum" readonly="readonly" value="${requestScope.update.BOOKNUM}"><br>
         </div>
         <input type="submit" name="add" value="상품 추가" >
 </form>

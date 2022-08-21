@@ -17,8 +17,8 @@ public class BankAccountDAO {
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		
-		st.setString(1, bankAccountDTO.getUSERNAME());
-		st.setLong(2, bankAccountDTO.getBOOKNUM());
+		st.setString(1, bankAccountDTO.getUserName());
+		st.setLong(2, bankAccountDTO.getBookNum());
 		
 		
 //		ResultSet rs = st.executeQuery();

@@ -25,9 +25,9 @@
 				
 			
 				<tr>
-					<td>${requestScope.test.getBOOKNUM()}</td>
-					<td>${requestScope.test.getBOOKNAME()}</td>
-					<td>${test.BOOKRATE}</td>
+					<td>${requestScope.test.bookNum}</td>
+					<td>${requestScope.test.bookRate}</td>
+					<td>${test.bookRate}</td>
 					<td>
 					</td>
 					
@@ -44,13 +44,13 @@
 	<a href="/member/join.esh">JOIN 절대경로</a>
 	<a href="./list.esh">리스트 보기</a> 
 	
-	<a href="./update.esh?BOOKNUM=${requestScope.test.getBOOKNUM()}">수정하기</a>
-	<a href="./delete.esh?BOOKNUM=${requestScope.test.getBOOKNUM()}">삭제하기</a> <br>
+	<a href="./update.esh?bookNum=${requestScope.test.bookNum}">수정하기</a>
+	<a href="./delete.esh?bookNum=${requestScope.test.bookNum}">삭제하기</a> <br>
 	
 	
 
 	<c:if test="${not empty sessionScope.check}">
-	<a href="../bankAccount/add.esh?BOOKNUM=${requestScope.test.getBOOKNUM()}">상품 가입하기</a>
+	<a href="../bankAccount/add.esh?bookNum=${requestScope.test.bookNum()}">상품 가입하기</a>
 	</c:if>
 	
 </body>
