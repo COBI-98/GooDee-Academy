@@ -9,24 +9,24 @@
   	SELECT * FROM BANKBOOK ORDER BY BOOKNUM DESC
   </select>
   
-  <select id="getDetail" parameterType="com.esh.start.bankbook.BankBookDTO" resultType="com.esh.start.bankbook.BankBookDTO">
+  <select id="getDetail" parameterType="BankBookDTO" resultType="BankBookDTO">
 		SELECT * FROM BANKBOOK WHERE BOOKNUM = #{bookNum}
   </select>
   
   
-  <insert id="setBankBook" parameterType="com.esh.start.bankbook.BankBookDTO">
+  <insert id="setBankBook" parameterType="BankBookDTO">
 		INSERT INTO BANKBOOK VALUES (#{bookNum}, #{bookName}, #{bookRate}, 1)
 	</insert>
 	
-	<update id="setUpdate" parameterType="com.esh.start.bankbook.BankBookDTO">
+	<update id="setUpdate" parameterType="BankBookDTO">
 		UPDATE BANKBOOK SET BOOKNAME= #{bookName}, BOOKRATE=#{bookRate} WHERE BOOKNUM = #{bookNum}
 	</update>
 	
-	<update id="setChangeSale" parameterType="com.esh.start.bankbook.BankBookDTO">
+	<update id="setChangeSale" parameterType="BankBookDTO">
 		UPDATE BANKBOOK SET BOOKSALE = #{bookSale} WHERE BOOKNUM = #{bookNum}
 	</update>
   
-   <delete id="setDelete" parameterType="com.esh.start.bankbook.BankBookDTO">
+   <delete id="setDelete" parameterType="BankBookDTO">
 		DELETE BANKBOOK WHERE BOOKNUM = #{bookNum}
 	</delete>
  

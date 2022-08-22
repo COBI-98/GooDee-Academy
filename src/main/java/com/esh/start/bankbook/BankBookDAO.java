@@ -66,7 +66,7 @@ public class BankBookDAO implements BookDAO{
 	@Override
 	public int setDelete(BankBookDTO bankBookDTO) throws Exception {
 		
-		return sqlSession.delete(NAMESPACE+"deleteBook", bankBookDTO);
+		return sqlSession.delete(NAMESPACE+"setDelete", bankBookDTO);
 	}
 	
 
