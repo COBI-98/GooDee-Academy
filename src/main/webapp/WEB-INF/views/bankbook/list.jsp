@@ -17,12 +17,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+<style>
+    .align-center {text-align: center;}
+</style>
 <body>
-	<h1>BANKBOOK LIST</h1><br>
+
+
+	<c:import url="../template/header.jsp"></c:import>
+	
+	<section class="container-fluid col-lg-4 mt-5">
+		<div class="row">
+		<h1>BANKBOOK LIST</h1><br>
 	
 	
-	<table border="1">
-		<thead>
+	<table border="1" class="table">
+		<thead class="table-dark">
 			<tr>
 				<th>BOOKNUM</th><th>BOOKNAME</th><th>BOOKRATE</th><th>BOOKSALE</th>
 			</tr>
@@ -56,6 +67,13 @@
 	<!-- /bankook/detail jsp:detail.jsp-->
 	<!--  link 주소는 상대경로 작성 -->
 	<a href="./add.esh">상품등록</a>
+	</div>
 	
+	</section>
+	
+	<c:import url="../template/footer.jsp"></c:import>
+	
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
 </body>
 </html>

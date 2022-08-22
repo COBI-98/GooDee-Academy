@@ -3,6 +3,7 @@ package com.esh.start.member;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.esh.start.bankaccount.BankAccountDTO;
+import com.esh.start.bankaccount.BankAccountService;
+
 @Controller
 @RequestMapping(value = "/member/*")
 // 이 클래스는 Controller역할, 
@@ -26,6 +30,8 @@ public class BankMembersController {
 	@Autowired
 	private BankMembersService bankMembersService;
 	
+	@Autowired
+	private BankAccountService bankAccountService;
 	// annotation
 	// @ : 설명 + 실행
 	@RequestMapping(value = "logout.esh", method = RequestMethod.GET)
@@ -104,18 +110,7 @@ public class BankMembersController {
 //		BankMembersDTO bankMembersDTO = new BankMembersDTO();
 		
 		System.out.println("조인 POST");
-//		String id = request.getParameter("id");
-//		String pw = request.getParameter("pw");
-//		String name = request.getParameter("name");
-//		String email = request.getParameter("email");
-//		String phone = request.getParameter("phone");
-//		ArrayList<BankMembersDTO> ar = new ArrayList<BankMembersDTO>();
-//		bankMembersDTO.setUSERNAME(id);
-//		bankMembersDTO.setPASSWORD(pw);
-//		bankMembersDTO.setNAME(name);
-//		bankMembersDTO.setEMAIL(email);
-//		bankMembersDTO.setPHONE(phone);				bankMembersDTO
-//		ar.add(bankMembersDTO);
+
 		
 		int result= bankMembersService.setJoin(bankMembersDTO);
 		if(result > 0) {
@@ -129,7 +124,22 @@ public class BankMembersController {
 			return "redirect:../member/login.esh";		
 	}
 	
+	@RequestMapping(value = "myPage.esh", method = RequestMethod.GET)
+	public ModelAndView myPage(HttpSession session) throws Exception{
+		BankMembersDTO bankMemberDTO = (BankMembersDTO)session.getAttribute("check");
+		ModelAndView mv = new ModelAndView();
+//		Map<String, Object> map = bankMembersService.getmyPage(bankMemberDTO);
+//		
+//		model.addAttribute("map", map);
+		bankMemberDTO = bankMembersService.getmyPage(bankMemberDTO);
+//		List<BankAccountDTO> ar = bankAccountService.getListByUserName(bankMemberDTO);
+//		model.addAttribute("list", ar);
+		mv.addObject("dto", bankMemberDTO);
+		System.out.println("myPage");
 	
+		mv.setViewName("/member/myPage");
+		return mv;
+	}
 	
 	
 }

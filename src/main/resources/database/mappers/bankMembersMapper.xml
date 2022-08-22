@@ -7,7 +7,7 @@
          <!-- id는 DAO의 메서드명과 동일하게 -->
     <select id="getLogin" parameterType="com.esh.start.member.BankMembersDTO" 
          resultType="com.esh.start.member.BankMembersDTO">
-               SELECT USERNAME, PASSWORD FROM BANKMEMBERS WHERE USERNAME=#{userName} AND PASSWORD=#{password}
+               SELECT USERNAME, NAME FROM BANKMEMBERS WHERE USERNAME=#{userName} AND PASSWORD=#{password}
     </select>
     
     <select id="getSearchById" parameterType="java.lang.String" resultType="com.esh.start.member.BankMembersDTO">
@@ -18,5 +18,36 @@
 		INSERT INTO BANKMEMBERS VALUES(#{userName},#{password},#{name},#{email},#{phone})
 	</insert>
     
+    
+    
+    <select id="getmyPage" parameterType="com.esh.start.member.BankMembersDTO"
+    	resultMap="getMyPageResult">
+    	<!-- SELECT USERNAME, NAME, EMAIL, PHONE  FROM BANKMEMBERS WHERE USERNAME =#{userName} -->
+    	
+    	SELECT USERNAME,NAME,EMAIL,PHONE,ACCOUNTNUM,BOOKNAME,ACCOUNTDATE
+		FROM
+  		  BANKMEMBERS BM
+	    INNER JOIN
+	    BANKACCOUNT BA     
+  		  USING (USERNAME)
+  		  INNER JOIN
+  	      BANKBOOK BB
+ 	   USING (BOOKNUM)
+		WHERE USERNAME = #{userName}
+    </select>
 
+	<resultMap type="BankMembersDTO" id="getMyPageResult">
+		<id column="USERNAME" property="userName"></id>
+		<result column="NAME" property="name"></result>
+		<result column="EMAIL" property="email"></result>
+		<result column="PHONE" property="phone"></result>
+			<collection property="bankAccountDTOs" javaType="List" ofType="BankAccountDTO">
+			<id column="ACCOUNTNUM" property="accountNum"></id>
+			<result column="ACCOUNTDATE" property="accountDate"></result>
+				
+				<association property="bankBookDTO" javaType="BankBookDTO">
+					<result column="BOOKNAME" property="bookName"></result>
+				</association>
+			</collection>
+	</resultMap>
 </mapper>

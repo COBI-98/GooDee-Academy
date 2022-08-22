@@ -1,11 +1,17 @@
 package com.esh.start.bankbook;
 
+import java.util.List;
+
+import com.esh.start.bankaccount.BankAccountDTO;
+
 public class BankBookDTO {
 
 	private Long bookNum;
 	private String bookName;
 	private Double bookRate;
 	private Integer bookSale;
+	
+	
 	
 	public Long getBookNum() {
 		return bookNum;
