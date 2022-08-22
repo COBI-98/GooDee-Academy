@@ -21,7 +21,7 @@ public class BankMembersDAO {
 	private final String NAMESPACE ="com.esh.start.member.BankMembersDAO.";
 	
 	
-	public int setJoin(BankMembersDTO bankMembersDTO ) throws Exception {
+	public int setJoin(BankMembersDTO bankMembersDTO) throws Exception {
 		return sqlsession.insert(NAMESPACE+"setJoin", bankMembersDTO);
 		}
 		
@@ -38,7 +38,10 @@ public class BankMembersDAO {
 		return sqlsession.selectOne(NAMESPACE+"getLogin",bankMembersDTO);
 	}
 	
-	
+	public BankMembersDTO getmyPage(BankMembersDTO bankMembersDTO) throws Exception{
+		
+		return sqlsession.selectOne(NAMESPACE+"getmyPage", bankMembersDTO);
+	}
 	
 	
 	
