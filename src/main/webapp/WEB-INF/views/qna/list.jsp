@@ -19,19 +19,22 @@
 	<table border="1">
 		<thead>
 			<tr>
-				<th>BOARDNUM</th><th>TITLE</th><th>CONTENT</th><th>WRITER</th><th>BOARDDATE</th><th>HITS</th>
+				<th>QNANUM</th><th>TITLE</th><th>CONTENT</th><th>WRITER</th><th>BOARDDATE</th><th>HITS</th><th>REF</th><th>STEP</th><th>DEPTH</th>
 			</tr>
 		</thead>
 		<tbody>
 			
 			<c:forEach items="${list}" var ="dto">
 					<tr>
-						<td><a href ="./detail.esh?boardNum=${pageScope.dto.boardNum}">${pageScope.dto.boardNum}</a></td>
+						<td><a href ="./detail.esh?qnaNum=${pageScope.dto.qnaNum}">${pageScope.dto.qnaNum}</a></td>
 						<td>${dto.title}</td>
 						<td>${dto.content}</td>
 						<td>${dto.writer}</td>	
 						<td>${dto.regDate}</td>
-						<td>${dto.hits}</td>				
+						<td>${dto.hits}</td>	
+						<td>${dto.ref}</td>
+						<td>${dto.step}</td>
+						<td>${dto.depth}</td>			
 					</tr>
 			</c:forEach>
 				

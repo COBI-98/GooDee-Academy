@@ -15,7 +15,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
                 <a class="nav-link active" href="/bankbook/list.esh">상품리스트</a>
                 <a class="nav-link active" href="/board/list.esh">공지사항</a>
-                
+                <a class="nav-link active" href="/qna/list.esh">Q & A</a>
                 <a class="nav-link active" href="/member/search.esh">회원검색</a>
                 
                 <c:choose>
