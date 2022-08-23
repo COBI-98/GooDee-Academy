@@ -14,18 +14,18 @@
               <div class="navbar-nav">
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
                 <a class="nav-link active" href="/bankbook/list.esh">상품리스트</a>
-                <a class="nav-link active" href="/board/list.esh">공지사항</a>
+                <a class="nav-link active" href="/notice/list.esh">공지사항</a>
                 <a class="nav-link active" href="/qna/list.esh">Q & A</a>
                 <a class="nav-link active" href="/member/search.esh">회원검색</a>
                 
-                <c:choose>
+              		  <c:choose>
                 	<c:when test="${not empty check}">
-                <a class="nav-link active" href="/member/myPage.esh">마이페이지</a>
-                <a class="nav-link active" href="/member/logout.esh">로그아웃</a>
+              		  <a class="nav-link active" href="/member/myPage.esh">마이페이지</a>
+               		 <a class="nav-link active" href="/member/logout.esh">로그아웃</a>
 					</c:when>
 					<c:otherwise>
-                <a class="nav-link active" href="/member/login.esh">로그인</a>
-                <a class="nav-link active" href="/member/join.esh">회원가입</a>
+            		    <a class="nav-link active" href="/member/login.esh">로그인</a>
+             	   <a class="nav-link active" href="/member/join.esh">회원가입</a>
                 	</c:otherwise>
                 </c:choose>
               </div>

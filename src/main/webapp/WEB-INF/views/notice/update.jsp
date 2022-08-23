@@ -14,7 +14,7 @@
  		<h1>글 수정하기</h1> <br>
  		<div>
         글 번호<br>
-        <input type="text" name="qnaNum" readonly="readonly" value = "${update.num}"><br>
+        <input type="text" name="num" readonly="readonly" value = "${update.num}"><br>
         </div>
  		<div>
         글 제목<br>
@@ -22,7 +22,7 @@
         </div>
         <div>
         내용<br>
-        <input type="text" name="content" value = "${update.contents}"><br>
+        <input type="text" name="contents" value = "${update.contents}"><br>
         </div>
       	
         <input type="submit" name="update" value="글 업데이트" >

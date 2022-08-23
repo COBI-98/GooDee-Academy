@@ -12,14 +12,11 @@
 </head>
 <body>
 	<h1>List Page</h1>
-	
-	
-	
-	
+
 	<table border="1">
 		<thead>
 			<tr>
-				<th>QNANUM</th><th>TITLE</th><th>WRITER</th><th>BOARDDATE</th><th>HITS</th><th>REF</th><th>STEP</th><th>DEPTH</th>
+				<th>QNANUM</th><th>TITLE</th><th>WRITER</th><th>BOARDDATE</th><th>HITS</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -31,9 +28,7 @@
 						<td>${dto.writer}</td>	
 						<td>${dto.regDate}</td>
 						<td>${dto.hit}</td>	
-						<td>${dto.ref}</td>
-						<td>${dto.step}</td>
-						<td>${dto.depth}</td>			
+									
 					</tr>
 			</c:forEach>
 				
