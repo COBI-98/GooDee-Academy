@@ -62,11 +62,11 @@
 		
 	</table>
 	
-	
+	<button type="button" class="btn btn-primary container-fluid col-lg-4 mt-5" onclick="location.href='./add.esh'">상품등록</button>
 	
 	<!-- /bankook/detail jsp:detail.jsp-->
 	<!--  link 주소는 상대경로 작성 -->
-	<a href="./add.esh">상품등록</a>
+	
 	</div>
 	
 	</section>

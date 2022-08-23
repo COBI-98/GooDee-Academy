@@ -59,7 +59,8 @@
 	
 
 	<c:if test="${not empty sessionScope.check}">
-	<a href="../bankAccount/add.esh?bookNum=${test.bookNum}">상품 가입하기</a>
+	<button type="button" class="btn btn-primary container-fluid col-lg-4 mt-5" onclick="location.href='../bankAccount/add.esh?bookNum=${test.bookNum}'">상품 가입하기</button>
+	
 	</c:if>
 	</div>
 	
