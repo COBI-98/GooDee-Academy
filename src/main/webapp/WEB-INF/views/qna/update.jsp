@@ -22,7 +22,7 @@
         </div>
         <div>
         내용<br>
-        <input type="text" name="content" value = "${update.contents}"><br>
+        <input type="text" name="contents" value = "${update.contents}"><br>
         </div>
       	
         <input type="submit" name="update" value="글 업데이트" >

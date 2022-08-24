@@ -19,12 +19,17 @@ public class QnaController {
 	private QnaService qnaService;
 	
 	@RequestMapping(value = "list.esh", method = RequestMethod.GET)
-	public void list(Model model) throws Exception{
+	public ModelAndView list(Model model) throws Exception{
 		System.out.println("list GET");
-		List<BoardDTO> ar = qnaService.getList();
+		ModelAndView mv = new ModelAndView();
+//		List<BoardDTO> ar = qnaService.getList();
 		
-		model.addAttribute("list", ar);
+//		model.addAttribute("list", ar);
 
+		mv.addObject("board", "Qna");
+		mv.setViewName("board/list");
+		
+		return mv;
 	}
 	
 	@RequestMapping(value = "detail.esh", method = RequestMethod.GET)
@@ -35,17 +40,20 @@ public class QnaController {
 		ModelAndView mv = new ModelAndView();
 		boardDTO = qnaService.getDetail(boardDTO);
 		
-		mv.setViewName("qna/detail");
+		mv.setViewName("board/detail");
+		mv.addObject("board", "Qna");
 		mv.addObject("detail", boardDTO);
 
 		return mv;
 	}
 	
 	@RequestMapping(value = "add.esh", method = RequestMethod.GET)
-	public void add() throws Exception{
+	public ModelAndView add() throws Exception{
 		System.out.println("detail GET");
-		
-		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("board", "Qna");
+		mv.setViewName("board/add");
+		return mv;
 	}
 	
 	@RequestMapping(value = "add.esh", method = RequestMethod.POST)
@@ -53,6 +61,7 @@ public class QnaController {
 		System.out.println("detail POST");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect:./list.esh");
+		
 		int result =qnaService.setadd(boardDTO);
 		
 		if(result>0) {
@@ -84,16 +93,16 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value = "update.esh", method = RequestMethod.GET)
-	public void update(BoardDTO boardDTO, Model model) throws Exception{
+	public ModelAndView update(BoardDTO boardDTO, Model model) throws Exception{
 		System.out.println("UPDATE GET");
 		
-		System.out.println(boardDTO.getNum());
-		
+		ModelAndView mv = new ModelAndView();
 		boardDTO = qnaService.getDetail(boardDTO);
 		model.addAttribute("update", boardDTO);
+		mv.addObject("board", "Qna");
+		mv.setViewName("board/update");
 		
-		
-		
+		return mv;
 	}
 	
 	@RequestMapping(value = "update.esh", method = RequestMethod.POST)
@@ -103,7 +112,7 @@ public class QnaController {
 		int result = qnaService.setUpdate(boardDTO);
 		
 		
-		mv.setViewName("redirect:./list.esh");
+		mv.setViewName("redirect:./detail.esh?num="+boardDTO.getNum());
 		
 		
 		if(result>0) {

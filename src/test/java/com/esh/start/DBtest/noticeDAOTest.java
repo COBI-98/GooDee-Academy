@@ -21,10 +21,32 @@ public class noticeDAOTest extends MyAbstractTest {
 	@Autowired
 	private NoticeDAO noticeDAO;
 	
+	
+//	@Test
+//	public void setAddTest() throws Exception{
+//		
+//		for(int i=0;i<100;i++) {
+//			NoticeDTO noticeDTO = new NoticeDTO();
+//			noticeDTO.setTitle("Title"+i);
+//			noticeDTO.setContents("Content"+i);
+//			noticeDTO.setWriter("Writer"+i);	
+//			int result = noticeDAO.setadd(noticeDTO);
+//	         
+//	         
+//	         if(i%10 ==0) { 
+//	            Thread.sleep(500);
+//	            
+//	            
+//	         }
+//		}
+//	}
+	
 	@Test
-	public void getListTest()throws Exception{
-		 List<BoardDTO> ar = noticeDAO.getList();
-		 assertEquals(0, ar.size());
+	public void getCountTest() throws Exception{
+		NoticeDTO noticeDTO = new NoticeDTO();
+		
+		long count = noticeDAO.getCount();
+		assertEquals(102L, count);
 		
 	}
 	

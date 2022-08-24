@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.esh.start.board.impl.BoardDTO;
@@ -19,17 +21,20 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 	//글목록
-	
+	@ModelAttribute("board")
+	public String getBoard() {
+		return "Notice";
+	}
 	
 	@RequestMapping(value = "list.esh", method = RequestMethod.GET)
-	public ModelAndView getList()throws Exception{
+	public ModelAndView getList(@RequestParam(defaultValue = "1") Long page)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println("list get");
-		List<BoardDTO> ar = noticeService.getList();
 		
+		List<BoardDTO> ar = noticeService.getList(page);
+		System.out.println("Page : " +page);
 		mv.addObject("list", ar);
-		mv.setViewName("notice/list");
-		System.out.println("list get");
+		mv.setViewName("board/list");
+		
 		return mv; 
 	}
 		
@@ -38,13 +43,16 @@ public class NoticeController {
 		public String getDetail(BoardDTO boardDTO, Model model)throws Exception{
 			boardDTO = noticeService.getDetail(boardDTO);
 			model.addAttribute("detail", boardDTO);
-			return "notice/detail";
+			
+			return "board/detail";
 		}
 		
 		//글작성
 		@RequestMapping(value = "add.esh", method = RequestMethod.GET)
-		public String setadd()throws Exception{
-			return "notice/add";
+		public String setadd(Model model)throws Exception{
+			
+			return "board/add";
+			
 		}
 		
 		@RequestMapping(value = "add.esh", method = RequestMethod.POST)
@@ -59,13 +67,13 @@ public class NoticeController {
 		}
 		
 		//글수정
-		@RequestMapping(value = "update.esh")
+		@RequestMapping(value = "update.esh", method = RequestMethod.GET)
 		public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView mv)throws Exception{
 			
 			boardDTO = noticeService.getDetail(boardDTO);
 			
 			mv.addObject("update", boardDTO);
-			mv.setViewName("notice/update");
+			mv.setViewName("board/update");
 			return mv;
 		}
 		

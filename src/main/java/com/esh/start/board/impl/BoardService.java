@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public interface BoardService {
 
-	
-	public List<BoardDTO> getList() throws Exception;
+	//글목록
+	public List<BoardDTO> getList(Long page) throws Exception;
 	//글디테일
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception;
 	//글삭제

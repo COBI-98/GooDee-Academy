@@ -16,7 +16,7 @@ public class QnaService implements BoardService {
 	private QnaDAO qnaDAO;
 	
 	@Override
-	public List<BoardDTO> getList() throws Exception {
+	public List<BoardDTO> getList(Long page) throws Exception {
 		// TODO Auto-generated method stub
 		return qnaDAO.getList();
 	}
