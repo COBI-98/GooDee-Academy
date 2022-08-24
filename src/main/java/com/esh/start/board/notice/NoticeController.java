@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.esh.start.board.impl.BoardDTO;
+import com.esh.start.util.Pager;
 
 @Controller
 @RequestMapping("/notice/*")
@@ -27,12 +28,14 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value = "list.esh", method = RequestMethod.GET)
-	public ModelAndView getList(@RequestParam(defaultValue = "1") Long page)throws Exception{
+	public ModelAndView getList(Pager pager)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		System.out.println(pager.getPage());
 		
-		List<BoardDTO> ar = noticeService.getList(page);
-		System.out.println("Page : " +page);
+		List<BoardDTO> ar = noticeService.getList(pager);
+//		System.out.println("Page : " +page);
 		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
 		mv.setViewName("board/list");
 		
 		return mv; 

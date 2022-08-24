@@ -49,6 +49,7 @@
 	<a href = "./delete.esh?num=${detail.num}">글 삭제하기</a>
 	</c:if>
 	
+	
 </div>
 	
 	</section>
