@@ -19,14 +19,37 @@ public class Pager {
 	private Long perPage;
 	private Long perBlock;
 	
+	//이전 블럭의 유무
+	private boolean pre = false;
+	//다음 블럭의 유무
+	private boolean next = false;
+	
+	
+	
+	
+	public boolean isPre() {
+		return pre;
+	}
+	public void setPre(boolean pre) {
+		this.pre = pre;
+	}
+	public boolean isNext() {
+		return next;
+	}
+	public void setNext(boolean next) {
+		this.next = next;
+	}
+	
 	public Pager() {
 		this.perPage=10L;
 		this.perBlock=5L;
 	}
 	public Long getPage() {
-		if(this.page ==null) {
+		if(this.page ==null || this.page<1) {
 			this.page =1L;
 		}
+		
+		
 		return page;
 	}
 	public void setPage(Long page) {
@@ -85,9 +108,15 @@ public class Pager {
 	
 	// 2. jsp에서 사용할 값
 	public void getNum(Long totalCount) throws Exception{
+		
+		
 		Long totalPage = totalCount/this.getPerPage();
 		if(totalCount%this.getPerPage() !=0) {
 			totalPage++;
+		}
+		
+		if(this.getPage()>totalPage) {
+			this.setPage(totalPage);
 		}
 		
 		Long totalBlock = totalPage/this.getPerBlock();
@@ -102,6 +131,21 @@ public class Pager {
 		
 		this.startNum = (curBlock-1)*this.getPerBlock()+1;
 		this.lastNum = curBlock*this.getPerBlock();
+	
+		//6. curBlock이 마지막Block(totalBlock과 같을 때)
+		
+		if(curBlock==totalBlock) {
+			this.lastNum=totalPage;
+		}
+		
+		// 7. curBlock 이전, 다음 블럭의 유무
+		if(curBlock>1) {
+			pre=true;
+		}
+	
+		if(curBlock<totalBlock) {
+			next=true;
+		}
 	}
 	
  }
