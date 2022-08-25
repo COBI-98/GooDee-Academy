@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,6 +20,26 @@ public class QnaController {
 
 	@Autowired
 	private QnaService qnaService;
+	
+	@GetMapping("reply.esh")
+	public ModelAndView setReply(BoardDTO boardDTO, ModelAndView mv) throws Exception{
+		
+		mv.addObject("boardDTO", boardDTO);
+		mv.setViewName("board/reply");
+		
+		return mv;
+	}
+	
+	@PostMapping("reply.esh")
+	public ModelAndView setReply(QnaDTO qnaDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		 int result = qnaService.setReply(qnaDTO);
+		 
+		 mv.setViewName("redirect:./list.esh");
+	     
+		return mv;
+	}
+	
 	
 	@RequestMapping(value = "list.esh", method = RequestMethod.GET)
 	public ModelAndView list(Model model,Pager pager) throws Exception{

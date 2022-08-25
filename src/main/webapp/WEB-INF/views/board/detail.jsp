@@ -79,12 +79,12 @@
 	</c:if>
 	
 	<c:if test="${sessionScope.check.userName == detail.writer}">
-	<a href = "./update.esh?num=${detail.num}">글 수정하기</a><br>
-	<a href = "./delete.esh?num=${detail.num}">글 삭제하기</a>
+	<a href = "./update.esh?num=${detail.num}" class="btn btn-success">글 수정하기</a><br>
+	<a href = "./delete.esh?num=${detail.num}" class="btn btn-danger">글 삭제하기</a>
 	</c:if>
 	
-	<div class="row">
-		<a href="./reply.esh" class="btn btn-danger">Reply</a>
+	<div class="row col-lg-4 mt-5">
+		<a href="./reply.esh?num=${detail.num}" class="btn btn-danger">Reply</a>
 	</div>
 	
 </div>

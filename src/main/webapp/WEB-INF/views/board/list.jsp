@@ -66,7 +66,13 @@
 			<c:forEach items="${list}" var ="dto">
 					<tr>
 						<td><a href ="./detail.esh?num=${pageScope.dto.num}">${pageScope.dto.num}</a></td>
-						<td>${dto.title}</td>
+						<td>
+						<c:catch>
+						<c:forEach begin="1" end="${dto.depth}">
+						&ensp;
+						</c:forEach>
+						</c:catch>
+						${dto.title}</td>
 						<td>${dto.writer}</td>	
 						<td>${dto.regDate}</td>
 						<td>${dto.hit}</td>	

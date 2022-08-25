@@ -19,8 +19,9 @@
 	
 	<section class="container-fluid col-lg-4 mt-5">
 		<div class="row">
- <form class="align-center" action="./add.esh" method="post">
+ <form class="align-center" action="./reply.esh" method="post">
  		<h1>${board} Reply 페이지</h1> <br>
+ 		<input type="hidden" name="num" value="${boardDTO.num}">
         <div>
         글 제목<br>
         <input type="text" name="title" placeholder="글 제목을 입력하세요"><br>
@@ -36,7 +37,7 @@
         
         
         
-        <input type="submit" name="add" value="책 추가" >
+        <input type="submit" name="reply" value="책 추가" >
 </form>
 </div>
 	

@@ -19,4 +19,6 @@ public interface BoardService {
 	
 	//글추가
 	public int setadd(BoardDTO boardDTO) throws Exception;
+	
+	
 }

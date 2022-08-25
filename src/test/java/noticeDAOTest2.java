@@ -21,16 +21,16 @@ public class noticeDAOTest2 extends MyAbstractTest {
 	@Autowired
 	private NoticeDAO noticeDAO;
 	
-	@Test
-	public void getListTest() throws Exception{
-		NoticeDTO noticeDTO = new NoticeDTO();
-	
-		int result= noticeDAO.setadd(noticeDTO);
-		
-		List<BoardDTO> ar = noticeDAO.getList();
-		
-		assertNotEquals(0, result);
-	}
+//	@Test
+//	public void getListTest() throws Exception{
+//		NoticeDTO noticeDTO = new NoticeDTO();
+//	
+//		int result= noticeDAO.setadd(noticeDTO);
+//		
+//		List<BoardDTO> ar = noticeDAO.getList();
+//		
+//		assertNotEquals(0, result);
+//	}
 	
 
 	

@@ -21,6 +21,17 @@ public class QnaDAO implements BoardDAO {
 	private final String NAMESPACE="com.esh.start.board.qna.QnaDAO.";
 
 	
+	public int setReplyAdd(QnaDTO qnaDTO) throws Exception{
+		
+		return sqlSession.insert(NAMESPACE+"setReplyAdd", qnaDTO);
+	}
+	
+	public int setStepUpdate(QnaDTO qnaDTO) throws Exception{
+		
+		return sqlSession.update(NAMESPACE+"setStepUpdate", qnaDTO);
+	}
+	
+	
 	public List<BoardDTO> getList(Pager pager) throws Exception{
 		
 		return sqlSession.selectList(NAMESPACE+"getList", pager);

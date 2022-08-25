@@ -29,9 +29,10 @@ public class NoticeController {
 	}
 	
 	@GetMapping("reply.esh")
-	public ModelAndView setReply() throws Exception{
+	public ModelAndView setReply(BoardDTO boardDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
+		mv.addObject("boardDTO", boardDTO);
 		mv.setViewName("board/reply");
 		
 		return mv;
