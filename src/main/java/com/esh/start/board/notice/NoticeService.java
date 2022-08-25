@@ -21,7 +21,7 @@ public class NoticeService implements BoardService {
 	public List<BoardDTO> getList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
 		
-		Long totalCount = noticeDAO.getCount();
+		Long totalCount = noticeDAO.getCount(pager);
 		pager.getNum(totalCount);	
 		
 		

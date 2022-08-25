@@ -19,5 +19,5 @@ public interface BoardDAO {
 	//글추가
 	public int setadd(BoardDTO boardDTO) throws Exception;
 
-	public Long getCount() throws Exception;
+	public Long getCount(Pager pager) throws Exception;
 }

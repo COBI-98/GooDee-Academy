@@ -14,6 +14,8 @@
 </head>
 <style>
     .align-center {text-align: center;}
+    
+}
 </style>
 <body>
 
@@ -25,6 +27,33 @@
 	<div>
 	<h1>${board} List Page</h1>
 	</div>
+	
+	<div class="row">
+	<form action="./list.esh"  class="row row-cols-lg-auto g-3 align-items-center">
+ 		 <div class="col-12">
+  		  <label class="visually-hidden" for="search">검색어</label>
+  			  <div class="input-group">
+  			    <input type="text" name="search" class="form-control" id="search" >
+  			  </div>
+ 		</div>
+
+ 		<div class="col-12">
+   			<label class="visually-hidden" for="kind">Kind</label>
+  			<select name="kind" class="form-select" id="kind">
+   		    <option value="title">Title</option>
+    		<option value="writer">Writer</option>
+   			<option value="contents">Contents</option>
+   			 </select>
+  		</div>
+
+
+ 		 <div class="col-12">
+  		  <button type="submit" class="btn btn-primary">Submit</button>
+ 		 </div>
+	</form>
+	</div>
+	
+	
 	<table border="1" class="table">
 		<thead class="table-dark">
 			<tr>
@@ -47,14 +76,6 @@
 			
 			<c:if test="${board}=Notice">
 			</c:if>
-			<%-- <%for(BankBookDTO bankBookDTO:ar){ %>
-				<tr>
-					<td><a href="./detail?BOOKNUM=<%=bankBookDTO.getBOOKNUM()%>"> <%=bankBookDTO.getBOOKNUM() %></a></td>
-					<td><%=bankBookDTO.getBOOKNAME() %></td>
-					<td><%=bankBookDTO.getBOOKRATE() %></td>
-					<td><%=bankBookDTO.getBOOKSALE() %></td>
-				</tr>
-			<%} %> --%>
 			
 		</tbody>
 		
@@ -65,20 +86,21 @@
 	<a href="./add.esh">글쓰기</a><br>
 	</c:if>
 	
+	
 	<nav aria-label="Page navigation example">
   <ul class="pagination">
   
     <li class="page-item ${pager.pre?'':'disabled'}">	
-      <a class="page-link" href="./list.esh?page=${pager.startNum-1}" aria-label="Previous">
+      <a class="page-link" href="./list.esh?page=${pager.startNum-1}&search=${pager.search}&kind=${pager.kind}" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a> 
     </li>
     
 	<c:forEach begin="${pager.startNum }" end="${pager.lastNum}" var ="i">
-	<li class="page-item"><a class="page-link" href="./list.esh?page=${i}">${i }</a></li>
+	<li class="page-item"><a class="page-link" href="./list.esh?page=${i}&search=${pager.search}&kind=${pager.kind}">${i }</a></li>
 	</c:forEach>
 	
-	
+
 	<%-- <c:choose>
 		<c:when test="${pager.next}">
 			<li class="page-item">		
@@ -89,7 +111,7 @@
 	</c:choose> --%>
 	
     	<li class="page-item ${pager.next?'':'disabled'}">	
-     	 <a class="page-link" href="./list.esh?page=${pager.lastNum+1}" aria-label="Next">
+     	 <a class="page-link" href="./list.esh?page=${pager.lastNum+1}&search=${pager.search}&kind=${pager.kind}" aria-label="Next">
        	 <span aria-hidden="true">&raquo;</span>
      	 </a>
     	</li>

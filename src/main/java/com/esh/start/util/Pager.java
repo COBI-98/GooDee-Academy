@@ -25,7 +25,27 @@ public class Pager {
 	private boolean next = false;
 	
 	
+	//검색 컬럼의 종류
+	private String kind;
+	//검색어
+	private String search; 
 	
+	
+	public String getKind() {
+		return kind;
+	}
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+	public String getSearch() {
+	      if(this.search == null)
+	         this.search = "";
+	         
+	      return search;
+	   }
+	public void setSearch(String search) {
+		this.search = search;
+	}
 	
 	public boolean isPre() {
 		return pre;
@@ -39,6 +59,7 @@ public class Pager {
 	public void setNext(boolean next) {
 		this.next = next;
 	}
+
 	
 	public Pager() {
 		this.perPage=10L;

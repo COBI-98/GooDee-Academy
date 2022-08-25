@@ -20,6 +20,7 @@
 	<section class="container-fluid col-lg-4 mt-5">
 		<div class="row">
 	<H1>${board} 상세 보기</H1>
+	<c:if test="${board == 'Notice'}">
 	<table border="1" class="table">
 		<thead class="table-dark">
 		<thead>
@@ -44,11 +45,47 @@
 		</tbody>
 		
 	</table>
+	</c:if>
+	
+	<c:if test="${board == 'Qna'}">
+	<table border="1" class="table">
+		<thead class="table-dark">
+		<thead>
+			<tr>
+				<th>글 번호</th><th>글 제목</th><th>글 내용</th><th>작성자</th><th>글 작성일</th><th>조회수</th>
+				<th>질문글,그룹</th><th>질문글,답글</th><th>답글 깊이</th>
+			</tr>
+		</thead>
+		<tbody>
+				
+			
+				<tr>
+					<td>${detail.num}</td>
+					<td>${detail.title}</td>
+					<td>${detail.contents}</td>
+					<td>${detail.writer}</td>
+					<td>${detail.regDate}</td>
+					<td>${detail.hit}</td>
+					<td>${detail.ref}</td>
+					<td>${detail.step}</td>
+					<td>${detail.depth}</td>
+					
+				</tr>
+			
+			
+		</tbody>
+		
+	</table>
+	</c:if>
+	
 	<c:if test="${sessionScope.check.userName == detail.writer}">
 	<a href = "./update.esh?num=${detail.num}">글 수정하기</a><br>
 	<a href = "./delete.esh?num=${detail.num}">글 삭제하기</a>
 	</c:if>
 	
+	<div class="row">
+		<a href="./reply.esh" class="btn btn-danger">Reply</a>
+	</div>
 	
 </div>
 	

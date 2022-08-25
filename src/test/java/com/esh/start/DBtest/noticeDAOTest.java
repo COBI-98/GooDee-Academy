@@ -11,6 +11,8 @@ import com.esh.home.MyAbstractTest;
 import com.esh.start.board.impl.BoardDTO;
 import com.esh.start.board.notice.NoticeDAO;
 import com.esh.start.board.notice.NoticeDTO;
+import com.esh.start.board.qna.QnaDAO;
+import com.esh.start.board.qna.QnaDTO;
 
 
 
@@ -21,34 +23,36 @@ public class noticeDAOTest extends MyAbstractTest {
 	@Autowired
 	private NoticeDAO noticeDAO;
 	
-	
-//	@Test
-//	public void setAddTest() throws Exception{
-//		
-//		for(int i=0;i<100;i++) {
-//			NoticeDTO noticeDTO = new NoticeDTO();
-//			noticeDTO.setTitle("Title"+i);
-//			noticeDTO.setContents("Content"+i);
-//			noticeDTO.setWriter("Writer"+i);	
-//			int result = noticeDAO.setadd(noticeDTO);
-//	         
-//	         
-//	         if(i%10 ==0) { 
-//	            Thread.sleep(500);
-//	            
-//	            
-//	         }
-//		}
-//	}
+	@Autowired
+	private QnaDAO qnaDAO;
 	
 	@Test
-	public void getCountTest() throws Exception{
-		NoticeDTO noticeDTO = new NoticeDTO();
+	public void setAddTest() throws Exception{
 		
-		long count = noticeDAO.getCount();
-		assertEquals(102L, count);
-		
+		for(int i=0;i<100;i++) {
+			QnaDTO qnaDTO = new QnaDTO();
+			qnaDTO.setTitle("Title"+i);
+			qnaDTO.setContents("Content"+i);
+			qnaDTO.setWriter("Writer"+i);	
+			int result = qnaDAO.setadd(qnaDTO);
+	         
+	         
+	         if(i%10 ==0) { 
+	            Thread.sleep(500);
+	            
+	            
+	         }
+		}
 	}
+	
+//	@Test
+//	public void getCountTest() throws Exception{
+//		NoticeDTO noticeDTO = new NoticeDTO();
+//		
+//		long count = noticeDAO.getCount();
+//		assertEquals(102L, count);
+//		
+//	}
 	
 	
 

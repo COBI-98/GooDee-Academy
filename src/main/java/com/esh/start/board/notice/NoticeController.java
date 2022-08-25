@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,11 +28,21 @@ public class NoticeController {
 		return "Notice";
 	}
 	
+	@GetMapping("reply.esh")
+	public ModelAndView setReply() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("board/reply");
+		
+		return mv;
+	}
+	
 	@RequestMapping(value = "list.esh", method = RequestMethod.GET)
 	public ModelAndView getList(Pager pager)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println(pager.getPage());
 		
+		System.out.println(pager.getKind());
+		System.out.println(pager.getSearch());
 		List<BoardDTO> ar = noticeService.getList(pager);
 //		System.out.println("Page : " +page);
 		mv.addObject("list", ar);
