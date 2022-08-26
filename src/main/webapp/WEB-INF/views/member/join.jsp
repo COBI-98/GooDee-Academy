@@ -54,7 +54,7 @@
 <div class="row align-items-center justify-content-between">
         
             </div>
-            <form class="align-center" action="join.esh" method="post">
+            <form class="align-center" action="join.esh" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                		<label for="exampleInputEmail1" class="form-label mt-4">아이디</label>
                     <input type="text" name="userName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -88,10 +88,16 @@
                     <input type="text" name ="email"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="선택입력">
                 </div>
 				
-				<div class="form-group has-success">
+				<div class="form-group ">
 					<label class="form-label mt-4" for="inputValid">폰 번호</label>
 					<input type="text" name="phone" class="form-control is-valid" id="inputValid1">
-					<div class="valid-feedback1"></div>
+					
+				</div>
+				
+				<div class="form-group">
+					<label class="form-label mt-4" for="files">Photo</label>
+					<input type="file" name="photo" class="form-control is-valid" id="files">
+		
 				</div>
 				
 				<div class="d-grid gap-2 mt-4">

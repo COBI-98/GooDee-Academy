@@ -7,15 +7,20 @@ import com.esh.start.bankaccount.BankAccountDTO;
 public class BankMembersDTO {
 
 	private String userName;
-	
 	private String password;
 	private String name;
-
 	private String email;
-	private String phone;
-	
+	private String phone;	
 	private List<BankAccountDTO> bankAccountDTOs;
 	
+	private BankMembersFileDTO bankMembersFileDTO;
+
+	public BankMembersFileDTO getBankMembersFileDTO() {
+		return bankMembersFileDTO;
+	}
+	public void setBankMembersFileDTO(BankMembersFileDTO bankMembersFileDTO) {
+		this.bankMembersFileDTO = bankMembersFileDTO;
+	}
 	
 	public List<BankAccountDTO> getBankAccountDTOs() {
 		return bankAccountDTOs;

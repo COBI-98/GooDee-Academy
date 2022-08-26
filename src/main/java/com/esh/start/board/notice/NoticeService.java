@@ -1,11 +1,17 @@
 package com.esh.start.board.notice;
 
+import java.io.File;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.esh.start.board.impl.BoardDTO;
 import com.esh.start.board.impl.BoardService;
@@ -16,6 +22,9 @@ public class NoticeService implements BoardService {
 
 	@Autowired
 	private NoticeDAO noticeDAO;
+	
+	@Autowired
+	private ServletContext servletContext;
 	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
@@ -104,9 +113,56 @@ public class NoticeService implements BoardService {
 	}
 
 	@Override
-	public int setadd(BoardDTO boardDTO) throws Exception {
+	public int setadd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
 		// TODO Auto-generated method stub
-		return noticeDAO.setadd(boardDTO);
+		
+		
+		
+		String realpath = servletContext.getRealPath("resources/upload/notice");
+	      System.out.println("realePath:" + realpath);
+	      File file = new File(realpath);
+	      
+	      // 3. 저장할 폴더의 정보를 가지는 자바 객체 생성
+	      
+	    	  System.out.println(files.length);
+	       
+	      for(int i =0; i<files.length;i++) {
+	    	  file = new File(realpath);
+
+		      
+		      if(file.exists()) {
+	    		  file.mkdirs(); // 파일 없으면 만들기 mkdirs
+	    	  } 
+	    	  if(!files[i].isEmpty()) {
+	    		  
+	    		  
+	    	  String fileName = UUID.randomUUID().toString();
+	    		
+	    	  System.out.println(fileName);
+	    	  
+	    	  Calendar ca =Calendar.getInstance();
+	    	  Long time = ca.getTimeInMillis();
+	      
+
+	    	  fileName = fileName + "_" + files[i].getOriginalFilename();
+	      
+	    	  System.out.println(fileName);
+	      
+	    	  // 5. HDD에 파일 저장
+	    	  // 어느 폴더에 어떤 이름으로 저장할 file 객체 생성
+	    	  file = new File(file,fileName);
+	    	  // 1)MultipartFile 클래스의 transferTo 메서드 사용
+	    	  files[i].transferTo(file);
+	    	  } else {
+	    		  continue;
+	    	  }
+	      }
+	      
+	    	  // 4) 중복되지 않는 파일명 생성
+	    	  // - 시간, java api , ...
+	    	  
+	    	  // 2)FileCopyUtils 클래스의 copy 메서드 사용
+		return 0;
 	}
 
 }

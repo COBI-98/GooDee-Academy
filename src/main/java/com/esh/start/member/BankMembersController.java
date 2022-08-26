@@ -16,6 +16,7 @@ import org.springframework.web.HttpRequestHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.esh.start.bankaccount.BankAccountDTO;
@@ -106,13 +107,18 @@ public class BankMembersController {
 	//post
 	//method join /method/join 
 	@RequestMapping(value = "join.esh", method = RequestMethod.POST)
-	public String join(BankMembersDTO bankMembersDTO) throws Exception {
+	public String join(BankMembersDTO bankMembersDTO,MultipartFile photo) throws Exception {
 //		BankMembersDTO bankMembersDTO = new BankMembersDTO();
 		
 		System.out.println("조인 POST");
 
 		
-		int result= bankMembersService.setJoin(bankMembersDTO);
+		
+		      
+			   //int result = bankMembersService.setJoin(bankMembersDTO);
+		   
+			      
+	    int result = bankMembersService.setJoin(bankMembersDTO,photo);
 		if(result > 0) {
 				System.out.println("성공");
 		}else {
