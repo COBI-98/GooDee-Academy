@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.PageContext;
@@ -31,8 +32,7 @@ public class BankMembersController {
 	@Autowired
 	private BankMembersService bankMembersService;
 	
-	@Autowired
-	private BankAccountService bankAccountService;
+	
 	// annotation
 	// @ : 설명 + 실행
 	@RequestMapping(value = "logout.esh", method = RequestMethod.GET)
@@ -107,18 +107,15 @@ public class BankMembersController {
 	//post
 	//method join /method/join 
 	@RequestMapping(value = "join.esh", method = RequestMethod.POST)
-	public String join(BankMembersDTO bankMembersDTO,MultipartFile photo) throws Exception {
+	public String join(BankMembersDTO bankMembersDTO,MultipartFile photo, HttpSession httpsession) throws Exception {
 //		BankMembersDTO bankMembersDTO = new BankMembersDTO();
 		
 		System.out.println("조인 POST");
-
-		
-		
-		      
+  
 			   //int result = bankMembersService.setJoin(bankMembersDTO);
 		   
 			      
-	    int result = bankMembersService.setJoin(bankMembersDTO,photo);
+	    int result = bankMembersService.setJoin(bankMembersDTO,photo, httpsession.getServletContext());
 		if(result > 0) {
 				System.out.println("성공");
 		}else {
@@ -129,6 +126,7 @@ public class BankMembersController {
 			
 			return "redirect:../member/login.esh";		
 	}
+	
 	
 	@RequestMapping(value = "myPage.esh", method = RequestMethod.GET)
 	public ModelAndView myPage(HttpSession session) throws Exception{

@@ -11,8 +11,9 @@
 		<typeAlias type="com.esh.start.bankbook.BankBookDTO" alias="BankBookDTO"></typeAlias>
 		
 		<typeAlias type="com.esh.start.board.impl.BoardDTO" alias="BoardDTO"></typeAlias>
+		<typeAlias type="com.esh.start.board.impl.BoardFileDTO" alias="BoardFileDTO"></typeAlias>
+		
 		<typeAlias type="com.esh.start.board.notice.NoticeDTO" alias="NoticeDTO"></typeAlias>
-		<typeAlias type="com.esh.start.board.notice.NoticeFileDTO" alias="NoticeFileDTO"></typeAlias>
 		
 		<typeAlias type="com.esh.start.board.qna.QnaDTO" alias="QnaDTO"></typeAlias>
 		<typeAlias type="com.esh.start.util.Pager" alias="Pager"></typeAlias>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.esh.start.board.impl.BoardDAO;
 import com.esh.start.board.impl.BoardDTO;
+import com.esh.start.board.impl.BoardFileDTO;
 import com.esh.start.util.Pager;
 
 @Repository
@@ -31,6 +32,11 @@ public class QnaDAO implements BoardDAO {
 		return sqlSession.update(NAMESPACE+"setStepUpdate", qnaDTO);
 	}
 	
+	
+	public int setAddFile(BoardFileDTO boardFileDTO) throws Exception{
+		
+		return sqlSession.insert(NAMESPACE+"setAddFile", boardFileDTO);
+	}
 	
 	public List<BoardDTO> getList(Pager pager) throws Exception{
 		

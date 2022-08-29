@@ -14,7 +14,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.esh.start.board.impl.BoardDTO;
+import com.esh.start.board.impl.BoardFileDTO;
 import com.esh.start.board.impl.BoardService;
+import com.esh.start.util.FileManager;
 import com.esh.start.util.Pager;
 
 @Service
@@ -23,8 +25,9 @@ public class NoticeService implements BoardService {
 	@Autowired
 	private NoticeDAO noticeDAO;
 	
+
 	@Autowired
-	private ServletContext servletContext;
+	private FileManager fileManager;
 	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
@@ -113,66 +116,78 @@ public class NoticeService implements BoardService {
 	}
 
 	@Override
-	public int setadd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
+	public int setadd(BoardDTO boardDTO, MultipartFile [] files, ServletContext servletContext) throws Exception {
 		// TODO Auto-generated method stub
 		
 		int result = noticeDAO.setadd(boardDTO);
-		
-		String realpath = servletContext.getRealPath("resources/upload/notice");
-	      System.out.println("realePath:" + realpath);
+		String path = "resources/upload/notice";
+		for(MultipartFile multipartFile:files) {
+			if(multipartFile.isEmpty()) {
+				continue;
+			}
+			String fileName = fileManager.saveFile(path, servletContext, multipartFile);
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOriName(multipartFile.getOriginalFilename());
+			boardFileDTO.setNum(boardDTO.getNum());
+	    	
+	    	noticeDAO.setAddFile(boardFileDTO);
+		}
+//		String realpath = servletContext.getRealPath("resources/upload/notice");
+//	      System.out.println("realePath:" + realpath);
+//	      
+//	      
+//	      File file = new File(realpath);
+//	      
+//	      // 3. 저장할 폴더의 정보를 가지는 자바 객체 생성
+//	      
+//	    	  System.out.println(files.length);
+//	    if(!file.exists()) {
+//	    		  file.mkdirs(); // 파일 없으면 만들기 mkdirs
+//	    } 
+//	     
+//	      for(int i =0; i<files.length;i++) {
+//	    	  
+//	    	 file = new File(realpath);
+//
+//		     System.out.println(boardDTO.getNum());
+//		   
+//	    	  
+//		    if(!files[i].isEmpty()) {
+//	    		  
+//	    		  
+//	    	  String fileName = UUID.randomUUID().toString();
+//	    		
+//	    	  System.out.println(fileName);
+//	    	  
+//	    	  Calendar ca =Calendar.getInstance();
+//	    	  Long time = ca.getTimeInMillis();
+//	      
+//	    	  fileName = fileName + "_" + files[i].getOriginalFilename();
+//	      
+//	    	  System.out.println(fileName);
+//	      
+//	    	  // 5. HDD에 파일 저장
+//	    	  // 어느 폴더에 어떤 이름으로 저장할 file 객체 생성
+//	    	  file = new File(file,fileName);
+//	    	  // 1)MultipartFile 클래스의 transferTo 메서드 사용
+//	    	  files[i].transferTo(file);
+//	    	  
+//	    	  NoticeFileDTO noticeFileDTO = new NoticeFileDTO();
+//	    	  noticeFileDTO.setFileName(fileName);
+//	    	  noticeFileDTO.setOriName(files[i].getOriginalFilename());
+//	    	  noticeFileDTO.setNum(boardDTO.getNum());
+//	    	  
+//	 
+//	    	 
+//	    	  noticeDAO.setAddFile(noticeFileDTO);
+//	    	  
+//	    	  
+//	    	  
+//	    	  } else {
+//	    		  continue;
+//	    	  }
 	      
-	      
-	      File file = new File(realpath);
-	      
-	      // 3. 저장할 폴더의 정보를 가지는 자바 객체 생성
-	      
-	    	  System.out.println(files.length);
-	    if(!file.exists()) {
-	    		  file.mkdirs(); // 파일 없으면 만들기 mkdirs
-	    } 
-	     
-	      for(int i =0; i<files.length;i++) {
-	    	  
-	    	 file = new File(realpath);
-
-		     System.out.println(boardDTO.getNum());
-		   
-	    	  
-		    if(!files[i].isEmpty()) {
-	    		  
-	    		  
-	    	  String fileName = UUID.randomUUID().toString();
-	    		
-	    	  System.out.println(fileName);
-	    	  
-	    	  Calendar ca =Calendar.getInstance();
-	    	  Long time = ca.getTimeInMillis();
-	      
-	    	  fileName = fileName + "_" + files[i].getOriginalFilename();
-	      
-	    	  System.out.println(fileName);
-	      
-	    	  // 5. HDD에 파일 저장
-	    	  // 어느 폴더에 어떤 이름으로 저장할 file 객체 생성
-	    	  file = new File(file,fileName);
-	    	  // 1)MultipartFile 클래스의 transferTo 메서드 사용
-	    	  files[i].transferTo(file);
-	    	  
-	    	  NoticeFileDTO noticeFileDTO = new NoticeFileDTO();
-	    	  noticeFileDTO.setFileName(fileName);
-	    	  noticeFileDTO.setOriName(files[i].getOriginalFilename());
-	    	  noticeFileDTO.setNum(boardDTO.getNum());
-	    	  
-	 
-	    	 
-	    	  noticeDAO.setAddFile(noticeFileDTO);
-	    	  
-	    	  
-	    	  
-	    	  } else {
-	    		  continue;
-	    	  }
-	      }
 	      
 	    	  // 4) 중복되지 않는 파일명 생성
 	    	  // - 시간, java api , ...

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.esh.start.board.impl.BoardDAO;
 import com.esh.start.board.impl.BoardDTO;
+import com.esh.start.board.impl.BoardFileDTO;
 import com.esh.start.member.BankMembersFileDTO;
 import com.esh.start.util.Pager;
 
@@ -26,9 +27,9 @@ public class NoticeDAO implements BoardDAO {
 		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 
-	public int setAddFile(NoticeFileDTO noticeFileDTO) throws Exception{
+	public int setAddFile(BoardFileDTO boardFileDTO) throws Exception{
 		
-		return sqlSession.insert(NAMESPACE+"setAddFile", noticeFileDTO);
+		return sqlSession.insert(NAMESPACE+"setAddFile", boardFileDTO);
 	}
 	
 	

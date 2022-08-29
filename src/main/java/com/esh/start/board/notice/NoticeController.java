@@ -2,6 +2,9 @@ package com.esh.start.board.notice;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +29,7 @@ public class NoticeController {
 	//글목록
 	@ModelAttribute("board")
 	public String getBoard() {
-		return "Notice";
+		return "notice";
 	}
 	
 	@GetMapping("reply.esh")
@@ -72,9 +75,9 @@ public class NoticeController {
 		}
 		
 		@RequestMapping(value = "add.esh", method = RequestMethod.POST)
-		public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile [] files)throws Exception{
+		public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile [] files,HttpSession httpsession)throws Exception{
 			ModelAndView mv = new ModelAndView();
-			int result = noticeService.setadd(boardDTO, files);
+			int result = noticeService.setadd(boardDTO, files, httpsession.getServletContext());
 			
 			
 			mv.setViewName("redirect:./list.esh");

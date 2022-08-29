@@ -2,10 +2,14 @@ package com.esh.start.board.qna;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +25,11 @@ public class QnaController {
 
 	@Autowired
 	private QnaService qnaService;
+	
+	@ModelAttribute("board")
+	public String getBoard() {
+		return "qna";
+	}
 	
 	@GetMapping("reply.esh")
 	public ModelAndView setReply(BoardDTO boardDTO, ModelAndView mv) throws Exception{
@@ -50,7 +59,6 @@ public class QnaController {
 		
 		model.addAttribute("list", ar);	
 		mv.addObject("pager", pager);
-		mv.addObject("board", "Qna");
 		mv.setViewName("board/list");
 		
 		return mv;
@@ -65,7 +73,6 @@ public class QnaController {
 		boardDTO = qnaService.getDetail(boardDTO);
 		
 		mv.setViewName("board/detail");
-		mv.addObject("board", "Qna");
 		mv.addObject("detail", boardDTO);
 
 		return mv;
@@ -75,18 +82,17 @@ public class QnaController {
 	public ModelAndView add() throws Exception{
 		System.out.println("detail GET");
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("board", "Qna");
 		mv.setViewName("board/add");
 		return mv;
 	}
 	
 	@RequestMapping(value = "add.esh", method = RequestMethod.POST)
-	public ModelAndView add(BoardDTO boardDTO, MultipartFile[] files) throws Exception{
+	public ModelAndView add(BoardDTO boardDTO, MultipartFile[] files,HttpSession httpsession) throws Exception{
 		System.out.println("detail POST");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect:./list.esh");
 		
-		int result =qnaService.setadd(boardDTO,files);
+		int result =qnaService.setadd(boardDTO,files,httpsession.getServletContext());
 		
 		if(result>0) {
 			System.out.println("성공");
@@ -123,7 +129,6 @@ public class QnaController {
 		ModelAndView mv = new ModelAndView();
 		boardDTO = qnaService.getDetail(boardDTO);
 		model.addAttribute("update", boardDTO);
-		mv.addObject("board", "Qna");
 		mv.setViewName("board/update");
 		
 		return mv;

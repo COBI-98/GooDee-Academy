@@ -26,12 +26,23 @@
 				${detail.regDate}
 			</div>
 			<div class="col-lg-2 border border-danger">
-					${detail.hit}
+				${detail.hit}
 			</div>
 		</div>
 		<div class="row border border-top-0 border-danger bg-light"  style="min-height: 60vh" >
 			<div class="col">
 				${detail.contents}
+			</div>
+		</div>
+		
+		<div class="row border border-top-0 border-danger bg-light"  style="min-height: 60vh" >
+			<div class="col">
+				
+				<c:forEach items="${detail.boardFileDTOs}" var="fileDTO">
+					<p>
+					<a href="../resources/upload/${board}/${fileDTO.fileName}">${fileDTO.oriName}</a>
+					</p>
+				</c:forEach>
 			</div>
 		</div>
 		

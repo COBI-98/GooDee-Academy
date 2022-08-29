@@ -2,6 +2,8 @@ package com.esh.start.board.impl;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,7 +21,7 @@ public interface BoardService {
 	public int setUpdate(BoardDTO boardDTO) throws Exception;
 	
 	//글추가
-	public int setadd(BoardDTO boardDTO,MultipartFile [] files) throws Exception;
+	public int setadd(BoardDTO boardDTO,MultipartFile [] files, ServletContext servletContext) throws Exception;
 	
 	
 }
