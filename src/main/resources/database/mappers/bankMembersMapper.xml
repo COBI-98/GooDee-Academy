@@ -19,7 +19,8 @@
 	</select>
 	
 	<insert id="setJoin" parameterType="com.esh.start.member.BankMembersDTO">
-		INSERT INTO BANKMEMBERS VALUES(#{userName},#{password},#{name},#{email},#{phone})
+		INSERT INTO BANKMEMBERS 
+		VALUES(#{userName},#{password},#{name},#{email},#{phone})
 	</insert>
     
     

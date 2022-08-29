@@ -116,24 +116,29 @@ public class NoticeService implements BoardService {
 	public int setadd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
 		// TODO Auto-generated method stub
 		
-		
+		int result = noticeDAO.setadd(boardDTO);
 		
 		String realpath = servletContext.getRealPath("resources/upload/notice");
 	      System.out.println("realePath:" + realpath);
+	      
+	      
 	      File file = new File(realpath);
 	      
 	      // 3. 저장할 폴더의 정보를 가지는 자바 객체 생성
 	      
 	    	  System.out.println(files.length);
-	       
-	      for(int i =0; i<files.length;i++) {
-	    	  file = new File(realpath);
-
-		      
-		      if(file.exists()) {
+	    if(!file.exists()) {
 	    		  file.mkdirs(); // 파일 없으면 만들기 mkdirs
-	    	  } 
-	    	  if(!files[i].isEmpty()) {
+	    } 
+	     
+	      for(int i =0; i<files.length;i++) {
+	    	  
+	    	 file = new File(realpath);
+
+		     System.out.println(boardDTO.getNum());
+		   
+	    	  
+		    if(!files[i].isEmpty()) {
 	    		  
 	    		  
 	    	  String fileName = UUID.randomUUID().toString();
@@ -143,7 +148,6 @@ public class NoticeService implements BoardService {
 	    	  Calendar ca =Calendar.getInstance();
 	    	  Long time = ca.getTimeInMillis();
 	      
-
 	    	  fileName = fileName + "_" + files[i].getOriginalFilename();
 	      
 	    	  System.out.println(fileName);
@@ -153,6 +157,18 @@ public class NoticeService implements BoardService {
 	    	  file = new File(file,fileName);
 	    	  // 1)MultipartFile 클래스의 transferTo 메서드 사용
 	    	  files[i].transferTo(file);
+	    	  
+	    	  NoticeFileDTO noticeFileDTO = new NoticeFileDTO();
+	    	  noticeFileDTO.setFileName(fileName);
+	    	  noticeFileDTO.setOriName(files[i].getOriginalFilename());
+	    	  noticeFileDTO.setNum(boardDTO.getNum());
+	    	  
+	 
+	    	 
+	    	  noticeDAO.setAddFile(noticeFileDTO);
+	    	  
+	    	  
+	    	  
 	    	  } else {
 	    		  continue;
 	    	  }
@@ -162,7 +178,7 @@ public class NoticeService implements BoardService {
 	    	  // - 시간, java api , ...
 	    	  
 	    	  // 2)FileCopyUtils 클래스의 copy 메서드 사용
-		return 0;
+		return result;
 	}
 
 }

@@ -65,7 +65,7 @@ public class NoticeController {
 		
 		//글작성
 		@RequestMapping(value = "add.esh", method = RequestMethod.GET)
-		public String setadd(Model model)throws Exception{
+		public String setAdd(Model model)throws Exception{
 			
 			return "board/add";
 			

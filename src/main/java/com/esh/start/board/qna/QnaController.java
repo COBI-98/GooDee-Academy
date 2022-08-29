@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.esh.start.board.impl.BoardDTO;
@@ -80,12 +81,12 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value = "add.esh", method = RequestMethod.POST)
-	public ModelAndView add(BoardDTO boardDTO) throws Exception{
+	public ModelAndView add(BoardDTO boardDTO, MultipartFile[] files) throws Exception{
 		System.out.println("detail POST");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect:./list.esh");
 		
-		int result =qnaService.setadd(boardDTO);
+		int result =qnaService.setadd(boardDTO,files);
 		
 		if(result>0) {
 			System.out.println("성공");

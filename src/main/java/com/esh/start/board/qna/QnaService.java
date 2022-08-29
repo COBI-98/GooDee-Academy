@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.esh.start.board.impl.BoardDTO;
 import com.esh.start.board.impl.BoardService;
@@ -12,6 +13,8 @@ import com.esh.start.util.Pager;
 
 @Service
 public class QnaService implements BoardService {
+
+	
 
 	@Autowired
 	private QnaDAO qnaDAO;
@@ -62,7 +65,7 @@ public class QnaService implements BoardService {
 	}
 
 	@Override
-	public int setadd(BoardDTO boardDTO) throws Exception {
+	public int setadd(BoardDTO boardDTO , MultipartFile[] files) throws Exception {
 		// TODO Auto-generated method stub
 		return qnaDAO.setadd(boardDTO);
 	}

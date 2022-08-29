@@ -12,5 +12,9 @@ public class BoardFileDTO extends FileDTO {
 	public void setNum(Long num) {
 		this.num = num;
 	}
+
+	
+
+	
 	
 }

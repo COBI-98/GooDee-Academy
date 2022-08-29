@@ -28,6 +28,7 @@
 		<div class="row">
  <form class="align-center" action="./add.esh" method="post" enctype="multipart/form-data">
  		<h1>${board} 작성 페이지</h1> <br>
+        
         <div>
         글 제목<br>
         <input type="text" name="title" placeholder="글 제목을 입력하세요"><br>
