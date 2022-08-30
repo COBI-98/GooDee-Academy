@@ -18,19 +18,19 @@
 	<section class="container-fluid col-lg-4 mt-5">
 		<div class="row">
 		<main class="form-signin w-100 m-auto">
-		  <form action="./login.esh" method="post">
+		  <form action="./login.esh" method="post" id ="frm">
   		  <img class="mb-4" src="../../../resources/img/GOOD.png" alt="" width="100" height="100">
   		  <h1 class="h3 mb-3 fw-normal">Enter ID</h1>
 
    		 	<div class="form-floating">
    		 
    		 
-   	  		 <input type="text" name="userName" class="form-control" id="floatingInput" placeholder="name@example.com">
+   	  		 <input type="text" name="userName" id = "userName" class="form-control" placeholder="name@example.com">
     		 
    		</div>
    			 <div class="form-floating">
    			 <h1 class="h3 mb-3 fw-normal">Enter Password</h1>
-      		<input type="text" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+      		<input type="text" name="password" id = "password" class="form-control" placeholder="Password">
   		</div>
 
     		<div class="checkbox mb-3">
@@ -38,7 +38,7 @@
      		   <input type="checkbox" value="remember-me"> Remember me
      		 </label>
    		 </div>
-   		 <button class="w-100 btn btn-lg btn-primary" type="submit" name="login">Sign in</button>
+   		 <button class="w-100 btn btn-lg btn-primary" id="btn" type="button" name="login">Sign in</button>
     	<p class="mt-5 mb-3 text-muted">© 2017–2022</p>
   		</form>
 		</main>
@@ -51,5 +51,8 @@
 	
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src="/resources/js/member.js">
+
+</script>
 </body>
 </html>
