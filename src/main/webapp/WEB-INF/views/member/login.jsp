@@ -54,5 +54,8 @@
 <script src="/resources/js/member.js">
 
 </script>
+<script>
+	logincheck();
+</script>
 </body>
 </html>

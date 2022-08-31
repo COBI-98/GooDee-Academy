@@ -25,7 +25,7 @@
 					</c:when>
 					<c:otherwise>
             		    <a class="nav-link active" href="/member/login.esh">로그인</a>
-             	   <a class="nav-link active" href="/member/join.esh">회원가입</a>
+             	   <a class="nav-link active" href="/member/join0.esh">회원가입</a>
                 	</c:otherwise>
                 </c:choose>
               </div>

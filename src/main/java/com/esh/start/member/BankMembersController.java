@@ -69,6 +69,21 @@ public class BankMembersController {
 	}
 	
 	//get
+	
+	@RequestMapping(value = "join0.esh", method = RequestMethod.GET)
+	public String join0() {
+		System.out.println("join get");
+		
+		return "member/join0";
+	}
+	
+	@RequestMapping(value = "join0.esh", method = RequestMethod.POST)
+	public String join0(Model model) {
+		System.out.println("join POST");
+		
+		return "member/join";
+	}
+	
 	@RequestMapping(value = "join.esh", method = RequestMethod.GET)
 	public String join() {
 		System.out.println("join get");
