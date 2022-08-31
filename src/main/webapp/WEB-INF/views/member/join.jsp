@@ -54,15 +54,22 @@
 <div class="row align-items-center justify-content-between">
         
             </div>
-            <form class="align-center" action="join.esh" method="post" enctype="multipart/form-data">
+            <form class="align-center" action="join.esh" method="post" enctype="multipart/form-data" id="frm3">
                 <div class="form-group">
-               		<label for="exampleInputEmail1" class="form-label mt-4">아이디</label>
-                    <input type="text" name="userName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-				<div class="form-group has-success">
-					<label class="form-label mt-4" for="inputValid">비밀번호</label>
-					<input type="password" name="password" class="form-control is-valid" id="inputValid">
+               		<label for="id" class="form-label mt-4">아이디</label>
+                    <input type="text" name="userName" class="form-control" id="id" >
+					<div></div>
+				</div>
+				<div class="form-group">
+					<label class="form-label mt-4" for="password">비밀번호</label>
+					<input type="password" name="password" class="form-control" id="password">
+					<div id ="check0"></div>
+				</div>
+				<div class="form-group">
+					<label class="form-label mt-4" for="password_check">비밀번호 확인 </label>
+					<input type="password11" name="password_check" class="form-control is-invalid" id="password_check">
 					<div class="valid-feedback"></div>
+					<div id="chheck"></div>
 				</div>
 				
 
@@ -72,9 +79,10 @@
 					<div class="invalid-feedback">비밀번호가 일치하지 않습니다</div>
 				</div> -->
                 <div class="form-group">
-               		<label for="exampleInputEmail1" class="form-label mt-4">이름</label>
-                    <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
+               		<label for="name1" class="form-label mt-4">이름</label>
+                    <input type="text" name="name" class="form-control" id="name1" >
+					<div></div>
+				</div>
                 
 			    <div class="form-group">
 			      <label for="exampleSelect1" class="form-label mt-4">성별</label>
@@ -82,26 +90,28 @@
 			        <option>남자</option>
 			        <option>여자</option>
 			      </select>
+				  <div></div>
 			    </div>                
                 <div class="form-group">
-               		<label for="exampleInputEmail1" class="form-label mt-4">본인 확인 이메일</label>
-                    <input type="text" name ="email"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="선택입력">
-                </div>
+               		<label for="email" class="form-label mt-4">본인 확인 이메일</label>
+                    <input type="text" name ="email"class="form-control" id="email" aria-describedby="emailHelp" placeholder="선택입력">
+					<div></div>
+				</div>
 				
 				<div class="form-group ">
-					<label class="form-label mt-4" for="inputValid">폰 번호</label>
-					<input type="text" name="phone" class="form-control is-valid" id="inputValid1">
-					
+					<label class="form-label mt-4" for="phone">폰 번호</label>
+					<input type="text" name="phone" class="form-control" id="phone">
+					<div></div>
 				</div>
 				
 				<div class="form-group">
 					<label class="form-label mt-4" for="files">Photo</label>
-					<input type="file" name="photo" class="form-control is-valid" id="files">
-		
+					<input type="file" name="photo" class="form-control" id="files">
+					
 				</div>
 				
 				<div class="d-grid gap-2 mt-4">
-                    <button class="btn btn-primary btn-lg" type="submit" name="join">가입하기</button>
+                    <button class="btn btn-primary btn-lg" type="button" id="join" name="join">가입하기</button>
                 </div>
 
             </form>
@@ -114,7 +124,9 @@
 	
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-     
+<script src="/resources/js/join.js">
+
+</script> 
 
 </body>
 </html>
