@@ -2,12 +2,15 @@ const addFiles = document.getElementById("addFiles");
 const fileadd = document.getElementById("fileadd");
 
 let count = 0;
+let idx = 0;
+
+
 
 fileadd.addEventListener("click", function(){
-    count++;
+    
 
     if(count<6){
-    let div1 = document.createElement("div");
+    let div = document.createElement("div");
     let div_class = document.createAttribute("class");
     let label = document.createElement("label");
     let label_class = document.createAttribute("class");
@@ -17,6 +20,20 @@ fileadd.addEventListener("click", function(){
     let input_name = document.createAttribute("name");
     let input_class = document.createAttribute("class");
     let input_id = document.createAttribute("id");
+    let button = document.createElement("button");
+    let button_type = document.createAttribute("type");
+    let button_class = document.createAttribute("class");
+
+    let c = document.createAttribute("id");
+    
+    buttonAttr = document.createAttribute("title");
+
+    buttonAttr.value = idx;
+
+    c.value="file"+idx;
+
+    div.setAttributeNode(c);
+
 
     div_class.value = "form-group";
     label_class.value = "form-label mt-4";
@@ -27,24 +44,69 @@ fileadd.addEventListener("click", function(){
     input_class.value = "form-control is-valid";
     input_id.value = "files"+count;
     
-    console.log(input_id);
+   
+
+    button_type.value="button";
+    button_class.value="del btn btn-danger";
+    button.innerHTML="삭제";
+
+    button.setAttributeNode(buttonAttr);
 
 
-    div1.setAttributeNode(div_class);
+
+    div.setAttributeNode(div_class);
     label.setAttributeNode(label_class);
     label.setAttributeNode(label_for);
     input.setAttributeNode(input_type);
     input.setAttributeNode(input_name);
     input.setAttributeNode(input_class);
     input.setAttributeNode(input_id);
+    button.setAttributeNode(button_type);
+    button.setAttributeNode(button_class);
+
 
     label.innerHTML ="Photo"+count;
     
     
-    div1.appendChild(label);
-    div1.appendChild(input);
-    addFiles.appendChild(div1);
+    div.appendChild(label);
+    div.appendChild(input);
+    div.appendChild(button);
+    addFiles.appendChild(div);
+    idx++;
+    count++;
     } else{
         alert("최대 5개");
     }
+    
 })
+
+
+
+addFiles.addEventListener("click",function(event){
+
+
+    
+    if(event.target.classList[0] == "del"){
+        
+        console.log(event.target.title);
+        if(event.target.title == 0){
+            const file0 = document.getElementById("file0");
+            file0.remove();
+
+        } else if(event.target.title == 1){
+            const file1 = document.getElementById("file1");
+            file1.remove();
+        } else if (event.target.title == 2){
+            const file2 = document.getElementById("file2");
+            file2.remove();
+        }else if (event.target.title == 3){
+            const file3 = document.getElementById("file3");
+            file3.remove();
+        }else if (event.target.title == 4){
+            const file4 = document.getElementById("file4");
+            file4.remove();
+        }
+    
+    }
+})
+
