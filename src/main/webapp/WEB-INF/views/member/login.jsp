@@ -55,7 +55,7 @@
 
 </script>
 <script>
-	logincheck();
+	// logincheck();
 </script>
 </body>
 </html>

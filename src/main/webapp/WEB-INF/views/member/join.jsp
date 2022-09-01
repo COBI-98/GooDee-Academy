@@ -127,6 +127,8 @@
 <script src="/resources/js/join.js">
 
 </script> 
-
+<script>
+	joincheck();
+</script>
 </body>
 </html>
