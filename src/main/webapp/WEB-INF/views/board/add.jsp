@@ -41,18 +41,11 @@
         작성자<br>
         <input type="text" name="writer" readonly="readonly" value="${sessionScope.check.userName}"><br>
         </div>
-        <div class="form-group">
-					<label class="form-label mt-4" for="files1">Photo1</label>
-					<input type="file" name="files" class="form-control is-valid" id="files1">
-		</div>
-		<div class="form-group">
-					<label class="form-label mt-4" for="files2">Photo2</label>
-					<input type="file" name="files" class="form-control is-valid" id="files2">
-		</div>
-		<div class="form-group">
-					<label class="form-label mt-4" for="files3">Photo3</label>
-					<input type="file" name="files" class="form-control is-valid" id="files3">
-		</div>
+        
+        <div id="addFiles">
+            <button type="button" id="fileadd" class="btn btn-success">파일 추가</button>
+
+        </div>
 				
         
         
@@ -68,5 +61,6 @@
 <script type="text/javascript">
 	$("#contents").summernote();
 </script>
+<script src="/resources/js/board_file.js"></script>
 <body>
 </html>
