@@ -31,6 +31,7 @@
         <input type="text" name="bookRate" placeholder="할인율을 입력하세요"><br>
         </div>
         <input type="submit" name="add" value="책 추가" >
+        
 </form>
 
 </div>

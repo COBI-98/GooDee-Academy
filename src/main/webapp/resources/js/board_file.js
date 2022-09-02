@@ -8,7 +8,8 @@ let idx = 0;
 
 fileadd.addEventListener("click", function(){
     
-
+    count++;
+    
     if(count<6){
     let div = document.createElement("div");
     let div_class = document.createAttribute("class");
@@ -20,6 +21,7 @@ fileadd.addEventListener("click", function(){
     let input_name = document.createAttribute("name");
     let input_class = document.createAttribute("class");
     let input_id = document.createAttribute("id");
+
     let button = document.createElement("button");
     let button_type = document.createAttribute("type");
     let button_class = document.createAttribute("class");
@@ -73,7 +75,7 @@ fileadd.addEventListener("click", function(){
     div.appendChild(button);
     addFiles.appendChild(div);
     idx++;
-    count++;
+    
     } else{
         alert("최대 5개");
     }
@@ -84,28 +86,15 @@ fileadd.addEventListener("click", function(){
 
 addFiles.addEventListener("click",function(event){
 
+    let button = event.target
 
-    
     if(event.target.classList[0] == "del"){
         
         console.log(event.target.title);
-        if(event.target.title == 0){
-            const file0 = document.getElementById("file0");
-            file0.remove();
-
-        } else if(event.target.title == 1){
-            const file1 = document.getElementById("file1");
-            file1.remove();
-        } else if (event.target.title == 2){
-            const file2 = document.getElementById("file2");
-            file2.remove();
-        }else if (event.target.title == 3){
-            const file3 = document.getElementById("file3");
-            file3.remove();
-        }else if (event.target.title == 4){
-            const file4 = document.getElementById("file4");
-            file4.remove();
-        }
+        console.log(button.title);
+        console.log(count);
+        document.getElementById("file"+button.title).remove();
+        count--;
     
     }
 })
