@@ -17,6 +17,7 @@
                 <a class="nav-link active" href="/notice/list.esh">공지사항</a>
                 <a class="nav-link active" href="/qna/list.esh">Q & A</a>
                 <a class="nav-link active" href="/member/search.esh">회원검색</a>
+                <a class="nav-link active" href="/member/map.esh">지도</a>
                 
               		  <c:choose>
                 	<c:when test="${not empty check}">
