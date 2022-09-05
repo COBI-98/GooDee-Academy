@@ -30,6 +30,12 @@ public class BankBookDAO implements BookDAO{
 	private final String NAMESPACE="com.esh.start.bankbook.BankBookDAO.";
 	
 	
+	public int setComment(BankBookCommentDTO bankBookCommentDTO) throws Exception{
+	
+		return sqlSession.insert(NAMESPACE+"setComment",bankBookCommentDTO);
+	}
+	
+	
 	@Override
 	public int setBankBook(BankBookDTO bankBookDTO) throws Exception {
 		

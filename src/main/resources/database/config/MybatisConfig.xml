@@ -9,6 +9,8 @@
 		<typeAlias type="com.esh.start.member.BankMembersFileDTO" alias="BankMembersFileDTO"/>
 		<typeAlias type="com.esh.start.bankaccount.BankAccountDTO" alias="BankAccountDTO"></typeAlias>
 		<typeAlias type="com.esh.start.bankbook.BankBookDTO" alias="BankBookDTO"></typeAlias>
+		<typeAlias type="com.esh.start.bankbook.BankBookCommentDTO" alias="BankBookCommentDTO"></typeAlias>
+		
 		
 		<typeAlias type="com.esh.start.board.impl.BoardDTO" alias="BoardDTO"></typeAlias>
 		<typeAlias type="com.esh.start.board.impl.BoardFileDTO" alias="BoardFileDTO"></typeAlias>
