@@ -79,8 +79,21 @@ public class NoticeController {
 			ModelAndView mv = new ModelAndView();
 			int result = noticeService.setadd(boardDTO, files, httpsession.getServletContext());
 			
+			int result1 = 0;
+			String message = "실패";
+			String url = "add.esh";
 			
-			mv.setViewName("redirect:./list.esh");
+			if(boardDTO != null) {
+				message = "성공";
+				url = "list.esh";
+				result1 = 1;		
+			}
+			
+			mv.addObject("message", message);
+			mv.addObject("result", result1);
+			mv.addObject("url", url);
+			mv.setViewName("common/result");
+			
 			return mv;
 			
 		}

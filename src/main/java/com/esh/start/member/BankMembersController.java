@@ -60,19 +60,32 @@ public class BankMembersController {
 	}
 	
 	@RequestMapping(value = "login.esh", method = RequestMethod.POST)
-	public String login(HttpServletRequest request,BankMembersDTO bankMembersDTO,Model model) throws Exception {
+	public ModelAndView login(HttpServletRequest request,BankMembersDTO bankMembersDTO,Model model) throws Exception {
 		System.out.println("DB에 로그인 실행");
 		// "Redirect: 다시 접속할 URL 주소(절대경로,상대경로)"
-		
+		ModelAndView mv = new ModelAndView();
 		bankMembersDTO = bankMembersService.getLogin(bankMembersDTO);
 //		model.addAttribute("check", bankMembersDTO);
+		int result = 0;
+		String message = "로그인실패";
+		String url ="./login.esh";
+		if(bankMembersDTO!=null) {
+			result = 1;
+			url = "../";
+			message = "로그인성공";
+		}
+		
+		mv.addObject("result", result);
+		mv.addObject("message", message);
+		mv.addObject("url", url);
+		mv.setViewName("common/result");
 		
 		HttpSession session =request.getSession();
 		
 		session.setAttribute("check", bankMembersDTO);
 		
 		System.out.println(bankMembersDTO);
-		return "redirect:../";
+		return mv;
 	}
 	
 	//get
