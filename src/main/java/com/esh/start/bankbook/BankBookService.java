@@ -11,6 +11,19 @@ public class BankBookService {
 	//BankBook Table에 insert
 		
 		@Autowired
+		private BankBookCommentDAO bankBookCommentDAO;
+		public int setComment(BankBookCommentDTO bankBookCommentDTO) throws Exception{
+			
+			return bankBookCommentDAO.setComment(bankBookCommentDTO);
+		}
+	
+	
+	
+		//----------------------------------------------
+	
+	
+	
+		@Autowired
 		private BankBookDAO bankBookDAO;
 		
 		public int setBankBook(BankBookDTO bankBookDTO) throws Exception{

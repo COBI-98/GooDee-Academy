@@ -24,6 +24,24 @@ public class BankBookController {
 	// /bankbook/detail GET Detail
 	
 	
+	@RequestMapping(value="setReply", method=RequestMethod.POST)
+	   public void setComment(BankBookCommentDTO bankBookCommentDTO, HttpSession session) throws Exception{
+	      System.out.println("답글 실행");
+	      
+
+	      
+	      
+	      int result = bankBookService.setComment(bankBookCommentDTO);
+	      
+	      
+	      
+	  }
+	   
+	
+	
+	
+	//-------------------------------------------
+	
 	@RequestMapping(value = "list.esh", method =RequestMethod.GET)
 	public String list(Model model) throws Exception {
 //			ModelAndView mv = new ModelAndView()
