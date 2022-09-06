@@ -33,11 +33,11 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletResponse response) {
 		
-		try {
-			Thread.sleep(10000);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(10000);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		
 		
 		return "index";

@@ -15,7 +15,10 @@ public class Comment_Test extends MyAbstractTest {
 	@Autowired
 	private BankBookCommentDAO bankBookCommentDAO;
 	
-	@Test
+	
+	
+	
+	// @Test
 	public void Commenttest() throws Exception {
 		BankBookCommentDTO bankBookCommentDTO = new BankBookCommentDTO();
 		bankBookCommentDTO.setBookNum(10L);

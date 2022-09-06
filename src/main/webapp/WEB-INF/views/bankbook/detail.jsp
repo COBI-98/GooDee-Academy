@@ -49,10 +49,14 @@
 		
 	</table>
 	
-	<button type="button" class="btn btn-primary" onclick="location.href='./list.esh'">리스트보기</button>
-	<button type="button" class="btn btn-success" onclick="location.href='./update.esh?bookNum=${requestScope.test.bookNum}'">수정하기</button>
-	<button type="button" class="btn btn-danger" onclick="location.href='./delete.esh?bookNum=${requestScope.test.bookNum}'">삭제하기</button>
 	
+	<div>
+		<button type="button" class="btn btn-primary" onclick="location.href='./list.esh'">리스트보기</button>
+		<c:if test="${not empty sessionScope.check}">
+		<button type="button" class="btn btn-success" onclick="location.href='./update.esh?bookNum=${requestScope.test.bookNum}'">수정하기</button>
+		<button type="button" class="btn btn-danger" onclick="location.href='./delete.esh?bookNum=${requestScope.test.bookNum}'">삭제하기</button>
+		</c:if>
+	</div>
 	
 	
 	
@@ -62,6 +66,27 @@
 	<button type="button" class="btn btn-primary container-fluid col-lg-4 mt-5" onclick="location.href='../bankAccount/add.esh?bookNum=${test.bookNum}'">상품 가입하기</button>
 	
 	</c:if>
+
+	<!-- COMMENT -->
+	<div class="row">
+		<div class="mb-3">
+			<label for="writer" class="form-label">작성자</label>
+			<input type="email" class="form-control" id="writer">
+		  </div>
+		  <div class="mb-3">
+			<label for="contents" class="form-label">내용</label>
+			<textarea class="form-control" id="contents" rows="3"></textarea>
+		  </div>
+		  <div class="mb-3">
+			<button type="button" id="commentAdd" data-bookNum="${test.bookNum}">댓글작성</button>
+		  </div>
+	</div>
+
+	<!-- COMMENT LIST 출력 -->
+	<div id="commentList">
+		
+	</div>
+
 	</div>
 	
 	</section>
@@ -70,5 +95,7 @@
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 	
+
+<script src="/resources/js/bankBookComment.js"></script>
 </body>
 </html>
