@@ -7,17 +7,36 @@ public class CommentPager {
 	private Long page;
 	private Long perPage;
 	
+	private Long totalPage;
+	
+	public Long getTotalPage() {
+		return totalPage;
+	}
+
+	public void setTotalPage(Long totalPage) {
+		this.totalPage = totalPage;
+	}
+
 	public void  getRowNum() throws Exception{
 		startRow=(this.getPage()-1)*this.getPerPage()+1;
 		lastRow= this.getPage()*this.getPerPage();	
 	}
 	
+	//전체 페이지 갯수 계산
+	public void makePage(Long totalCount) {
+		this.totalPage = totalCount/this.getPerPage();
+		if(totalCount%this.getPerPage() != 0) {
+			this.totalPage++;
+		}
+	}
+
 	public Long getPage() {
 		if(this.page == null || this.page<1) {
 			this.page =1L;
 		}
 		return page;
 	}
+	
 
 	public void setPage(Long page) {
 		this.page = page;
@@ -25,7 +44,7 @@ public class CommentPager {
 
 	public Long getPerPage() {
 		if(this.perPage == null || this.perPage<1) {
-			this.perPage = 10L;
+			this.perPage = 5L;
 		}
 		
 		return perPage;

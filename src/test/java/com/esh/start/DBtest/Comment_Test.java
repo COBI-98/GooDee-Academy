@@ -16,18 +16,21 @@ public class Comment_Test extends MyAbstractTest {
 	private BankBookCommentDAO bankBookCommentDAO;
 	
 	
-	
-	
-	// @Test
+	@Test
 	public void Commenttest() throws Exception {
+//		BankBookCommentDTO bankBookCommentDTO = new BankBookCommentDTO();
+//		bankBookCommentDTO.setBookNum(10L);
+//		bankBookCommentDTO.setContents("test0906");
+//		bankBookCommentDTO.setWriter("ESH");
+//		
+//		int result = bankBookCommentDAO.setComment(bankBookCommentDTO);
+//		
+//		assertEquals(1, result);
 		BankBookCommentDTO bankBookCommentDTO = new BankBookCommentDTO();
-		bankBookCommentDTO.setBookNum(10L);
-		bankBookCommentDTO.setContents("test0906");
-		bankBookCommentDTO.setWriter("ESH");
+		bankBookCommentDTO.setNum(661L);
+		int result = bankBookCommentDAO.setCommentDelete(bankBookCommentDTO);
 		
-		int result = bankBookCommentDAO.setComment(bankBookCommentDTO);
 		
-		assertEquals(1, result);
 	}
 
 }

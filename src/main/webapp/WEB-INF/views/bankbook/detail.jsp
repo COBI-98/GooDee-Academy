@@ -12,10 +12,18 @@
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
-</head>
 <style>
     .align-center {text-align: center;}
+
+	input.img-button {
+        background: url( "/resources/img/" ) no-repeat;
+        border: none;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+      }
 </style>
+</head>
 <body>
 
 
@@ -83,12 +91,45 @@
 	</div>
 
 	<!-- COMMENT LIST 출력 -->
-	<div id="commentList">
-		
-	</div>
+	<div>
+		<table id="commentList" border="1" class="table table-warning table-striped">
+
+
+		</table>
 
 	</div>
-	
+	<button type="button" id="more" class="btn btn-danger align-center">더보기</button>
+
+  
+	  <!-- Modal -->
+	  <button type="button" style="display: none;"class="btn btn-primary" id ="up" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Update</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form>
+				<div class="mb-3">
+					<label for="recipient-name" class="col-form-label">writer</label>
+					<input type="text" class="form-control" id="recipient-name">
+				</div>
+				<div class="mb-3">
+					<label for="message-text" class="col-form-label">contents</label>
+					<textarea class="form-control" id="message-text"></textarea>
+				</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Send message</button>
+			</div>
+			</div>
+		</div>
+		</div>
 	</section>
 	
 	<c:import url="../template/footer.jsp"></c:import>

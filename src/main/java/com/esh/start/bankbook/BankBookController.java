@@ -1,7 +1,9 @@
 package com.esh.start.bankbook;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -65,16 +67,47 @@ public class BankBookController {
 	 
 	 @RequestMapping(value ="commentList", method = RequestMethod.GET)
 	 @ResponseBody
-	 public List<BankBookCommentDTO> getCommentList(CommentPager commentPager) throws Exception{
+	 public Map<String, Object> getCommentList(CommentPager commentPager) throws Exception{
 		 ModelAndView mv = new ModelAndView();
 		 List<BankBookCommentDTO> ar = bankBookService.getCommentList(commentPager);
 		 
-		 String jsonComment = "";
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 
+		 map.put("list", ar);
+		 map.put("pager", commentPager);
 		 
 		 
 		 
-		return ar; 
+		return map; 
 	 }
+	 
+	 @RequestMapping(value = "commentDelete", method = RequestMethod.POST)
+	 @ResponseBody
+	 public int setCommentDelete(BankBookCommentDTO bankBookCommentDTO) throws Exception{
+		 
+		 int result = bankBookService.setCommentDelete(bankBookCommentDTO);
+		 
+		 if(result>=1) {
+			 System.out.println("삭제성공");
+		 }
+		 
+		 return result;
+	 }
+	 
+	 @RequestMapping(value = "commentUpdate", method = RequestMethod.POST)
+	 @ResponseBody
+	 public int setcommentUpdate(BankBookCommentDTO bankBookCommentDTO) throws Exception{
+		 
+		 int result = bankBookService.setcommentUpdate(bankBookCommentDTO);
+		 
+		 if(result>=1) {
+			 System.out.println("수정성공");
+		 }
+		 
+		 return result;
+	 }
+	 
+	 
 	   
 	
 	//---------------------COMMENT--------------------------------------

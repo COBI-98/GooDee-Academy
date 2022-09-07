@@ -4,11 +4,23 @@
          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
          
 <mapper namespace="com.esh.start.bankbook.BankBookCommentDAO">
+	<select id="getCommentListTotalCount" parameterType="CommentPager" resultType="Long">
+		SELECT COUNT(NUM) FROM BB_COMMENT WHERE BOOKNUM=#{bookNum}
+	</select>
   
   <insert id="setComment" parameterType="BankBookCommentDTO">
   	INSERT INTO BB_COMMENT
 	VALUES(board_seq.nextval,#{bookNum},#{writer},#{contents},SYSDATE)
   </insert>
+ 
+ 
+  <delete id="setCommentDelete" parameterType="BankBookCommentDTO">
+  	delete bb_comment where num = #{num}
+  </delete>
+  
+  <update id="setcommentUpdate" parameterType="BankBookCommentDTO">
+ 	UPDATE BB_COMMENT SET CONTENTS = #{contents}, REGDATE=SYSDATE WHERE NUM = #{num}
+  </update>
  
   <select id="getCommentList" parameterType="CommentPager" resultType="BankBookCommentDTO">
   	SELECT * FROM

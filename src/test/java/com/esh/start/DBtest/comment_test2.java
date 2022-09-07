@@ -17,7 +17,7 @@ public class comment_test2 extends MyAbstractTest {
 	@Autowired
 	private BankBookCommentDAO bankBookCommentDAO;
 	
-	@Test
+	// @Test
 	public void test() throws Exception {
 		CommentPager commentPager = new CommentPager();
 		commentPager.setBookNum(10L);
@@ -28,5 +28,6 @@ public class comment_test2 extends MyAbstractTest {
 		
 		assertNotEquals(0, ar.size());
 	}
+	
 
 }
