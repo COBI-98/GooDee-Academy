@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.esh.start.bankbook.BankBookCommentDTO;
 import com.esh.start.board.impl.BoardDTO;
+import com.esh.start.member.BankMembersDTO;
 import com.esh.start.util.Pager;
 
 @Controller
@@ -68,11 +70,17 @@ public class NoticeController {
 		
 		//글작성
 		@RequestMapping(value = "add.esh", method = RequestMethod.GET)
-		public String setAdd(Model model)throws Exception{
-			
-			return "board/add";
+		public String setAdd(HttpSession session)throws Exception{
+			BankMembersDTO bankMembersDTO = (BankMembersDTO)session.getAttribute("check");
+			if(bankMembersDTO != null) {
+				
+				return "board/add";
+			}else {
+				return "redirect:../member/login.esh";
+			}
 			
 		}
+		
 		
 		@RequestMapping(value = "add.esh", method = RequestMethod.POST)
 		public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile [] files,HttpSession httpsession)throws Exception{

@@ -97,7 +97,8 @@ public class BankBookController {
 	 @RequestMapping(value = "commentUpdate", method = RequestMethod.POST)
 	 @ResponseBody
 	 public int setcommentUpdate(BankBookCommentDTO bankBookCommentDTO) throws Exception{
-		 
+		 System.out.println(bankBookCommentDTO.getContents());
+		 System.out.println(bankBookCommentDTO.getNum());
 		 int result = bankBookService.setcommentUpdate(bankBookCommentDTO);
 		 
 		 if(result>=1) {

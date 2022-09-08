@@ -94,7 +94,7 @@ function getCommentList(p,bn){
 
             let pager = result.pager; // Map commentPager
             let ar = result.list;       // Map List
-
+            const body = document.createElement("tbody");
             for(let i =0; i<ar.length; i++){
                 
                 const tr = document.createElement("tr");
@@ -106,14 +106,22 @@ function getCommentList(p,bn){
                 
                 const td_contents = document.createTextNode(ar[i].contents);
                 const td_writer = document.createTextNode(ar[i].writer);
-                const td_regdate = document.createTextNode(ar[i].regDate);
+                const td_date = document.createTextNode(ar[i].regDate)
+                // const date1 = new Date(ar[i].regDate)
+                // const month = date1.getMonth()+1
+                // const date = date1.getDate()
+                // const year = date1.getFullYear();
 
-                
+                // const td_date = document.createTextNode(year+"-"+month+"-"+date);
+
+                // console.log(year)
+                // console.log(month);
+                // console.log(date)
                 td1.appendChild(td_contents);
                 tr.appendChild(td1);
                 td2.appendChild(td_writer);
                 tr.appendChild(td2);
-                td3.appendChild(td_regdate);
+                td3.appendChild(td_date);
                 tr.appendChild(td3);
                 
                 const td4 = document.createElement("td");
@@ -132,6 +140,16 @@ function getCommentList(p,bn){
                 td5.setAttributeNode(tdAttr2);
                 tr.appendChild(td5);
 
+                let tdAttr5 = document.createAttribute("data-comment-num");
+                tdAttr5.value=ar[i].num;
+                td4.setAttributeNode(tdAttr5);
+
+
+                tr.appendChild(td4);
+
+
+
+
                 let tdAttr = document.createAttribute("data-comment-num");
                 tdAttr.value=ar[i].num;
                 td5.setAttributeNode(tdAttr);
@@ -139,7 +157,8 @@ function getCommentList(p,bn){
 
                 tr.appendChild(td5);
 
-                commentList.append(tr);
+
+                body.appendChild(tr);
 
                 if(page >= pager.totalPage){
                     more.classList.add('disabled');
@@ -147,6 +166,8 @@ function getCommentList(p,bn){
                     more.classList.remove('disabled');
                 }
             }
+
+            commentList.append(body);
             // commentList.removeChild();
            
 
@@ -227,51 +248,74 @@ commentList.addEventListener("click",function(event){
                     } 
                  }
          }
-    } else if (event.target.className="update"){
+    } else if (event.target.className=="update"){
         let check = window.confirm("수정 하시겠습니까?");
         if(check){
-            // let number1 = event.target.previousSibling.previousSibling.previousSibling;
-            // let v = contents.innerHTML;
-            // number1.innerHTML="<textarea>"+v+"</textarea>"
             
-        
+            let contents = event.target.previousSibling.previousSibling.previousSibling.innerHTML;
+            let writer = event.target.previousSibling.previousSibling.innerHTML;
+            let num = event.target.getAttribute("data-comment-num")
+
+            document.querySelector("#updateContents").value = contents;
+            document.querySelector("#updateWriter").value = writer
+            document.querySelector("#num").value = num;
+            
+            
             document.querySelector("#up").click();
 
-            // const xhttp = new XMLHttpRequest;
-              // 2. url 준비
-            // xhttp.open("POST","./commentUpdate");
-
-            // //3. Enctype
-            // // 요청 hearder 정보
-            // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-            // // 4. post 파라미터 전송
-            // xhttp.send("num="+number1);
-
-            // xhttp.onreadystatechange=function(){
-            //      if(this.readyState==4 && this.status==200){
-            //         let result1 = xhttp.responseText.trim();
-            //         console.log(result1);
-            //             if(result1==1){
-
-            //                 if(commentList.children.length != 0){
-            //                    for(let i=0; i<commentList.children.length;){
-        
-            //                        commentList.children[0].remove();
-            //                     }
-            //                 }
-
-            //              page=1;
-            //               getCommentList(page,bookNum);
-                    
-            //             } else{
-            //                 console.log("수정실패");
-            //             }
-            //         } 
-            //      }
+            
          }
     } else {
 
     }
 })
 
+
+//------------------------------------------modal update------------
+const update = document.querySelector("#update");
+const updateContents = document.querySelector("#updateContents")
+
+
+update.addEventListener("click", function(){
+    
+    // modal => num , contents
+    
+    let num =  document.querySelector("#num").value; 
+    let uv = updateContents.value;
+    
+    
+    console.log(num);
+    console.log(uv);
+    const xhttp = new XMLHttpRequest;
+    // 2. url 준비
+    xhttp.open("POST","./commentUpdate");
+
+    //3. Enctype
+    // 요청 hearder 정보
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    // 4. post 파라미터 전송
+    xhttp.send("num="+num+"&contents="+uv);
+
+            xhttp.onreadystatechange=function(){
+                 if(this.readyState==4 && this.status==200){
+                    let result1 = xhttp.responseText.trim();
+                    console.log(result1);
+                        if(result1==1){
+                            alert("수정완료");
+                            if(commentList.children.length != 0){
+                               for(let i=0; i<commentList.children.length;){
+        
+                                   commentList.children[0].remove();
+                                }
+                            }
+
+                         page=1;
+                          getCommentList(page,bookNum);
+                    
+                        } else{
+                            console.log("수정실패");
+                        }
+                    } 
+                 }
+})

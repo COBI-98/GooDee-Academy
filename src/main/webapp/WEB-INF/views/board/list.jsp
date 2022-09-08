@@ -88,9 +88,11 @@
 	</table>
 	
 	
-	<c:if test="${not empty sessionScope.check}">
-	<a href="./add.esh">글쓰기</a><br>
-	</c:if>
+	<div>
+		<a href="./add.esh">글쓰기</a><br>
+	</div>
+		
+	
 	
 	
 	<nav aria-label="Page navigation example">
