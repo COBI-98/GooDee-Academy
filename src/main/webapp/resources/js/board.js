@@ -1,10 +1,8 @@
 
 // let kind = '${param.kind}';
 // alert(kind);
-
-
 function check(){
-    const cb = document.getElementById("cb");
+    const cb = document.getElementsByClassName("cb");
     const check_all = document.getElementById("check_all");
 
     // const cb = document.querySelectorAll(".cb");
@@ -27,6 +25,8 @@ function check(){
             break;
         }
     }
+
+
     check_all.checked =result;
 
     check_all.addEventListener("click",function(){

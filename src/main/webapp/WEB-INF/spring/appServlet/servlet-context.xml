@@ -21,7 +21,39 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- Interceptor 설정 -->
+	<!-- Interceptor 객체 생성 -->
+	<beans:bean class="com.esh.start.interceptor.TestInterceptor" id="testInterceptor"></beans:bean>
+	
+	
+	<!-- (URL-Interceptor mapping) -->
+	<!--  bean 객체 -->
+	<interceptors>
+		 <!-- <interceptor>
+			<mapping path="/qna/*"/>
+			<mapping path="/member/myPage.esh"/>
+			<exclude-mapping path="/qna/list.esh"/>
+			
+			<beans:bean class="com.esh.start.interceptor.MemberInterceptor"></beans:bean>		
+		 </interceptor> -->
+		<!-- URL 주소 -->
+		<interceptor>
+			<mapping path="/**"/>
+			<beans:ref bean="testInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/qna/update.esh"/>
+			<mapping path="/notice/update.esh"/>
+			
+			<beans:bean class="com.esh.start.interceptor.WriteCheckInterceptor"></beans:bean>
+		</interceptor>
+		
+		
+	</interceptors>
+	
 	<context:component-scan base-package="com.esh.start" />
+	
 	
 	
 	

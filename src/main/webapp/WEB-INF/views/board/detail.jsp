@@ -46,10 +46,9 @@
 			</div>
 		</div>
 		
-		<c:if test="${sessionScope.check.userName == detail.writer}">
 	<a href = "./update.esh?num=${detail.num}" class="btn btn-success">글 수정하기</a><br>
 	<a href = "./delete.esh?num=${detail.num}" class="btn btn-danger">글 삭제하기</a>
-	</c:if>
+	
 		
 		<div class="row col-lg-4 mt-5">
 			<a href="./reply.esh?num=${detail.num}" class="btn btn-danger">Reply</a>

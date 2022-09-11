@@ -38,7 +38,7 @@ public class HomeController {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
-		
+		System.out.println("Controller 실행");
 		
 		return "index";
 	}
