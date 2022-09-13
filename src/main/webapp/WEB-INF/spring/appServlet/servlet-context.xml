@@ -23,9 +23,9 @@
 	
 	<!-- Interceptor 설정 -->
 	<!-- Interceptor 객체 생성 -->
-	<beans:bean class="com.esh.start.interceptor.TestInterceptor" id="testInterceptor"></beans:bean>
-	
-	
+	<!-- <beans:bean class="com.esh.start.interceptor.TestInterceptor" id="testInterceptor"></beans:bean> -->
+	<beans:bean class="com.esh.start.interceptor.AdminCheckInterceptor" id ="adminCheckInterceptor"></beans:bean>
+	<beans:bean class="com.esh.start.interceptor.MemberInterceptor" id="memberInterceptor"></beans:bean>
 	<!-- (URL-Interceptor mapping) -->
 	<!--  bean 객체 -->
 	<interceptors>
@@ -38,16 +38,32 @@
 		 </interceptor> -->
 		<!-- URL 주소 -->
 		<interceptor>
-			<mapping path="/**"/>
-			<beans:ref bean="testInterceptor"/>
+			<mapping path="/notice/**"/>
+			<mapping path="/qna/**"/>
+			<exclude-mapping path="/notice/list.esh"/>
+			<exclude-mapping path="/notice/detail.esh"/>
+			<exclude-mapping path="/qna/list.esh"/>
+			<beans:ref bean="memberInterceptor"/>
 		</interceptor>
 		
+		
 		<interceptor>
-			<mapping path="/qna/update.esh"/>
+			<mapping path="/notice/add.esh"/>
+			<mapping path="/qna/add.esh"/>
 			<mapping path="/notice/update.esh"/>
-			
-			<beans:bean class="com.esh.start.interceptor.WriteCheckInterceptor"></beans:bean>
+			<mapping path="/qna/update.esh"/>
+			<mapping path="/notice/delete.esh"/>
+			<mapping path="/qna/delete.esh"/>
+		
+			<!-- <mapping path="/notice/**"/>
+			<exclude-mapping path="/notice/list.esh"/>
+			<exclude-mapping path="/notice/detail.esh"/> -->
+					
+			<beans:ref bean="adminCheckInterceptor"/>
 		</interceptor>
+		
+		
+		
 		
 		
 	</interceptors>

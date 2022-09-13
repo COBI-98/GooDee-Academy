@@ -13,9 +13,29 @@
 	</insert>
          <!-- id는 DAO의 메서드명과 동일하게 -->
     <select id="getLogin" parameterType="com.esh.start.member.BankMembersDTO" 
-         resultType="com.esh.start.member.BankMembersDTO">
-               SELECT USERNAME, NAME FROM BANKMEMBERS WHERE USERNAME=#{userName} AND PASSWORD=#{password}
+         resultMap="getRoleResult">
+         SELECT BB.USERNAME, BB.NAME, MR.ROLENUM,R.ROLENAME
+		FROM 
+		    BANKMEMBERS BB
+		    INNER JOIN
+		    MEMBER_ROLE MR
+		    ON (BB.USERNAME = MR.USERNAME)
+		    	INNER JOIN
+		   		 ROLE R
+		  		  ON (MR.ROLENUM = R.ROLENUM)
+		WHERE BB.USERNAME = #{userName} AND BB.PASSWORD =#{password}
+		ORDER BY R.ROLENUM ASC
     </select>
+    
+    <resultMap type="BankMembersDTO" id="getRoleResult">
+    	<id column="USERNAME" property="userName"></id>
+		<result column="NAME" property="name"></result>
+		<collection property="roleDTOs" javaType="List" ofType="RoleDTO">
+			<id column="ROLENUM" property="roleNum"></id>
+			<result column="ROLENAME" property="roleName"></result>
+			
+		</collection> 
+    </resultMap>
     
     <select id="getSearchById" parameterType="java.lang.String" resultType="com.esh.start.member.BankMembersDTO">
 		SELECT * FROM BANKMEMBERS WHERE USERNAME LIKE '%'||#{search}||'%' ORDER BY USERNAME ASC	

@@ -6,7 +6,8 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.esh.start.member.BankMembersDTO" alias="BankMembersDTO"/>
-		<typeAlias type="com.esh.start.member.BankMembersFileDTO" alias="BankMembersFileDTO"/>
+		<typeAlias type="com.esh.start.member.BankMembersFileDTO" alias="BankMembersFileDTO"/>	
+		<typeAlias type="com.esh.start.member.RoleDTO" alias="RoleDTO"/>
 		<typeAlias type="com.esh.start.bankaccount.BankAccountDTO" alias="BankAccountDTO"></typeAlias>
 		<typeAlias type="com.esh.start.bankbook.BankBookDTO" alias="BankBookDTO"></typeAlias>
 		<typeAlias type="com.esh.start.bankbook.BankBookCommentDTO" alias="BankBookCommentDTO"></typeAlias>

@@ -4,14 +4,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import com.esh.start.member.BankMembersDAO;
 
 public class MemberInterceptor extends HandlerInterceptorAdapter {
 
+	@Autowired
+	private  BankMembersDAO bankMembersDAO;
+	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		// TODO Auto-generated method stub
+		
+		//controller 안 거치고 dao db 활용.
+		System.out.println(bankMembersDAO);
 		
 		HttpSession session = request.getSession();
 		
