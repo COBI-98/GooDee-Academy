@@ -8,12 +8,24 @@ import javax.servlet.ServletContext;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.esh.start.file.FileDTO;
+
 @Component
 public class FileManager {
 	
 	
 	//선언만 된 경우 -> 기본값 null인 상황
 	
+	//file delete
+	public boolean deleteFile(String path,ServletContext servletContext, FileDTO fileDTO) throws Exception{
+		String realPath = servletContext.getRealPath(path);
+		System.out.println(realPath);
+		
+		File file = new File(realPath, fileDTO.getFileName());
+		
+		
+		return file.delete();
+	}
 	
 	public String saveFile(String path,ServletContext servletContext,MultipartFile multipartFile) throws Exception{
 		// 1. 실제 경로

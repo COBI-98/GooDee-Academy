@@ -92,4 +92,10 @@ public class QnaService implements BoardService {
 		
 		return result;
 	}
+
+	@Override
+	public int setFileDelete(BoardFileDTO boardFileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return qnaDAO.setFileDelete(boardFileDTO);
+	}
 }
