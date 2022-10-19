@@ -13,13 +13,40 @@
 		limit #{startRow}, #{lastRow}
  	</select>
  	
- 	<insert id="setQnaList" parameterType="QnaVO" >
+ 	<insert id="setQnaList" parameterType="QnaVO" useGeneratedKeys="true" keyProperty="num">	
  		INSERT INTO QNA
-		VALUE (num,#{writer},#{title},#{contents},0,now(),0,0,0);
+		VALUE (#{num},#{writer},#{title},#{contents},0,now(),0,0,0);
+ 	</insert>
+ 	
+ 	<insert id="setQnaFileAdd" parameterType="QnaFileVO">
+ 		INSERT INTO QNAFILES
+ 		VALUE (NULL,#{num},#{fileName},#{oriName})
  	</insert>
  	
  	<select id="getCount" resultType="Long" parameterType="Pager">
 		SELECT
 		COUNT(NUM) FROM QNA
 	</select>
+	
+	<select id="getListDetail" parameterType="QnaVO" resultMap="getFileList">
+		SELECT * 
+			FROM QNA q
+			left join
+			QNAFILES qf 
+			ON (q.num = qf.num)
+			where q.num = #{num}
+	</select>
+	
+	<resultMap type="QnaVO" id="getFileList">
+		<id column="NUM" property="num"></id>
+		<result column="TITLE" property="title"></result>
+		<result column="WRITER" property="writer"></result>
+		<result column="CONTENTS" property="contents"></result>
+		<result column="REGDATE" property="regDate"></result>
+		<collection property="qnaFileVOs" javaType="List" ofType="QnaFileVO">
+			<id column="FILENUM" property="fileNum"></id>
+			<result column = "FILENAME" property="fileName"></result>
+			<result column = "ORINAME" property="oriName"></result>
+		</collection>
+	</resultMap>
 </mapper>

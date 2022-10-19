@@ -3,6 +3,8 @@ package com.esh.home.board.qna;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,11 +56,20 @@ public class QnaController {
 		  int result = qnaService.setQnaList(qnaVO);
 		  
 		  redirectAttributes.addAttribute("result", result);		  
-		 
-		  
-		  
 		  
 		  return "redirect:./list";
+	  }
+	  
+	  @GetMapping("detail")
+	  public ModelAndView getListDetail(QnaVO qnaVO) throws Exception {
+		  ModelAndView mv = new ModelAndView();
+		  System.out.println(qnaVO.getNum());
+		  qnaVO = qnaService.getListDetail(qnaVO);
+		  
+		  mv.addObject("qnaVO", qnaVO);
+		  mv.setViewName("/qna/detail");
+		  
+		  return mv;
 	  }
 	
 	
