@@ -18,8 +18,11 @@ import com.esh.home.board.qna.QnaVO;
 @Controller
 public class HomeController {
    
-   @Value("${myMessage}")
-   private String message;
+//   @Value("${myMessage}")
+//   private String message;
+   
+   @Value("${my.default}")
+   private String app;
    
    //private final Logger log = LoggerFactory.getLogger(HomeController.class);
    private final Logger log = LoggerFactory.getLogger(this.getClass());
