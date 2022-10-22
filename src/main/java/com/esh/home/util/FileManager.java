@@ -37,7 +37,7 @@ public class FileManager extends AbstractView {
 		log.info("------------");
 		log.info("FILEVO {}", qnaFileVO);
 		
-		File file = new File("C:/result/upload/"+path+"/",qnaFileVO.getFileName());
+		File file = new File("/app/upload/"+path+"/",qnaFileVO.getFileName());
 		
 		// 한글 처리
 		response.setCharacterEncoding("UTF-8");
@@ -79,6 +79,7 @@ public class FileManager extends AbstractView {
 		bf.append("_");
 		bf.append(multipartFile.getOriginalFilename());
 		
+		filename = bf.toString();
 		// 3. file 저장하기 Save
 		File file = new File(path, bf.toString());
 		
