@@ -39,8 +39,8 @@
 	    <tr class="table-primary">
 	    <th>파일</th>
 		     
-				 <td>${file.fileName }</td>
-			
+				 <td><img alt="" src="/file/${file.fileName}"></td>
+			    <td><a href="/fileDown?fileName=${file.oriName}">down</a></td>	
 			
 	    </tr>
 	</c:forEach>
