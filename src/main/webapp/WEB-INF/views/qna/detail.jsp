@@ -10,8 +10,45 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
-	<h1>QNA Detail List</h1>
+	<section class="container-fluid col-lg-8 mt-5">
+
+
+	<h1> qna detail page</h1>
 	
+	
+	
+	<table class="table table-bordered border-primary">
+  <tbody>
+  
+    <tr >
+    	<th>제목</th>
+    	<td>${qnaVO.title }</td>
+      
+    </tr>
+     <tr >
+    	<th>제작자</th>
+    	<td>${qnaVO.writer }</td>
+    </tr>
+     <tr>
+    	<th>내용</th>
+    	<td>${qnaVO.contents }</td>
+    </tr>
+    
+    
+    <c:forEach items="${qnaVO.qnaFileVOs }" var="file">
+	    <tr class="table-primary">
+	    <th>파일</th>
+		     
+				 <td>${file.fileName }</td>
+			
+			
+	    </tr>
+	</c:forEach>
+    
+  </tbody>
+</table>
+	
+</section>
 	
 	
 </body>
