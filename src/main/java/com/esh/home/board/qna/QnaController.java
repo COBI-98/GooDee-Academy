@@ -51,8 +51,6 @@ public class QnaController {
 	  @PostMapping("add")
 	  public String setAddBoard(QnaVO qnaVO, RedirectAttributes redirectAttributes) throws Exception{
 		  
-		  
-		  
 		  int result = qnaService.setQnaList(qnaVO);
 		  
 		  redirectAttributes.addAttribute("result", result);		  

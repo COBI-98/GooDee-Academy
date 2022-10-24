@@ -22,7 +22,7 @@ public class QnaService implements QnaMapper {
 	@Autowired
 	private QnaMapper qnaMapper;
 	
-	@Value("${app.upload.qna")
+	@Value("${app.upload.qna}")
 	private String path;
 	
 	@Autowired

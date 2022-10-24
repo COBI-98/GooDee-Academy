@@ -14,8 +14,8 @@
 	<img src="/images/title1.jpg">
 	<a href="./qna/list">qna리스트</a>
 	<div>
-		<img alt="" src="/file/qna/03a54640-0289-4dd8-9a42-6e8917150c84_title1.jpg">
-		<a href="/fileDown/qna?fileName=03a54640-0289-4dd8-9a42-6e8917150c84_title1.jpg">down</a>
+		<img alt="" src="/file/qna/93081059-f9dc-4105-a88d-b670e0242fb0_title3.jpg">
+		<a href="/fileDown/qna?93081059-f9dc-4105-a88d-b670e0242fb0_title3jpg">down</a>
 	</div>
 	<div>
 		<img alt="" src="/file/notice/title6.jpg">
