@@ -10,6 +10,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
+	<c:import url="../temp/header.jsp"></c:import>
 	<section class="container-fluid col-lg-8 mt-5">
 
 

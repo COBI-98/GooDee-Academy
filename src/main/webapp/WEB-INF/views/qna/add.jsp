@@ -15,7 +15,7 @@
 </head>
 <body>
 	
-	
+	<c:import url="../temp/header.jsp"></c:import>
 	<section class="container-fluid col-lg-8 mt-5">
 		<h1>Board Write Page</h1>
 		<div class="row">

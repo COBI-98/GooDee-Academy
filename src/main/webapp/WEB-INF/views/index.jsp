@@ -7,9 +7,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="/css/test.css" rel="stylesheet">
-	<c:if test="./temp/boot.jsp"></c:if>
+<c:import url="./temp/boot.jsp"></c:import>
 </head>
 <body>
+	<c:import url="./temp/header.jsp"></c:import>
 	<h1>Index page</h1>
 	<img src="/images/title1.jpg">
 	<a href="./qna/list">qna리스트</a>

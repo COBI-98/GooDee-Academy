@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="container">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
@@ -13,9 +14,19 @@
         <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
       </ul>
 
+	<c:choose>
+	   <c:when test="${not empty check}">
       <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-outline-primary me-2">Login</button>
-        <button type="button" class="btn btn-primary">Sign-up</button>
+        <button type="button" class="btn btn-outline-primary me-2" onclick="location.href='/member/logout'">Logout</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='#'">마이페이지</button>
       </div>
+      </c:when>
+      <c:otherwise>
+	<div class="col-md-3 text-end">
+        <button type="button" class="btn btn-outline-primary me-2" onclick="location.href='/member/login'">Login</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='/member/join'">Sign-up</button>
+      </div>						
+	</c:otherwise>
+    </c:choose>
     </header>
  </div>

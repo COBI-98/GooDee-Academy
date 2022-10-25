@@ -10,6 +10,9 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
+
+	<c:import url="../temp/header.jsp"></c:import>
+	<section class="container-fluid col-lg-8 mt-5">
 	<h1>QNA List</h1>
 	
 	<table class="table table-bordered border-primary">
@@ -61,7 +64,7 @@
 			<h1>${result}</h1>
 			<a href="./add" type="button" class="btn btn-info">글쓰기</a>
 		</div>
-			
+		</section>
 			<script type="text/javascript">
 				let result = '${param.result}';
 				if(result != ""){

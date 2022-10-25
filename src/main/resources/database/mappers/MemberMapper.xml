@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.esh.home.member.MemberMapper">
+ 
+ 	<select id="getLogin" parameterType="MemberVO" resultMap="getMembersRole">
+ 		select * from 
+		member m 
+		left join 
+		member_role mr 
+		on(m.id = mr.id)
+		left join
+		role r 
+		on(mr.num = r.num)
+		where m.id = #{id} AND m.pw = #{pw}
+ 	</select>
+ 	
+ 	<resultMap type="MemberVO" id="getMembersRole">
+		<id column="ID" property="id"></id>
+		<result column="PW" property="pw"></result>
+		<result column="NAME" property="name"></result>
+		<result column="EMAIL" property="email"></result>
+		<result column="ENABLE" property="enable"></result>
+		<collection property="roleVOs" javaType="List" ofType="RoleVO">
+			<id column="NUM" property="num"></id>
+			<result column = "roleName" property="roleName"></result>
+		</collection>
+	</resultMap>
+ 	
+ 	<insert id="getJoin" parameterType="MemberVO">
+ 		INSERT INTO MEMBER
+ 		VALUE(#{id},#{pw},#{name},#{email},1)
+ 	</insert>
+ 	
+</mapper>
