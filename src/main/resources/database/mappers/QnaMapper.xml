@@ -49,4 +49,9 @@
 			<result column = "ORINAME" property="oriName"></result>
 		</collection>
 	</resultMap>
+	
+	<select id="getFileCheck" resultType="QnaFileVO" parameterType="QnaFileVO">
+		SELECT * FROM QNAFILES
+		where fileName = #{fileName}	
+	</select>
 </mapper>

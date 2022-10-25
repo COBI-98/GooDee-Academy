@@ -91,5 +91,11 @@ public class QnaService implements QnaMapper {
 		return qnaMapper.getListDetail(qnaVO);
 	}
 
+	@Override
+	public QnaFileVO getFileCheck(QnaFileVO qnaFileVO) throws Exception {
+		// TODO Auto-generated method stub
+		return qnaMapper.getFileCheck(qnaFileVO);
+	}
+
 	
 }
