@@ -25,16 +25,13 @@ public class FileManageController {
 		//DB에서 정보 조회
 		log.info("Path {}",path);
 		
-		qnaFileVO = qnaService.getFileCheck(qnaFileVO);
 		
-		QnaFileVO qnafileVO = new QnaFileVO();
+		
 		// 경로에 맞는 service 사용 (db)
 		if(path.equals("qna")) {
 			
+			qnaFileVO = qnaService.getFileCheck(qnaFileVO);
 			
-			// 파일 qnaFileVO.getFileName() , oriName() 가져오기
-			qnafileVO.setFileName(qnaFileVO.getFileName());
-			qnafileVO.setOriName(qnaFileVO.getOriName());
 		} else if (path.equals("notice")) {
 			
 		}
@@ -43,10 +40,9 @@ public class FileManageController {
 		
 		
 		log.info("FileVO {}", qnaFileVO);
-		log.info("fileVO {}",qnafileVO);
 		
 		
-		mv.addObject("fileVO", qnafileVO);
+		mv.addObject("fileVO", qnaFileVO);
 		mv.addObject("path", path);
 		mv.setViewName("fileManager");
 		
