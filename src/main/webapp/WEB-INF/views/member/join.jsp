@@ -10,6 +10,7 @@
 
 <c:import url="../temp/boot.jsp"></c:import>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 <body>
 
@@ -71,6 +72,6 @@
    </div>
 	</section>
     
-
+<script src="js/join.js"></script>
 </body>
 </html>

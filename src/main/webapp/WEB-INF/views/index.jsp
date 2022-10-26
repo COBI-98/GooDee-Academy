@@ -22,6 +22,15 @@
 		<img alt="" src="/file/notice/title6.jpg">
 		<a href="/fileDown/notice?fileName=title6.jpg">down</a>
 	</div>
+	<input type="button" id="btn" value="클릭" />
+
+      <input type="button" class="buttons" value="클릭1" />
+      <input type="button" class="buttons" value="클릭2" />
+      <input type="button" class="buttons" value="클릭3" />
+
 	
+	<script defer src="/js/index.js">
+
+	</script>
 </body>
 </html>
