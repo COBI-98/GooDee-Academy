@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
@@ -15,9 +16,11 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/member/*")
 @Slf4j
 public class MemberController {
-
+	
 	@Autowired
-	private MemberMapper memberMapper;
+	private MemberService memberService;
+	
+
 	
 	@GetMapping("login")
 	public void getLogin() throws Exception{
@@ -31,7 +34,7 @@ public class MemberController {
 		
 		
 		
-		memberVO = memberMapper.getLogin(memberVO);
+		memberVO = memberService.getLogin(memberVO);
 		
 		if(memberVO != null) {
 
@@ -52,7 +55,7 @@ public class MemberController {
 	@PostMapping("join")
 	public String getJoin(MemberVO memberVO) throws Exception{
 		
-		int result = memberMapper.getJoin(memberVO);
+		int result = memberService.setAdd(memberVO);
 		
 		if(result >0) {
 			log.info("-----------회원가입성공-----");
@@ -70,6 +73,34 @@ public class MemberController {
 		session.invalidate();
 		
 		return "redirect:../";
+	}
+	
+	@GetMapping("idCheck")
+	@ResponseBody
+	public int getIdCheck(MemberVO memberVO) throws Exception{
+		return memberService.getIdCheck(memberVO);
+	}
+	
+	@PostMapping("test")
+	@ResponseBody
+	public MemberVO setTest(MemberVO memberVO, String[] ar) throws Exception{
+		log.info("=================]");
+		log.info("ID: {}", memberVO.getId());
+		log.info("name :{}",memberVO.getName());
+		log.info("ar :{}",ar);
+		
+//		int result =memberService.getIdCheck(memberVO);
+//		if (result ==0) {
+//			
+//			throw new Exception("뾰로롱");
+//		}
+//		return result;
+		
+		for(String s:ar) {
+			log.info("ar: {}",s);
+		}
+		
+		return memberVO;
 	}
 	
 }

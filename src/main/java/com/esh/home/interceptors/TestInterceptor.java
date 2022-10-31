@@ -11,31 +11,19 @@ import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j
-public class TestInterceptor implements HandlerInterceptor{@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
-		log.info("-----------preHandle---------------");
-		// TODO Auto-generated method stub
-		return true;
-	}
-
+public class TestInterceptor implements HandlerInterceptor {
+	
 	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-		// TODO Auto-generated method stub
-		log.info("-----------postHandle---------------");
-		HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse reponse, Object handler) throws Exception{
 		
-		
-		
-	}
-
-	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
-		// TODO Auto-generated method stub
-		HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
+			log.info("==========PreHandle=============");
+			return true;
 	}
 	
-	
+	@Override
+	public void postHandle(HttpServletRequest request, HttpServletResponse reponse, Object handler,ModelAndView modelAndView) throws Exception {
+		// TODO Auto-generated method stub
+		log.info("==========PostHandle==========");
+	}
+
 }

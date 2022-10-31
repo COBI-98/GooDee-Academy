@@ -5,6 +5,9 @@
     
 <mapper namespace="com.esh.home.member.MemberMapper">
  
+ 	<select id="getIdCheck" parameterType="MemberVO" resultType="Integer">
+		SELECT COUNT(ID) FROM MEMBER WHERE ID =#{id}
+	</select>
  	<select id="getLogin" parameterType="MemberVO" resultMap="getMembersRole">
  		select * from 
 		member m 
@@ -17,6 +20,12 @@
 		where m.id = #{id} AND m.pw = #{pw}
  	</select>
  	
+ 	<insert id="setMemberRole" parameterType="MemberVO">
+		insert into member_role values (#{id}, 
+			(select num from role where roleName='ROLE_MEMBER')
+		)
+	</insert>
+	
  	<resultMap type="MemberVO" id="getMembersRole">
 		<id column="ID" property="id"></id>
 		<result column="PW" property="pw"></result>
@@ -29,7 +38,7 @@
 		</collection>
 	</resultMap>
  	
- 	<insert id="getJoin" parameterType="MemberVO">
+ 	<insert id="setAdd" parameterType="MemberVO">
  		INSERT INTO MEMBER
  		VALUE(#{id},#{pw},#{name},#{email},1)
  	</insert>

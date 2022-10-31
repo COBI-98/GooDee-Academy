@@ -43,7 +43,10 @@ public class HomeController {
       
 //       log.info("List : {}  size {}", ar, ar.size());
 //      mv.addObject("list", ar);
+     
       mv.setViewName("index");
+      
+      
       
       return mv;
    }
