@@ -18,15 +18,15 @@
 		VALUE (#{num},#{writer},#{title},#{contents},0,now(),0,0,0);
  	</insert>
  	
- 	<insert id="setQnaFileAdd" parameterType="QnaFileVO">
- 		INSERT INTO QNAFILES
- 		VALUE (NULL,#{num},#{fileName},#{oriName})
- 	</insert>
  	
  	<select id="getCount" resultType="Long" parameterType="Pager">
 		SELECT
 		COUNT(NUM) FROM QNA
 	</select>
+ 	<insert id="setQnaFileAdd" parameterType="QnaFileVO">
+ 		INSERT INTO QNAFILES
+ 		VALUE (NULL,#{num},#{fileName},#{oriName})
+ 	</insert>
 	
 	<select id="getListDetail" parameterType="QnaVO" resultMap="getFileList">
 		SELECT * 

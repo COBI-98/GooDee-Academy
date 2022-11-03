@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 import com.esh.home.interceptors.StudyInterceptor;
 import com.esh.home.interceptors.TestInterceptor;
@@ -15,29 +16,32 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class InterceptorConfig implements WebMvcConfigurer {
 	
-	@Autowired
+	@Autowired //IOC(Inversion Of Control)
 	private TestInterceptor testInterceptor;
-	
 	@Autowired
 	private StudyInterceptor studyInterceptor;
+	@Autowired
+	private LocaleChangeInterceptor localeChangeInterceptor;
 	
-	
+	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		
 		//method 체이닝
 		//적용할 Interceptor 등록
 		registry.addInterceptor(testInterceptor)
-			.addPathPatterns("/qna/**")
-			.addPathPatterns("/notice/**")
-		//제외할 url 등록
-			.excludePathPatterns("/qna/detail")
-			.excludePathPatterns("/qna/write");
+		//Interceptor를 적용할 URL 등록
+				.addPathPatterns("/qna/**")
+				.addPathPatterns("/notice/**")
+		//제외할 URL등록
+				.excludePathPatterns("/qna/detail")
+				.excludePathPatterns("/qna/write");
 		
 		//추가 Interceptor등록
 		registry.addInterceptor(studyInterceptor)
-			.addPathPatterns("/qna/**");
-			
-		
+				.addPathPatterns("/qna/**");
+		log.info("=====================");
+		log.info("Locale {} ", localeChangeInterceptor);
+		registry.addInterceptor(localeChangeInterceptor)
+				.addPathPatterns("/*");
 	}
 
 }

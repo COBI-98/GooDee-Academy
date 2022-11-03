@@ -30,6 +30,21 @@ public class HomeController {
 //   @Autowired
 //   private QnaMapper qnaMapper;
    
+   @GetMapping("/user")
+   public String member() {
+	   return "Member Role";
+   }
+   
+   @GetMapping("/admin")
+   public String admin() {
+	   return "Admin Role";
+   }
+   
+   @GetMapping("/manager")
+   public String manager() {
+	   return "Manager Role";
+   }
+   
    @GetMapping("/")
    public ModelAndView home(Model model) throws Exception {
       log.error("error");

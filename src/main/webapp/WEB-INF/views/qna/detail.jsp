@@ -36,7 +36,7 @@
     </tr>
     
     
-    <c:forEach items="${qnaVO.qnaFileVOs }" var="file">
+    <c:forEach items="${qnaVO.qnaFileVOs}" var="file">
 	    <tr class="table-primary">
 	    <th>파일</th>
 		     

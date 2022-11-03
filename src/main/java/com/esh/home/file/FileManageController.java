@@ -25,8 +25,6 @@ public class FileManageController {
 		//DB에서 정보 조회
 		log.info("Path {}",path);
 		
-		
-		
 		// 경로에 맞는 service 사용 (db)
 		if(path.equals("qna")) {
 			
@@ -35,9 +33,6 @@ public class FileManageController {
 		} else if (path.equals("notice")) {
 			
 		}
-	
-		
-		
 		
 		log.info("FileVO {}", qnaFileVO);
 		

@@ -81,7 +81,11 @@ public class FileManager extends AbstractView {
 		StringBuffer bf = new StringBuffer();
 		bf.append(filename);
 		bf.append("_");
-		bf.append(multipartFile.getOriginalFilename());
+		
+		String ex = multipartFile.getOriginalFilename();//아이유.jpg
+		ex = ex.substring(ex.lastIndexOf("."));
+		
+		bf.append(ex);
 		
 		filename = bf.toString();
 		// 3. file 저장하기 Save
