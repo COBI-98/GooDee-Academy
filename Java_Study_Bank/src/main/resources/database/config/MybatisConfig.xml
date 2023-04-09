@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+				  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+				  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+				  
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.esh.start.member.BankMembersDTO" alias="BankMembersDTO"/>
+		<typeAlias type="com.esh.start.member.BankMembersFileDTO" alias="BankMembersFileDTO"/>	
+		<typeAlias type="com.esh.start.member.RoleDTO" alias="RoleDTO"/>
+		<typeAlias type="com.esh.start.bankaccount.BankAccountDTO" alias="BankAccountDTO"></typeAlias>
+		<typeAlias type="com.esh.start.bankbook.BankBookDTO" alias="BankBookDTO"></typeAlias>
+		<typeAlias type="com.esh.start.bankbook.BankBookCommentDTO" alias="BankBookCommentDTO"></typeAlias>
+		
+		
+		<typeAlias type="com.esh.start.board.impl.BoardDTO" alias="BoardDTO"></typeAlias>
+		<typeAlias type="com.esh.start.board.impl.BoardFileDTO" alias="BoardFileDTO"></typeAlias>
+		
+		<typeAlias type="com.esh.start.board.notice.NoticeDTO" alias="NoticeDTO"></typeAlias>
+		
+		<typeAlias type="com.esh.start.board.qna.QnaDTO" alias="QnaDTO"></typeAlias>
+		<typeAlias type="com.esh.start.util.Pager" alias="Pager"></typeAlias>
+		<typeAlias type="com.esh.start.util.CommentPager" alias="CommentPager"></typeAlias>
+		
+		
+		<typeAlias type="java.lang.String" alias="String"/>
+		<typeAlias type="java.lang.Long" alias="Long"/>
+		
+		<typeAlias type="java.util.List" alias="List"/>
+	</typeAliases>
+
+</configuration>
